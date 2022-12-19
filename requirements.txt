@@ -1,1 +1,1 @@
-pyotp
+pyotp==2.7.0

@@ -1,0 +1,19 @@
+.coupon-banner {
+    background-color: #FF8F12;
+    width: 100%;
+    padding: 0.75rem;
+    color: #FFF;
+    text-align: center;
+
+    a {
+        &:hover {
+            text-decoration: none !important;
+            color: #FFFFFF !important;
+        }
+
+        &:focus {
+            text-decoration: none !important;
+            color: #FFFFFF !important;
+        }
+    }
+}

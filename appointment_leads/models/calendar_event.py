@@ -12,7 +12,7 @@ class CalendarEvent(models.Model):
     partner_ids = fields.Many2many(
         'res.partner', 'calendar_event_res_partner_rel',
         string='Attendees', default=False)
-    x_personal_schedule_appointment = fields.Selection(string="¿Agendo cita presencial?", selection=[("Sí","Sí"),("No","No")])
+    # x_personal_schedule_appointment = fields.Selection(string="¿Agendo cita presencial?", selection=[("Sí","Sí"),("No","No")])
 
     #Relaciona la oportunidad del contacto con la reuinión que se está creando
     @api.model

@@ -3,6 +3,7 @@ import datetime
 from odoo import http
 from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.http import request
+from dateutil.relativedelta import relativedelta
 
 
 class CustomerPortalController(CustomerPortal):
@@ -10,11 +11,11 @@ class CustomerPortalController(CustomerPortal):
     def __init__(self):
         super(CustomerPortalController, self).__init__()
 
-        type(self).OPTIONAL_BILLING_FIELDS.extend([
-            'p_adult_kid', 'p_birth_date', 'p_age', 'p_occupation', 'p_physical_activity',
-            'p_physical_activity_true', 'p_hear_about_us', 'p_hear_about_us_other',
-            'p_height', 'p_weight', 'p_shoe_size', 'main_complaints', 'other_complaints',
-            'p_contact_you'
+        type(self).OPTIONAL_BILLING_FIELDS.extend(['x_studio_cmo_nos_contacta','x_studio_medio','x_studio_medico',
+            'x_studio_nombre_del_paciente_que_lo_recomienda','x_studio_medio_otro','x_studio_gnero',
+            'x_studio_cumpleaos', 'p_age', 'p_occupation', 'p_physical_activity',
+            'p_physical_activity_true', 'x_studio_altura_cm', 'x_studio_peso_kgs', 'x_studio_talla', 'main_complaints',
+            'other_complaints', 'p_contact_you'
         ])
 
 
@@ -28,12 +29,20 @@ class CustomerPortalController(CustomerPortal):
         res = super(CustomerPortalController, self).account(redirect=redirect, **data)
 
         # Items para los select de "¿Cómo se enteró de nosotros?" y "Principales molestias"
-        hear_media = dict(request.env['res.partner'].sudo()._fields['p_hear_about_us'].selection)
+        genders = dict(request.env['res.partner'].sudo()._fields['x_studio_gnero'].selection)
         complaints = request.env['patient.complaint'].sudo().search([])
+        how_contact_us = dict(request.env['res.partner'].sudo()._fields['x_studio_cmo_nos_contacta'].selection)
+        contact_internet = dict(request.env['res.partner'].sudo()._fields['x_studio_medio'].selection)
+        medics = request.env['res.partner'].sudo().search([("x_studio_es_mdico_especialista","=",True)])
+        patients = request.env['res.partner'].sudo().search([("x_studio_es_paciente", "=", True)])
 
         res.qcontext.update({
-            'hear_media': hear_media,
-            'complaints': complaints
+            'genders': genders,
+            'complaints': complaints,
+            'how_contact_us': how_contact_us,
+            'contact_internet': contact_internet,
+            'medics': medics,
+            'patients': patients
         })
 
         # Se necesita que la variable "p_physical_activity" siempre exista en el
@@ -61,6 +70,30 @@ class CustomerPortalController(CustomerPortal):
                 p_physical_activity = False
 
             new_data['p_physical_activity'] = p_physical_activity
+
+        how_contact_us = data.get('x_studio_cmo_nos_contacta', None)
+        if how_contact_us:
+            if how_contact_us == 'Internet':
+                new_data['x_studio_medico'] = False
+                new_data['x_studio_nombre_del_paciente_que_lo_recomienda'] = False
+                new_data['x_studio_medio_otro'] = False
+            elif how_contact_us == 'Médico / Especialista':
+                new_data['x_studio_medio'] = False
+                new_data['x_studio_nombre_del_paciente_que_lo_recomienda'] = False
+                new_data['x_studio_medio_otro'] = False
+            elif how_contact_us == 'Recomendado paciente':
+                new_data['x_studio_medio'] = False
+                new_data['x_studio_medico'] = False
+                new_data['x_studio_medio_otro'] = False
+            else:
+                new_data['x_studio_medio'] = False
+                new_data['x_studio_medico'] = False
+                new_data['x_studio_nombre_del_paciente_que_lo_recomienda'] = False
+
+        x_studio_cumpleaos = data.get('x_studio_cumpleaos', None)
+        if x_studio_cumpleaos:
+            age = relativedelta(datetime.date.today(), datetime.datetime.strptime(x_studio_cumpleaos,'%Y-%m-%d'))
+            new_data['p_age'] = age.years
 
 
         main_complaints_form = request.httprequest.form.getlist('main_complaints')
@@ -104,33 +137,14 @@ class CustomerPortalController(CustomerPortal):
     def details_form_validate(self, data):
         errors, error_messages = super(CustomerPortalController, self).details_form_validate(data)
 
-        p_adult_kid = data.get('p_adult_kid')
-
-        if p_adult_kid:
-            if p_adult_kid != 'adulto' and p_adult_kid != 'nino':
-                errors.update({'p_adult_kid': 'error'})
-                error_messages.append('Valor inesperado en ¿Es un adulto o un niño?')
-
-
-        p_birth_date = data.get('p_birth_date')
+        p_birth_date = data.get('x_studio_cumpleaos')
 
         if p_birth_date:
             try:
                 datetime.datetime.strptime(p_birth_date, '%Y-%m-%d')
             except:
-                errors.update({'p_birth_date': 'error'})
+                errors.update({'x_studio_cumpleaos': 'error'})
                 error_messages.append('La fecha de nacimiento no es una fecha válida')
-
-
-        p_age = data.get('p_age')
-
-        if p_age:
-            try:
-                p_age = int(p_age)
-            except:
-                errors.update({'p_age': 'error'})
-                error_messages.append('La edad debe ser un valor numérico')
-
 
         p_physical_activity = data.get('p_physical_activity', None)
 
@@ -144,41 +158,24 @@ class CustomerPortalController(CustomerPortal):
                     errors.update({'p_physical_activity_true': 'error'})
                     error_messages.append('Ingresa la actividad física que realizas')
 
-
-        p_hear_about_us = data.get('p_hear_about_us', None)
-
-        if p_hear_about_us:
-            media_keys = dict(request.env['res.partner'].sudo()._fields['p_hear_about_us'].selection).keys()
-
-            if not p_hear_about_us in media_keys:
-                errors.update({'p_hear_about_us': 'error'})
-                error_messages.append('Valor inesperado en ¿Cómo se enteró de nosotros?')
-
-            if p_hear_about_us == 'otro':
-                if not data.get('p_hear_about_us_other'):
-                    errors.update({'p_hear_about_us_other': 'error'})
-                    error_messages.append('Ingresa el medio por el cual te enteraste de nosotros')
-
-
-        p_height = data.get('p_height', None)
+        p_height = data.get('x_studio_altura_cm', None)
 
         if p_height:
             try:
-                p_height = float(p_height)
+                p_height = int(p_height)
             except:
-                errors.update({'p_height': 'error'})
+                errors.update({'x_studio_altura_cm': 'error'})
                 error_messages.append('La altura debe ser un valor numérico')
 
 
-        p_weight = data.get('p_weight', None)
+        p_weight = data.get('x_studio_peso_kgs', None)
 
         if p_weight:
             try:
-                p_weight = float(p_weight)
+                p_weight = int(p_weight)
             except:
-                errors.update({'p_weight': 'error'})
+                errors.update({'x_studio_peso_kgs': 'error'})
                 error_messages.append('El peso debe ser un valor numérico')
-
 
         main_complaints = data.get('main_complaints', None)
 

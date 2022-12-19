@@ -29,28 +29,10 @@ class SaleOrder(models.Model):
             else:
                 rec.x_has_factory_rule = False
 
-    #Divide las lineas de productos fabricables con una cantidad mayor a 1 al momento de crear la orden
-    @api.model
-    def create(self, vals):
-        res = super(SaleOrder, self).create(vals)
-        rule_id = self.env["branch.factory"].sudo().search([("branch_id.id", "=", res.company_id.id)], limit=1)
-        if rule_id:
-            if vals.get("order_line"):
-                res._divide_in_multiple()
-            res._reload_mrp_lines_sequence()
-        return res
-
-
-    #El historial de la sucursal es un espejo de la fabrica y divide los productos fabricables
+    #El historial de la sucursal es un espejo de la fabrica
     def write(self, values):
         res = super(SaleOrder, self).write(values)
         for rec in self:
-            rule_id = rec.env["branch.factory"].sudo().search([("branch_id.id", "=", rec.company_id.id)], limit=1)
-            if rule_id:
-                if values.get("order_line"):
-                    rec._divide_in_multiple()
-                rec._reload_mrp_lines_sequence()
-
             if rec.x_branch_order_id:                
                 if values.get("estatus_crm"):
                     rec.x_branch_order_id.sudo().write({'estatus_crm': values.get("estatus_crm")})
@@ -139,7 +121,7 @@ class SaleOrder(models.Model):
                 "analytic_tag_ids": order_line.analytic_tag_ids.ids,
                 "main_layer_id": order_line.main_layer_id.id,
                 "mid_layer_id": order_line.mid_layer_id.id,
-                "x_shapelist_domian_ids": order_line.x_shapelist_domian_ids.id
+                "x_shapelist_domian_ids": order_line.x_shapelist_domian_ids.ids 
             }
             sale_order.order_line = [(0,0,sale_line)]
 
@@ -232,8 +214,8 @@ class SaleOrder(models.Model):
     #Copiamos la orden de venta y se confirmar sin generar otra venta en crm
     def copy_error_order(self, kwargs):
         error_id = kwargs.get("error_id",None)
-        status_id = kwargs.get("estatus_crm",None)
         error_status = self.env["crm.status"].sudo().search([('code', '=', str(error_id))], limit=1)
+        status_id = kwargs.get("estatus_crm",None)
         if error_id == 12:
             pricelist_id = self.env["product.pricelist"].sudo().search([('id','=',80)])
             error_status = self.env["crm.status"].sudo().search([('code', '=', str(error_id))], limit=1)

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="portal_layout" name="Portal layout banner" inherit_id="portal.portal_layout" priority="30">
+        <xpath expr="//div[hasclass('o_portal_wrap')]/div[hasclass('container')]" position="before">
+            <t t-if="patient_coupon">
+                <div class="coupon-banner">
+                    <a href="/shop" class="text-white" target="_blank"><u>Renueva tus plantillas con este descuento especial. Da clic para ir a la tienda y utiliza el código: <span class="font-weight-bold" t-esc="patient_coupon"/></u></a>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

@@ -122,25 +122,19 @@ class SaleReportWizard(models.TransientModel):
             amex1 = 0
             dep_transf1 = 0
             mercadopago1 = 0
-            currency_fixed = pm1 and pm1[0].currency_id.name or False
             if len(pm1) > 0:
                 fechap1 = datetime.strftime(pm1[0].date, DEFAULT_SERVER_DATETIME_FORMAT)
                 for pago1 in pm1:
-                    if pago1.company_id.name != 'Tijuana':
-                        p1_amount = pago1.amount
-                    else:
-                        p1_amount = pago1.currency_id._convert(pago1.amount, self.env.company.currency_id, pago1.company_id,
-                                                               fechap1 or fields.Date.today())
                     if pago1.journal_id.type == 'cash':
-                        efectivo1 += p1_amount
+                        efectivo1 += pago1.amount
                     elif pago1.journal_id.type == 'bank' and 'Tarjeta' in pago1.journal_id.name:
-                        tarjeta1 += p1_amount
+                        tarjeta1 += pago1.amount
                     elif pago1.journal_id.type == 'bank' and 'AMEX' in pago1.journal_id.name:
-                        amex1 += p1_amount
+                        amex1 += pago1.amount
                     elif pago1.journal_id.type == 'bank' and 'Transferencia' in pago1.journal_id.name:
-                        dep_transf1 += p1_amount
+                        dep_transf1 += pago1.amount
                     elif pago1.journal_id.type == 'bank' and 'Mercado pago' in pago1.journal_id.name:
-                        mercadopago1 += p1_amount
+                        mercadopago1 += pago1.amount
             fechap2 = ''
             efectivo2 = 0
             tarjeta2 = 0
@@ -150,21 +144,16 @@ class SaleReportWizard(models.TransientModel):
             if len(pm2) > 0:
                 fechap2 = datetime.strftime(pm2[0].date, DEFAULT_SERVER_DATETIME_FORMAT)
                 for pago2 in pm2:
-                    if pago2.company_id.name != 'Tijuana':
-                        p2_amount = pago2.amount
-                    else:
-                        p2_amount = pago2.currency_id._convert(pago2.amount, self.env.company.currency_id, pago2.company_id,
-                                                               fechap2 or fields.Date.today())
                     if pago2.journal_id.type == 'cash':
-                        efectivo2 += p2_amount
+                        efectivo2 += pago2.amount
                     elif pago2.journal_id.type == 'bank' and 'Tarjeta' in pago2.journal_id.name:
-                        tarjeta2 += p2_amount
+                        tarjeta2 += pago2.amount
                     elif pago2.journal_id.type == 'bank' and 'AMEX' in pago2.journal_id.name:
-                        amex2 += p2_amount
+                        amex2 += pago2.amount
                     elif pago2.journal_id.type == 'bank' and 'Transferencia' in pago2.journal_id.name:
-                        dep_transf2 += p2_amount
+                        dep_transf2 += pago2.amount
                     elif pago2.journal_id.type == 'bank' and 'Mercado pago' in pago2.journal_id.name:
-                        mercadopago2 += p2_amount
+                        mercadopago2 += pago2.amount
             fechap3 = ''
             efectivo3 = 0
             tarjeta3 = 0
@@ -174,21 +163,16 @@ class SaleReportWizard(models.TransientModel):
             if len(pm3) > 0:
                 fechap3 = datetime.strftime(pm3[0].date, DEFAULT_SERVER_DATETIME_FORMAT)
                 for pago3 in pm3:
-                    if pago3.company_id.name != 'Tijuana':
-                        p3_amount = pago3.amount
-                    else:
-                        p3_amount = pago3.currency_id._convert(pago3.amount, self.env.company.currency_id, pago3.company_id,
-                                                               fechap3 or fields.Date.today())
                     if pago3.journal_id.type == 'cash':
-                        efectivo3 += p3_amount
+                        efectivo3 += pago3.amount
                     elif pago3.journal_id.type == 'bank' and 'Tarjeta' in pago3.journal_id.name:
-                        tarjeta3 += p3_amount
+                        tarjeta3 += pago3.amount
                     elif pago3.journal_id.type == 'bank' and 'AMEX' in pago3.journal_id.name:
-                        amex3 += p3_amount
+                        amex3 += pago3.amount
                     elif pago3.journal_id.type == 'bank' and 'Transferencia' in pago3.journal_id.name:
-                        dep_transf3 += p3_amount
+                        dep_transf3 += pago3.amount
                     elif pago3.journal_id.type == 'bank' and 'Mercado pago' in pago3.journal_id.name:
-                        mercadopago3 += p3_amount
+                        mercadopago3 += pago3.amount
             discount = 0.0
             if sl.pricelist_id.name != 'Tarifa pública':
                 for sldisc in sl.order_line:
@@ -251,7 +235,6 @@ class SaleReportWizard(models.TransientModel):
                          'Notas Primer Seguimiento1': '',
                          'Control seguimiento': '',
                          'Control seguimiento1': '',
-                         'Divisa': currency_fixed or '',
                          }
             datos.append(data_item)
 
@@ -327,7 +310,6 @@ class SaleReportWizard(models.TransientModel):
                 'Notas Primer Seguimiento',
                 'Control seguimiento',
                 'Control seguimiento',
-                'Moneda'
             ]
             # worksheet.protect()
             worksheet.write_row("A2", encabezado_tabla, header_plain)

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="coupon_view_tree" model="ir.ui.view">
+        <field name="model">coupon.coupon</field>
+        <field name="inherit_id" ref="coupon.coupon_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="before">
+                <field name="p_type"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="coupon_view_form" model="ir.ui.view">
+        <field name="model">coupon.coupon</field>
+        <field name="inherit_id" ref="coupon.coupon_view_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="before">
+                <field name="p_type"/>
+            </field>
+        </field>
+    </record>
+</odoo>

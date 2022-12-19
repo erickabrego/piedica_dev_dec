@@ -30,7 +30,6 @@ class MainController(Controller):
                 'status': 'error',
                 'message': f'Por favor de proporcionar el id del contacto.'
             }
-
         return data
 
     #Endpoint para obtener ubicación desde irina
