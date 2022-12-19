@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="molestias_dolor_pies" model="patient.complaint">
+            <field name="name">Dolor de pies</field>
+        </record>
+
+        <record id="molestias_dolor_tobillos" model="patient.complaint">
+            <field name="name">Dolor de tobillos</field>
+        </record>
+
+        <record id="molestias_dolor_rodillas" model="patient.complaint">
+            <field name="name">Dolor de rodillas</field>
+        </record>
+
+        <record id="molestias_dolor_cadera" model="patient.complaint">
+            <field name="name">Dolor de cadera</field>
+        </record>
+
+        <record id="molestias_dolor_espalda" model="patient.complaint">
+            <field name="name">Dolor de espalda</field>
+        </record>
+    </data>
+</odoo>

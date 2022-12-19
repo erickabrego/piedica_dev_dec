@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="prod_material_subtype_action" model="ir.actions.act_window">
+        <field name="name">ProdMaterialSubType</field>
+        <field name="res_model">prod.material.subtype</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="sale_prod_material_subtype_menu" parent="sale.product_menu_catalog"
+        action="prod_material_subtype_action" sequence="1105"/>
+
+
+
+    <record id="prod_material_subtype_view_tree" model="ir.ui.view">
+        <field name="name">ProdMaterialSubType List</field>
+        <field name="model">prod.material.subtype</field>
+        <field name="arch" type="xml">
+            <tree string="ProdMaterialSubType">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="prod_material_subtype_view_form" model="ir.ui.view">
+        <field name="name">ProdMaterialSubType Form</field>
+        <field name="model">prod.material.subtype</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

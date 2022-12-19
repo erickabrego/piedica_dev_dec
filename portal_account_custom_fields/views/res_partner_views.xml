@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Modifica el form view para agregar los campos custom -->
+    <record id="res_partner_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                <page name="registro_paciente" string="Registro del paciente">
+                    <group>
+                        <group>
+                            <field name="p_adult_kid" widget="radio"/>
+                            <field name="p_birth_date"/>
+                            <field name="p_age"/>
+                            <field name="p_occupation"/>
+                        </group>
+                        <group>
+                            <field name="p_height"/>
+                            <field name="p_weight"/>
+                            <field name="p_shoe_size"/>
+                            <field name="main_complaints" widget="many2many_tags"/>
+                            <field name="other_complaints"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="p_physical_activity"/>
+                            <field name="p_physical_activity_true" attrs="{'invisible': [('p_physical_activity', '!=', True)]}"/>
+                        </group>
+                        <group>
+                            <field name="p_hear_about_us"/>
+                            <field name="p_hear_about_us_other" attrs="{'invisible': [('p_hear_about_us', '!=', 'otro')]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="p_contact_you"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

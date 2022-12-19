@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template inherit_id="website_calendar.appointment_calendar" id="custom_appointment_calendar_view" priority="200">
+        <xpath expr="//div[hasclass('row')]" position="inside">
+            <div t-attf-class="form-group col-xl-6">
+                <label class="col-form-label label-optional" for="x_studio_servicios_1">Servicio</label>
+                <select id="x_studio_servicios_1" name="x_studio_servicios_1" t-attf-class="form-control">
+                    <option value="">...</option>
+                    <t t-foreach="servicios or {}" t-as="servicio">
+                        <t t-if="servicio != 'Consulta en línea'">
+                            <option t-att-value="servicio"
+                                    t-att-selected="'selected' if servicio == x_studio_servicios_1 else None">
+                                <t t-esc="servicios[servicio]"/>
+                            </option>
+                        </t>
+                    </t>
+                </select>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="p_email_error" name="Website Appointment: Email Error">
+        <t t-call="website.layout">
+            <div id="wrap" class="o_website_calendar mt-4">
+                <div class="oe_structure">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger">
+                                    <h2>El correo que ingresaste ya está registrado.</h2>
+                                    <p>
+                                        <a t-attf-href="/web/login?redirect={{ quote_plus(return_url) }}&amp;login={{ quote_plus(email) }}">
+                                            inicia sesión</a> para poder continuar con la cita.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

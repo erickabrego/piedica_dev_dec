@@ -1,0 +1,6 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"read_everyone","Public users need to find redirections","model_website_seo_redirection",,1,0,0,0
+"write_website_designer","Website managers can set SEO redirections","model_website_seo_redirection","website.group_website_designer",1,1,1,1
+access_open_wizard_product,access_open_wizard_product,model_open_wizard_product,base.group_user,1,1,1,1
+access_open_wizard_category,access_open_wizard_category,model_open_wizard_category,base.group_user,1,1,1,1
+

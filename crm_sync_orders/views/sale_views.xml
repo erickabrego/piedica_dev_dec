@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_product_action" model="ir.actions.act_window">
+        <field name="name">Variantes de productos</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <menuitem id="sale_product_product_menu" parent="sale.product_menu_catalog"
+        action="product_product_action" sequence="1000"/>
+
+
+    <!-- Modifica el tree view para agregar los campos custom -->
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="estatus_crm"/>
+                <field name="folio_pedido"/>
+            </xpath>
+            <field name="partner_id" position="after">
+                <field name="branch_id"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Modifica el form view para agregar los campos custom -->
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!--Se agrega botón de reenvio de información si existe algún error-->
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button string="Reenviar a CRM" name="resend_to_crm" type="object" class="btn btn-secondary" attrs="{'invisible': ['|',('folio_pedido','!=',False),('state','not in',['sale','done'])]}"/>
+            </xpath>
+
+            <field name="payment_term_id" position="after">
+                <field name="estatus_crm"/>
+                <field name="folio_pedido"/>
+            </field>
+            <xpath expr="//sheet/notebook/page[@name='customer_signature']" position="after">
+                <page name="crm_status_history" string="Historial de estatus">
+                    <group>
+                        <field name="crm_status_history" readonly="1">
+                            <tree>
+                                <field name="status"/>
+                                <field name="date"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>            
+            <xpath expr="//notebook/page[@name='order_lines']/field/tree/field[@name='name']" position="after">
+                <field name="insole_size"/>
+                <field name="top_cover_id"/>
+                <field name="main_layer_id"/>
+                <field name="mid_layer_id"/>
+                <field name="design_type"/>
+            </xpath>
+            <xpath expr="//notebook" position="after">
+                <group string="Observaciones">
+                    <field name="observations" nolabel="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="operations_scan_client_action" model="ir.actions.client">
+        <field name="name">Escaneo de operaciones</field>
+        <field name="tag">operations_scan_action</field>
+    </record>
+
+
+    <menuitem id="menu_mrp_manufacturing"
+        parent="mrp.menu_mrp_root"
+        action="operations_scan_client_action"
+        sequence="90"/>
+
+
+    <record id="mrp_production_form_view" model="ir.ui.view">
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_extra_info']" position="inside">
+                <field name="p_current_operation" nolabel="1"/>
+                <field name="p_to_send" string="Por enviar" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

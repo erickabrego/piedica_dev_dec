@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="prod_design_type_action" model="ir.actions.act_window">
+        <field name="name">ProdDesignType</field>
+        <field name="res_model">prod.design.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="sale_prod_design_type_menu" parent="sale.product_menu_catalog"
+        action="prod_design_type_action" sequence="1104"/>
+
+
+
+    <record id="prod_design_type_view_tree" model="ir.ui.view">
+        <field name="name">ProdDesignType List</field>
+        <field name="model">prod.design.type</field>
+        <field name="arch" type="xml">
+            <tree string="ProdDesignType">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="prod_design_type_view_form" model="ir.ui.view">
+        <field name="name">ProdDesignType Form</field>
+        <field name="model">prod.design.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

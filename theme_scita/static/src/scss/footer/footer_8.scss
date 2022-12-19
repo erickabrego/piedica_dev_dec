@@ -1,0 +1,156 @@
+footer {
+	.footer-content {
+		.sct-top-row {
+			background-color: $light-grey-color;
+			padding: 15px 0;
+			.extra_content{
+				@media (max-width: 767px){
+					text-align: center;
+					margin-bottom: 10px;
+				}
+			}
+			.help {
+				text-align: right;
+				@media (max-width: 767px){
+					text-align: center;
+				}
+				span {
+					color: $theme;
+				}
+			}
+		}
+		.sct-bottom-row {
+			background-color: $light-color;
+			.sct-top-row {
+				background-color: $light-color;
+				padding: 30px 0;
+				@media (max-width: 991px){
+					padding-bottom: 10px;
+				}
+				.connect_us {
+					@media (max-width: 991px){
+						margin-bottom: 20px;
+					}
+					.com-logo {
+						padding-left: 0;
+					}
+					.sct-footer-logo {
+						max-width: 150px;
+					}
+					.ml-zero {
+						padding-left: 0;
+					}
+					ul {
+						max-width: 450px;
+						li {
+							position: relative;
+							padding-left: 30px;
+							font-size: $font-body;
+							.fa {
+								position: absolute;
+								left: 0;
+								top: 2px;
+								font-size: 16PX;
+								color: $dark-color;
+							}
+							+ li {
+								margin-top: 20px;
+								color:$dark-color;
+							}
+						}
+						.sct-scocial-icon-footer {
+							a {
+								margin-top: 0;
+								margin-bottom: 5px;
+								width: 25px;
+								height: 25px;
+								font-size: $font-body + 1;
+								.fa {
+									color: $light-grey-color;
+									position: static;
+								}
+							}
+						}
+					}
+				}
+				.sct-links {
+					@media (max-width: 991px){
+						margin-bottom: 20px;
+					}
+					h4 {
+						margin-bottom: 20px;
+						text-transform: uppercase;
+					}
+					ul {
+						li {
+							font-size: $font-body;
+							a {
+								&:hover {
+									color:$theme;
+								}
+							}
+							+ li {
+								margin-top: 15px;
+							}
+						}
+					}
+				}
+			}
+			.sct-bottom-row {
+				text-align: center;
+				h4 {
+					text-transform: uppercase;
+				}
+				.sct-static-link {
+				   margin-bottom: 10px;
+					ul {
+						li {
+							display: inline-block;
+							vertical-align: middle;
+							padding: 10px 5px;
+							@media (max-width: 767px){
+								padding: 5px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.o_footer_copyright{
+	background:#fff;
+	.sct-fot-belt{
+		.description{
+			padding-top:25px;
+		}
+	}
+}
+.o_footer_copyright .row > div {
+    margin: auto 0;
+    @include all-flex;
+    .o_footer_copyright_name {
+    	@include order-1;
+    	font-size:$fot-label;
+    	margin-bottom: 1rem;
+    }
+    .js_language_selector{
+    	display: inline-block;
+	    margin-bottom: 1rem;
+	    >.list-inline{
+			> a{
+				 color:$body-color;
+				 font-size:$font-base-label;
+			  }
+		}
+	}
+	.js_language_selector > .btn-outline-secondary:hover:after {
+		color:$light-color;
+	}
+	.js_language_selector > .btn-outline-secondary:hover span {
+		color:$light-color;
+	}
+	.js_language_selector > .btn-outline-secondary {
+		color:$body-color;
+	}
+}

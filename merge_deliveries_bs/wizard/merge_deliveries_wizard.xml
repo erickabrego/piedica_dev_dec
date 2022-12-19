@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="merge_deliveries_wizard_action" model="ir.actions.act_window">
+            <field name="name">Merge Deliveries Together</field>
+            <field name="res_model">merge.deliveries.wizard</field>
+            <field name="target">new</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <record id="merge_deliveries_wizard_form" model="ir.ui.view">
+            <field name="name">Merge</field>
+            <field name="model">merge.deliveries.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Message">
+                    <group row="4">
+                        <field name="picking_ids"/>
+                    </group>
+                    <newline/>
+                    <footer>
+                        <button string="Merge Deliveries" name="prepare_to_merge_deliveries" class="oe_highlight" type="object"/>
+                        or
+                        <button special="cancel" string="Cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

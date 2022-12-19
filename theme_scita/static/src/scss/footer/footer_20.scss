@@ -1,0 +1,101 @@
+footer {
+    background-color: $dark-color;
+	.footer-content {
+		padding: 50px 0 30px;
+		@media (max-width: 991px){
+			padding: 40px 0 20px;
+		}
+		.sct-top-row {
+			h4 {
+				text-transform: uppercase;
+				color: $light-grey-color;
+				margin-bottom: 20px;
+			}
+			.sec-logo {
+				.sct-footer-logo {
+					max-width: 150px;
+					margin-bottom: 30px;
+				}
+				.sct-links {
+					ul {
+						li {
+							display: inline-block;
+							margin-right: 10px;
+							margin-bottom: 5px;
+							a {
+								color: $light-grey-color;
+								&:hover{
+									color:$theme;
+								}
+							}
+							&:last-child{
+								margin-right: 0;
+							}
+						}
+					}
+				}
+				.sct-copyright {
+					margin-top: 10px;
+					p {
+						margin-bottom: 0;
+						color: $light-grey-color;
+					}
+				}
+			}
+			.sct-address {
+				@media (max-width: 575px){
+					margin-top: 20px;
+				}
+				ul {
+					li {
+						position: relative;
+						padding-left: 30px;
+						color: $light-grey-color;
+						font-size: $font-body;
+						.fa {
+							position: absolute;
+							left: 0;
+							top: 2px;
+							font-size: 16PX;
+							color: $light-grey-color;
+						}
+						+ li {
+							margin-top: 20px;
+						}
+					}
+				}
+			}
+			.sct-abt {
+				@media (max-width: 991px){
+					margin-top: 20px;
+				}
+				.sct-fot-about {
+					margin-bottom: 20px;
+				}
+				p {
+					color: $light-grey-color;
+					margin-bottom: 0;
+				}
+				.sct-scocial-icon-footer {
+					a {
+						margin-top: 0;
+						width: auto;
+						height: auto;
+						margin-bottom: 5px;
+						background-color: transparent;
+						&:hover{
+							color:$theme;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#o_footer_scrolltop_wrapper{
+	position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 40px;
+}

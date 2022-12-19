@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_pe_user,access_pe_user,model_account_income,account_income.group_p_income_user,1,1,1,1
+access_pe_manager,access_pe_mng,model_account_income,account_income.group_p_income_manager,1,1,1,1
+
+

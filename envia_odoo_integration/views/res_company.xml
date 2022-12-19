@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="envia_credential_configuration" model="ir.ui.view">
+        <field name="name">envia Configuration</field>
+        <field name="model">res.company</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page string="Envia Configuration">
+                    <group>
+                        <field name="use_envia_shippiing_provider"/>
+                    </group>
+                    <group attrs="{'invisible': [('use_envia_shippiing_provider', '!=', True)],'required':[('use_envia_shippiing_provider','=',True)]}">
+                        <field name="envia_api_url"/>
+                        <field name="envia_carrier_url"/>
+                        <field name="envia_api_key"/>
+                    </group>
+                    <group>
+                        <button type="object" name="import_available_carrier" attrs="{'invisible': [('use_envia_shippiing_provider', '!=', True)]}">Import All Available Carrier</button>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="calendar_event_color_service_calendar_view" model="ir.ui.view">
+            <field name="name">calendar.event.color.service.calendar.view</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_calendar"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='description']" position="after">
+                    <field name="x_studio_servicios_1" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

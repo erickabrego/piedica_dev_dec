@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_calendar_event_form_inherit" model="ir.ui.view">
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+            <field name="arch" type="xml">
+                <field name="allday" position="after">
+                    <field name="is_zoom_meeting_create"/>
+                </field>
+                <xpath expr="//notebook" position="inside">
+                    <page name="zoom" string="Zoom">
+                        <group string="Zoom Meeting Settings" col="4">
+                            <field name="is_video_host"/>
+                            <field name="is_video_participant"/>
+                            <field name="is_enable_join_before_host"/>
+                            <field name="is_mute_participant"/>
+                            <field name="is_record_meeting_automatic_in_local"/>
+                        </group>
+                        <group>
+                            <field name="meeting_url" invisible="1"/>
+                            <button string="Click here to Join Zoom Meeting" name="join_meeting" type="object" class="oe_highlight" />
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

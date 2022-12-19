@@ -1,0 +1,46 @@
+<odoo>
+  <data>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_order_form_inh" model="ir.ui.view">
+      <field name="name">sale.order.form.inh</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='date_order']" position="after">
+          <field name="amount_pending" widget="monetary"/>
+          <field name="patient" invisible="1"/>
+          <field name="valor_count" invisible="1"/>
+
+          <field name="how_contact" force_save="1"
+                 attrs="{'invisible': [('patient','=',False)], 'readonly':[('state','!=', 'cancel')]}"/>
+
+          <field name="medium" force_save="1"
+                 attrs="{'invisible': [('valor_count','!=',1)], 'readonly':[('state','!=', 'cancel')]}"/>
+          <field name="doctor_related" force_save="1"
+                 attrs="{'invisible': [('valor_count','!=',2)], 'readonly':[('state','!=', 'cancel')]}"/>
+          <field name="patient_recommends_it" force_save="1"
+                 attrs="{'invisible': [('valor_count','!=',3)], 'readonly':[('state','!=', 'cancel')]}"/>
+          <field name="other_media" force_save="1"
+                 attrs="{'invisible': [('valor_count','!=',4)], 'readonly':[('state','!=', 'cancel')]}"/>
+
+        </xpath>
+      </field>
+    </record>
+
+
+    <record id="view_order_tree_inh" model="ir.ui.view">
+      <field name="name">sale.order.tree.inh</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_quotation_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='amount_total']" position="before">
+          <field name="amount_pending" widget="monetary" decoration-bf="1" optional="show" sum="Amount pending"/>
+          <field name="amount_aux" invisible="1"/>
+        </xpath>
+
+      </field>
+    </record>
+
+  </data>
+</odoo>

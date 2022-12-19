@@ -1,0 +1,161 @@
+footer {
+	background-color: $dark-color;
+	.footer-content {
+	   .top-row {
+			padding: 25px 0;
+			border-bottom:1px solid $light-grey-color;
+			@media (max-width: 575px){
+				padding: 15px 0;
+			}
+			.sct-footer-logo {
+				a{
+					max-width: 150px;
+					display: block;
+					span {
+						display: block;
+					}
+				}
+			}
+			.sct-scocial-icon-footer {
+				text-align: right;
+				.btn-link {
+					width:30px;
+					height: 30px;
+					font-size: 16px;
+					@media (max-width: 575px){
+						width: 25px;
+						height: 25px;
+						margin-top: 0;
+					}
+				}
+			}
+		}
+		.sct-middle-row {
+			padding: 30px 0;
+			h4 {
+				color: $light-color;
+				margin-bottom: 20px;
+				text-transform: uppercase;
+			}
+			p {
+				color: $light-color;
+			}
+			ul {
+				li {
+					color: $light-color;
+					font-size: 15px;
+					a {
+						color: $light-color;
+						&:hover {
+							color:$theme;
+						}
+					}
+					span {
+						color: $light-color;
+					}
+					+ li {
+						margin-top: 15px;
+					}
+				}
+			}
+			.address {
+				@media (max-width: 991px){
+					margin-top: 20px;
+				}
+				li {
+					position: relative;
+					padding-left: 30px;
+					.fa {
+						position: absolute;
+						left: 0;
+						top: 2px;
+						font-size: 20px;
+						color: $light-grey-color;
+					}
+				}
+			}
+			.company {
+				@media (max-width: 991px){
+					margin-top: 20px;
+				}
+			}
+		}
+
+	}
+}
+
+.o_footer_copyright{
+	background:$dark-color;
+	
+ 	.sct-fot-belt {
+			padding:30px 0;
+		    @media (max-width:991px){
+				 @include align-content-column-flex;
+		      	padding:20px 0;
+			}
+			.sct-copyright-text{
+				span{
+						@media (max-width:991px){
+						@include order-2;
+					}
+				}
+				@media (max-width:991px){
+					@include order-2;
+					 width: 100%;
+					 text-align:center !important;
+					 @include all-flex;
+			}
+
+			}
+			.o_footer_copyright_name {
+				color: $light-color;
+				margin-bottom: 0;
+				font-size:$fot-label;
+				
+				@media (max-width: 767px){
+					text-align: center;
+					font-size:$font-base-label;
+				}
+
+			}
+			.js_language_selector{
+              	@media (max-width:991px){
+					margin:10px 0px;	
+				}
+				@media (max-width:767px){
+					 @include justify-center-flex;	
+				}
+				>.list-inline{
+					 > a{
+						 	color:$light-color;
+						 	font-size:$font-base-label;
+					 }
+				}
+			}
+			.sct-payment-icons{
+				text-align: right;
+				@media (max-width: 767px){
+					text-align: center;
+					padding-top: 10px;
+					margin: 0 auto;
+				}
+				span{
+					display: inline-block;
+				    vertical-align: top;
+				    width: 40px;
+				    margin-right: 5px;
+				}
+			}
+			.js_language_selector > .btn-outline-secondary:hover:after {
+				color:$light-color;
+			}
+			.js_language_selector > .btn-outline-secondary:hover span {
+				color:$light-color;
+			}
+			.js_language_selector > .btn-outline-secondary {
+				color:$light-color;
+			}
+
+	}
+}
+

@@ -1,0 +1,132 @@
+footer {
+	.footer-content {
+		padding: 50px 0 0px;
+		@media (max-width: 767px){
+			padding: 30px 0 0px;
+		}
+		.sct-top-row {
+			padding-bottom: 30px;
+			.sct-foot-logo {
+				a {
+					max-width: 150px;
+					margin-left: auto;
+					margin-right: auto;
+					display: block;
+				}
+			}
+			.sct-fot-about {
+				text-align: center;
+				p {
+					margin: 30px 0;
+					color:$dark-color;
+				}
+			}
+			.sct-fot-address {
+				ul {
+					li {
+						@include flex;
+						@include flexwrap;
+						@include align-content;
+						-webkit-box-orient: vertical;
+						-webkit-box-direction: normal;
+						-ms-flex-direction: column;
+						flex-direction: column;
+						flex: 0 0 33.33%;
+						max-width: 33.33%;
+						text-align: center;
+						padding-left: 10px;
+    					padding-right: 10px;
+    					@media (max-width: 767px){
+    						flex: 0 0 100%;
+							max-width: 100%;
+							margin-bottom: 20px;
+    					}
+						.fa {
+							color: $dark-color;
+						}
+						.text {
+							display: block;
+							text-align: center;
+							font-size: $font-body;
+							color: $dark-color;
+							margin-top: 10px;
+						}
+					}
+				}
+			}
+		}
+		.sct-middle-row {
+			padding:30px 0px;
+		 @media (max-width: 767px){
+				margin-top: 10px;
+			}
+			.sct-links {
+				margin-bottom: 20px;
+				ul {
+					text-align: center;
+					li {
+						display: inline-block;
+						vertical-align: middle;
+						padding: 5px;
+					}
+				}
+			}
+			.sct-scocial-icon-footer {
+				@media (max-width: 767px){
+					text-align: center;
+				}
+				a {
+					margin-top: 0;
+					margin-bottom: 5px;
+				}
+			}
+			.sct-payment-icons {
+				text-align: right;
+				@media (max-width: 767px){
+					text-align: center;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}
+.o_footer_copyright {
+	.sct-fot-belt{
+		padding:30px 0px;
+		@media (max-width:991px){
+			padding:30px 0px 20px;
+		}
+	}
+	.sct-copyright-text{
+	    .o_footer_copyright_name{
+			color: $dark-color;
+			font-size:$font-body;
+		}  
+	 @media (max-width:991px){
+		@include all-flex;
+	 }
+     >span{
+			font-size:$font-body;
+			@include order-2;
+			margin-top:15px;
+		}
+	   .js_language_selector{
+			>.list-inline{
+				 > a{
+					 	color:$dark-color;
+					 	font-size:$font-base-label;
+				 }
+			}
+			>.btn{
+				color:$dark-color;
+			}
+		 }
+		 .js_language_selector > .btn-outline-secondary:hover:after {
+			color:$light-color;
+		}
+		.js_language_selector > .btn-outline-secondary:hover span {
+			color:$light-color;
+		}
+	}
+}
+

@@ -1,0 +1,91 @@
+$o-color-palettes: (
+    (
+        'o-color-1': scale-color($o-enterprise-primary-color, $saturation: -50%, $lightness: 20%),
+        'o-color-2': scale-color($o-enterprise-color, $saturation: -50%),
+        'o-color-3': #F6F6F6,
+        'o-color-4': #FFFFFF,
+        'o-color-5': #383E45,
+        'theme':#8F9BDA,
+    ),
+    (
+        'o-color-1': #337ab7,
+        'o-color-2': #e9ecef,
+        'o-color-3': #F8F9FA,
+        'o-color-4': #FFFFFF,
+        'o-color-5': #343a40,
+        'theme':#8F9BDA,
+        
+        'menu': 2,
+        'footer': 2,
+        'copyright': 5,
+    ),
+) !default;
+//------------------------------------------------------------------------------
+// Colors
+//------------------------------------------------------------------------------
+
+$o-color-palettes: (
+    (
+        'o-color-1': scale-color($o-enterprise-primary-color, $saturation: -50%, $lightness: 20%),
+        'o-color-2': scale-color($o-enterprise-color, $saturation: -50%),
+        'o-color-3': #F6F6F6,
+        'o-color-4': #FFFFFF,
+        'o-color-5': #383E45,
+        'theme':#8F9BDA,
+    ),
+    (
+        'o-color-1': #337ab7,
+        'o-color-2': #e9ecef,
+        'o-color-3': #F8F9FA,
+        'o-color-4': #FFFFFF,
+        'o-color-5': #343a40,
+        'theme':#8F9BDA,
+        
+        'menu': 2,
+        'footer': 2,
+        'copyright': 5,
+    ),
+    ( // Palette 3
+        'o-color-1':                        #005699,
+        'o-color-2':                        #ac5e82,
+        'o-color-3':                        #d8eff1,
+        'o-color-4':                        #ffffff,
+        'o-color-5':                        #222222,
+        'theme':                            #8F9BDA,
+
+        'o-cc5-link':                       #218bdf,
+        'o-cc5-btn-primary':                #218bdf,
+    ),
+    ( // Palette 4
+        'o-color-1':                        #dc143c,
+        'o-color-2':                        #7e2839,
+        'o-color-3':                        #faf7e1,
+        'o-color-4':                        #ffffff,
+        'o-color-5':                        #222222,
+        'theme':                            #8F9BDA,
+    ),
+    ( // Palette 5
+        'o-color-1':                        #32c0c9,
+        'o-color-2':                        #cfcfcf,
+        'o-color-3':                        #cee6e7,
+        'o-color-4':                        #ffffff,
+        'o-color-5':                        #2e2e2e,
+        'theme':                            #8F9BDA,
+
+        'footer':                           1,
+    ),
+    ( // Palette 6
+        'o-color-1':                        #e27b92,
+        'o-color-2':                        #e4e4e4,
+        'o-color-3':                        #465548,
+        'o-color-4':                        #ffffff,
+        'o-color-5':                        #222222,
+        'theme':                            #8F9BDA,
+
+        'o-cc2-headings':                   'o-color-4',
+        'o-cc5-text':                       'o-color-2',
+
+        'menu':                             2,
+        'footer':                           2,
+    ),
+);

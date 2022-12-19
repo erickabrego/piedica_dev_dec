@@ -1,0 +1,6 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_pe_user,access_pe_user,model_account_expense,ateneolab_expense.group_p_expenses_user,1,1,1,1
+access_pe_manager,access_pe_mng,model_account_expense,ateneolab_expense.group_p_expenses_manager,1,1,1,1
+access_config_expense,access_config_expenseg,model_config_expense,ateneolab_expense.group_p_expenses_manager,1,1,1,1
+access_config_expense_u,access_config_expenseu,model_config_expense,ateneolab_expense.group_p_expenses_user,1,1,0,0
+

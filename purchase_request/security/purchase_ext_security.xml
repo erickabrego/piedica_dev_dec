@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="purchase_request.group_purchase_request_order" model="res.groups">
+            <field name="name">User can make a Purchase Request Order</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+        <record id="purchase_address_user" model="ir.rule">
+            <field name="name">Lugar de entrega multi company</field>
+            <field name="model_id" ref="purchase_request.model_purchase_address"/>
+            <field name="domain_force">
+                ['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]
+            </field>
+        </record>
+    </data>
+</odoo>

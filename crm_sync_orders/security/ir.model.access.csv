@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_status_history,crm.status.history,model_crm_status_history,base.group_user,1,1,1,1
+access_crm_status,crm.status,model_crm_status,base.group_user,1,1,1,1
+access_crm_confirm_send,crm.confirm.send,model_crm_confirm_send,base.group_user,1,1,1,1
+access_prod_production_type,prod.production.type,model_prod_production_type,base.group_user,1,1,1,1
+access_prod_shape_list,prod.shape.list,model_prod_shape_list,base.group_user,1,1,1,1
+access_prod_prod_use_list,prod.prod.use.list,model_prod_prod_use_list,base.group_user,1,1,1,1
+access_prod_design_type,prod.design.type,model_prod_design_type,base.group_user,1,1,1,1
+access_prod_material_subtype,prod.material.subtype,model_prod_material_subtype,base.group_user,1,1,1,1
+access_mat_material_type,mat.material.type,model_mat_material_type,base.group_user,1,1,1,1
+access_mat_material_subtype,mat.material.subtype,model_mat_material_subtype,base.group_user,1,1,1,1
+access_mat_shore_a,mat.shore.a,model_mat_shore_a,base.group_user,1,1,1,1
+access_mat_hardness,mat.hardness,model_mat_hardness,base.group_user,1,1,1,1
+access_mat_color,mat.color,model_mat_color,base.group_user,1,1,1,1

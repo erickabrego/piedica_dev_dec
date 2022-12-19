@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="company_form_import" model="ir.ui.view">
+      <field name="name">res.company.form.import.inherit</field>
+      <field name="model">res.company</field>
+      <field name="inherit_id" ref="base.view_company_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='favicon']" position="after">
+          <field name="patronal_account_id" invisible="1"/>
+          <field name="worker_account_id" invisible="1"/>
+          <field name="journal_id" invisible="1"/>
+        </xpath>
+      </field>
+    </record>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+      <field name="name">res.config.settings.view.form.inherit</field>
+      <field name="model">res.config.settings</field>
+      <field name="priority" eval="40"/>
+      <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[@id='analytic']" position="after">
+          <h2>Import Employee Quotas</h2>
+          <div class="row mt16 o_settings_container" name="import_employee_quotas_container">
+            <div class="col-12 col-lg-6 o_setting_box">
+              <div class="o_setting_left_pane"/>
+              <div class="o_setting_right_pane">
+                <div class="content-group">
+                  <div class="row mt16">
+                    <label string="Patronal account" for="patronal_account_id" class="col-lg-3 o_light_label"/>
+                    <field name="patronal_account_id"/>
+                  </div>
+                  <div class="row mt16">
+                    <label string="Worker account" for="worker_account_id" class="col-lg-3 o_light_label"/>
+                    <field name="worker_account_id"/>
+                  </div>
+                  <div class="row mt16">
+                    <label string="Journal" for="journal_id" class="col-lg-3 o_light_label"/>
+                    <field name="journal_id" domain="[('type','in',['bank','cash'])]"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

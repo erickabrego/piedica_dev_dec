@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_crm_confirm_send" model="ir.ui.view">
+            <field name="name">crm.confirm.send.view.form</field>
+            <field name="model">crm.confirm.send</field>
+            <field name="arch" type="xml">
+                <form string="¿Confirmar y enviar a CRM?">
+                    <group>
+                        <p>Una vez confirmada la orden, la información se enviará a CRM por única vez y no podrá volver a enviarse</p>
+                    </group>
+
+                    <field name="sale_order" invisible="1"/>
+
+                    <footer>
+                        <button name="send_to_crm" string="Enviar" type="object" class="btn-primary"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

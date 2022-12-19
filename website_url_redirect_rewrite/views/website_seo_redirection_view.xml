@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="website_seo_redirection_form_view" model="ir.ui.view">
+            <field name="name">Website SEO Redirection Form</field>
+            <field name="model">website.seo.redirection</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="origin"/>
+                            <field name="destination"/>
+                            <field name="relocate_controller"/>
+                             <field name="rewrite_vals"/>
+                             <!-- <field name="rewrite_vals_category"/> -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="website_seo_redirection_tree_view" model="ir.ui.view">
+            <field name="name">Website SEO Redirection Tree</field>
+            <field name="model">website.seo.redirection</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="origin"/>
+                    <field name="destination"/>
+                    <field name="relocate_controller"/>
+                    <field name="rewrite_vals"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="website_seo_redirection_search_view" model="ir.ui.view">
+            <field name="name">Website SEO Redirection Search</field>
+            <field name="model">website.seo.redirection</field>
+            <field name="arch" type="xml">
+                <search string="SEO URl">
+                    <filter string="Create URl Rewrite" name="my_url_rewrite" domain="[('rewrite_vals', '=', True)]" context="{'group_by':'rewrite_vals'}"/>     
+                    <separator/>
+                </search>
+            </field>
+        </record>
+s
+       
+      <record id="website_seo_redirection_action_open" model="ir.actions.act_window">
+            <field name="name">SEO URL Redirect</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">website.seo.redirection</field>
+            <field name="view_mode">tree,form</field>
+             <field name="context">{'search_default_my_url_rewrite': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Website Redirect
+                </p>
+            </field>
+      </record>
+
+
+        <menuitem
+            id="website_seo_redirection_menu" name="SEO URL Redirect &#10140;"
+            action="website_seo_redirection_action_open"
+            groups="website.group_website_designer"
+            parent="website.menu_website_global_configuration"
+            sequence="80"/>
+    </data>
+</odoo>

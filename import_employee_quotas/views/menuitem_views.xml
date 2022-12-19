@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_action_employer_payments" name="Employer payments" parent="account.menu_finance_entries"  action="action_payment_quota_employee" sequence="1"/>
+</odoo>

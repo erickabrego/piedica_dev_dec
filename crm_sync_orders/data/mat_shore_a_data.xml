@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="msa_30" model="mat.shore.a">
+            <field name="value">30</field>
+        </record>
+
+        <record id="msa_45" model="mat.shore.a">
+            <field name="value">45</field>
+        </record>
+
+        <record id="msa_35" model="mat.shore.a">
+            <field name="value">35</field>
+        </record>
+
+        <record id="msa_10" model="mat.shore.a">
+            <field name="value">10</field>
+        </record>
+
+        <record id="msa_55" model="mat.shore.a">
+            <field name="value">55</field>
+        </record>
+
+        <record id="msa_40" model="mat.shore.a">
+            <field name="value">40</field>
+        </record>
+
+        <record id="msa_20" model="mat.shore.a">
+            <field name="value">20</field>
+        </record>
+
+        <record id="msa_70" model="mat.shore.a">
+            <field name="value">70</field>
+        </record>
+
+        <record id="msa_15" model="mat.shore.a">
+            <field name="value">15</field>
+        </record>
+
+        <record id="msa_50" model="mat.shore.a">
+            <field name="value">50</field>
+        </record>
+
+        <record id="msa_65" model="mat.shore.a">
+            <field name="value">65</field>
+        </record>
+
+        <record id="msa_75" model="mat.shore.a">
+            <field name="value">75</field>
+        </record>
+
+        <record id="msa_85" model="mat.shore.a">
+            <field name="value">85</field>
+        </record>
+    </data>
+</odoo>

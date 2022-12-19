@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="mat_material_type_action" model="ir.actions.act_window">
+        <field name="name">MatMaterialType</field>
+        <field name="res_model">mat.material.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="sale_mat_material_type_menu" parent="sale.product_menu_catalog"
+        action="mat_material_type_action" sequence="1105"/>
+
+
+
+    <record id="mat_material_type_view_tree" model="ir.ui.view">
+        <field name="name">MatMaterialType List</field>
+        <field name="model">mat.material.type</field>
+        <field name="arch" type="xml">
+            <tree string="MatMaterialType">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="mat_material_type_view_form" model="ir.ui.view">
+        <field name="name">MatMaterialType Form</field>
+        <field name="model">mat.material.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

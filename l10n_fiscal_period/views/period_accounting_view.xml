@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="accounting_year_view_form" model="ir.ui.view">
+      <field name="name">accounting.year.view.form</field>
+      <field name="model">accounting.year</field>
+      <field name="arch" type="xml">
+        <form string="accounting_year_form" duplicate="0">
+          <header>
+            <field name="periods_generated" invisible="1"/>
+            <button name="set_in_progress" string="In progress" type="object"
+                    class="oe_highlight oe_read_only" states="draft"/>
+            <button name="set_closed" string="Close" type="object"
+                    class="oe_highlight oe_read_only" states="in_progress"
+                    confirm="This action will close the accounting year, are you sure to proceed?"/>
+            <button name="generate_monthly_periods" string="Generate monthly periods" type="object"
+                    class="oe_highlight oe_read_only" states="in_progress"
+                    attrs="{'invisible': [('periods_generated', '=', True)]}"
+                    confirm="This action will generate all monthly periods. Are you sure to proceed?"/>
+            <field name="state" widget="statusbar"
+                   statusbar_visible="draft,in_progress,closed"
+                   invisible="0"/>
+          </header>
+          <sheet>
+            <widget name="web_ribbon" title="Draft" bg_color="bg-info"
+                    attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+            <widget name="web_ribbon" title="In progress" bg_color="bg-warning"
+                    attrs="{'invisible': [('state', 'not in', ['in_progress'])]}"/>
+            <widget name="web_ribbon" title="Closed" bg_color="bg-success"
+                    attrs="{'invisible': [('state', 'not in', ['closed'])]}"/>
+            <div class="oe_title">
+              <label for="name"/>
+              <h1>
+                <field name="name" required="1" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="start_date" required="1" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+                <field name="user_id" readonly="1" force_save="1"/>
+              </group>
+              <group>
+                <field name="end_date" required="1" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+                <field name="company_id" readonly="1" force_save="1"/>
+              </group>
+            </group>
+            <group>
+              <notebook>
+                <page name="period" string="Period">
+                  <field name="accounting_period_ids" attrs="{'readonly': [('state', 'in', ['closed'])]}">
+                    <tree editable="bottom">
+                      <field name="name" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+                      <field name="start_date" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+                      <field name="end_date" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+                      <field name="user_id" readonly="1" force_save="1"/>
+                      <field name="state" readonly="1" force_save="1" widget="badge"
+                             decoration-info="state == 'draft'"
+                             decoration-warning="state == 'in_progress'"
+                             decoration-success="state == 'closed'"/>
+                      <button type="object" name="set_in_progress"
+                              class="btn btn-primary"
+                              string="In progress"
+                              attrs="{'invisible':[('state','not in',['draft'])]}"
+                              confirm="Are you sure to start the current period?"/>
+                      <button type="object" name="set_closed"
+                              class="btn btn-secondary"
+                              string="Close"
+                              attrs="{'invisible':[('state','not in',['in_progress'])]}"
+                              confirm="This action will prevent new accounting entries from being created in the date range of the current period. Are you sure to close the current period?"/>
+                      <button type="object" name="set_reopen"
+                              class="btn btn-secondary"
+                              string="Reopen"
+                              attrs="{'invisible':[('state','not in',['closed'])]}"
+                              groups="l10n_fiscal_period.group_fiscal_period_manager"
+                              confirm="Are you sure you want to reopen the accounting period?"/>
+                    </tree>
+                  </field>
+                </page>
+                <page name="note" string="Note">
+                  <field name="note"/>
+                </page>
+              </notebook>
+            </group>
+          </sheet>
+          <div class="o_attachment_preview"/>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" groups="base.group_user"/>
+            <field name="activity_ids"/>
+            <field name="message_ids"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record id="accounting_year_view_tree" model="ir.ui.view">
+      <field name="name">accounting.year.view.tree</field>
+      <field name="model">accounting.year</field>
+      <field name="arch" type="xml">
+        <tree string="Accounting year">
+          <field name="name"/>
+          <field name="start_date"/>
+          <field name="end_date"/>
+          <field name="user_id"/>
+          <field name="company_id"/>
+          <field name="state" widget="badge"
+                 decoration-info="state == 'draft'"
+                 decoration-warning="state == 'in_progress'"
+                 decoration-success="state == 'closed'"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="accounting_year_action" model="ir.actions.act_window">
+      <field name="name">Accounting year</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">accounting.year</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="payment_recurring_menu" name="Accounting year" parent="account.menu_finance_entries"
+              action="accounting_year_action"
+              sequence="21"/>
+
+
+    <!-- This Menu period -->
+    <record id="accounting_period_view_form" model="ir.ui.view">
+      <field name="name">accounting.period.view.form</field>
+      <field name="model">accounting.period</field>
+      <field name="arch" type="xml">
+        <form string="Accounting period" create="0">
+          <header>
+            <button name="set_in_progress" string="In progress" type="object"
+                    class="oe_highlight oe_read_only" states="draft"/>
+            <button name="set_closed" string="Close" type="object"
+                    class="oe_highlight oe_read_only" states="in_progress"
+                    confirm="This action will close the accounting year, are you sure to proceed?"/>
+            <field name="state" widget="statusbar"
+                   statusbar_visible="draft,in_progress,closed"
+                   invisible="0"/>
+          </header>
+          <sheet>
+            <widget name="web_ribbon" title="Draft" bg_color="bg-info"
+                    attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+            <widget name="web_ribbon" title="In progress" bg_color="bg-warning"
+                    attrs="{'invisible': [('state', 'not in', ['in_progress'])]}"/>
+            <widget name="web_ribbon" title="Closed" bg_color="bg-success"
+                    attrs="{'invisible': [('state', 'not in', ['closed'])]}"/>
+
+            <div class="oe_title">
+              <label for="name"/>
+              <h1>
+                <field name="name" required="1" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="start_date" required="1" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+                <field name="user_id" readonly="1" force_save="1"/>
+              </group>
+              <group>
+                <field name="end_date" required="1" attrs="{'readonly': [('state', 'not in', ['draft'])]}"/>
+                <field name="company_id" readonly="1" force_save="1"/>
+              </group>
+            </group>
+          </sheet>
+          <div class="o_attachment_preview"/>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" groups="base.group_user"/>
+            <field name="activity_ids"/>
+            <field name="message_ids"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record id="accounting_period_view_tree" model="ir.ui.view">
+      <field name="name">accounting.period.view.tree</field>
+      <field name="model">accounting.period</field>
+      <field name="arch" type="xml">
+        <tree string="accounting_period_tree" create="0">
+          <field name="name"/>
+          <field name="start_date"/>
+          <field name="end_date"/>
+          <field name="user_id"/>
+          <field name="company_id"/>
+          <field name="accounting_year_id"/>
+          <field name="state" widget="badge"
+                 decoration-info="state == 'draft'"
+                 decoration-warning="state == 'in_progress'"
+                 decoration-success="state == 'closed'"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="accounting_period_action" model="ir.actions.act_window">
+      <field name="name">Accounting period</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">accounting.period</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="accoutning_period_menu" name="Accounting period" parent="account.menu_finance_entries"
+              action="accounting_period_action"
+              sequence="22"/>
+
+  </data>
+</odoo>

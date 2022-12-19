@@ -1,0 +1,146 @@
+footer {
+	background-color: $dark-color;
+	.footer-content {
+		padding: 50px 0 0px;
+		@media (max-width: 991px){
+			padding: 40px 0 0px;
+		}
+		.sct-top-row {
+			padding-bottom:30px;
+			@media (max-width: 991px){
+				padding-bottom: 10px;
+			}
+			.sec-logo {
+				@media (max-width: 991px){
+					margin-bottom: 20px;
+				}
+			}
+			.sct-foot-logo {
+				max-width: 150px;
+			}
+			.sct-fot-about {
+				margin-top: 30px;
+				p {
+					color: $light-grey-color;
+					margin-bottom: 0;
+				}
+			}
+			h4 {
+				text-transform: uppercase;
+				margin-bottom: 20px;					
+				color: $light-grey-color;
+			}
+			ul {
+				li {
+					font-size: $font-body;
+					a {
+						color: $light-grey-color;
+						&:hover {
+							color:$theme;
+						}
+					}
+					+ li {
+						margin-top: 15px;
+					}
+				}
+			}
+			.sct-links {
+				@media (max-width: 991px){
+					margin-bottom: 20px;
+				}
+			}
+			.contact_us {
+				margin-top: 20px;
+			}
+			.pay {
+				@media (max-width: 991px){
+					margin-bottom: 20px;
+				}
+				.sct-payment-icons {
+					margin-bottom: 20px;
+				}
+				ul {
+					li {
+						position: relative;
+						padding-left: 30px;
+						color: $light-grey-color;
+						font-size: $font-body;
+						.fa {
+							position: absolute;
+							left: 0;
+							top: 2px;
+							font-size: 16PX;
+							color: $light-grey-color;
+						}
+						+ li {
+							margin-top: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.o_footer_copyright{
+	.sct-fot-belt{
+		padding:15px 0px 30px;
+		@media (max-width:991px){
+		  @include all-flex;
+		  padding: 10px 0px 20px;
+		}
+	.sct-scocial-icon-footer {
+		margin:0;
+		text-align:left !important;
+		@media (max-width:991px){
+			text-align:center !important;
+		}
+		a {
+			margin-top: 0;
+			margin-bottom: 5px;
+			width:auto;
+			height:auto;
+			font-size: $font-body + 5;
+			color: #f1f1f1;
+			margin-right: 5px;
+			transition: all 0.5s ease;
+			-webkit-transition: all 0.5s ease;
+			background-color: transparent;
+			&:hover{
+				color:$theme;
+			}
+		}
+		@media (max-width: 767px){
+			text-align:center;
+		}
+	}
+	.sct-copyright{
+		text-align: right !important;
+		@media (max-width:991px){
+			text-align:center !important;
+		}
+		.o_footer_copyright_name{
+			color: $light-grey-color;
+			font-size: $font-body;
+			@media (max-width: 767px){
+				text-align:center;
+			}
+		}
+		.js_language_selector{  
+			@media (max-width:767px){
+							display: flex;
+							justify-content: center;	
+				}
+				>.list-inline{
+						 > a{
+							 color:$light-color;
+							 font-size:$font-base-label;
+						 }
+				}
+				>.btn{
+					color:$light-color;
+				} 
+		  }
+	
+	 }
+   }
+}

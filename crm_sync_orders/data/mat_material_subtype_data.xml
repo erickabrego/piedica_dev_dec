@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="mms_antishock" model="mat.material.subtype">
+            <field name="name">Antishock</field>
+        </record>
+
+        <record id="mms_eva_orck" model="mat.material.subtype">
+            <field name="name">EVA Corck</field>
+        </record>
+
+        <record id="mms_latex" model="mat.material.subtype">
+            <field name="name">Latex</field>
+        </record>
+
+        <record id="mms_eva" model="mat.material.subtype">
+            <field name="name">EVA</field>
+        </record>
+
+        <record id="mms_micro_eva" model="mat.material.subtype">
+            <field name="name">Micro EVA</field>
+        </record>
+
+        <record id="mms_phylon" model="mat.material.subtype">
+            <field name="name">Phylon</field>
+        </record>
+
+        <record id="mms_eva_latex" model="mat.material.subtype">
+            <field name="name">EVA Latex</field>
+        </record>
+
+        <record id="mms_eva_multilayer" model="mat.material.subtype">
+            <field name="name">EVA multilayer</field>
+        </record>
+
+        <record id="mms_foamular" model="mat.material.subtype">
+            <field name="name">FOAMULAR</field>
+        </record>
+
+        <record id="mms_poron" model="mat.material.subtype">
+            <field name="name">Poron</field>
+        </record>
+
+        <record id="mms_simple" model="mat.material.subtype">
+            <field name="name">Simple</field>
+        </record>
+
+        <record id="mms_flex" model="mat.material.subtype">
+            <field name="name">Flex</field>
+        </record>
+
+        <record id="mms_reinforced" model="mat.material.subtype">
+            <field name="name">Reinforced</field>
+        </record>
+
+        <record id="mms_resine" model="mat.material.subtype">
+            <field name="name">Resine</field>
+        </record>
+
+        <record id="mms_poly" model="mat.material.subtype">
+            <field name="name">Poly</field>
+        </record>
+
+        <record id="mms_pelite" model="mat.material.subtype">
+            <field name="name">Pelite</field>
+        </record>
+
+        <record id="mms_veolene" model="mat.material.subtype">
+            <field name="name">Veolene</field>
+        </record>
+
+        <record id="mms_cambrelle_ii" model="mat.material.subtype">
+            <field name="name">Cambrelle II</field>
+        </record>
+
+        <record id="mms_cerdo" model="mat.material.subtype">
+            <field name="name">Cerdo</field>
+        </record>
+
+        <record id="mms_lazise_soft_hidro" model="mat.material.subtype">
+            <field name="name">Lazise Soft Hidro</field>
+        </record>
+
+        <record id="mms_alcantara" model="mat.material.subtype">
+            <field name="name">Alcantara</field>
+        </record>
+
+        <record id="mms_mp_foam" model="mat.material.subtype">
+            <field name="name">MP Foam</field>
+        </record>
+
+        <record id="mms_whisper" model="mat.material.subtype">
+            <field name="name">Whisper</field>
+        </record>
+
+        <record id="mms_vinyl" model="mat.material.subtype">
+            <field name="name">Vinyl</field>
+        </record>
+
+        <record id="mms_strap" model="mat.material.subtype">
+            <field name="name">Strap</field>
+        </record>
+    </data>
+</odoo>

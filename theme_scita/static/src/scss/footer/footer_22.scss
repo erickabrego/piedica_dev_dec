@@ -1,0 +1,145 @@
+footer {
+	background-color: $dark-color;
+	.footer-content {
+		padding: 50px 0 0px;
+		@media (max-width: 767px){
+			padding: 30px 0 0px;
+		}
+		.sct-top-row {
+			padding-bottom:25px;
+			.sct-foot-logo {
+				max-width: 150px;
+				margin-bottom: 30px;
+			}
+			.sct-fot-address {
+				ul {
+					li {
+						position: relative;
+						padding-left: 30px;
+						color: $light-grey-color;
+						font-size: $font-body;
+						.fa {
+							position: absolute;
+							left: 0;
+							top: 2px;
+							font-size: 16PX;
+							color: $light-grey-color;
+						}
+						+ li {
+							margin-top: 20px;
+						}
+					}
+				}
+			}
+			.sct-fot-about {
+				margin-bottom: 30px;
+				@media (max-width: 767px){
+					margin-top: 20px;
+				}
+				p {
+					margin-bottom: 0;
+					color: $light-grey-color;
+				}
+			}
+			.sct-links {
+				h4 {
+					color: $light-grey-color;
+					text-transform: uppercase;
+					margin-bottom: 20px;
+				}
+				ul {
+					li {
+						font-size: $font-body;
+						display: inline-block;
+						margin-bottom: 5px;
+						margin-right: 10px;
+						&:last-child{
+							margin-right:0;
+						}
+						a {
+							color: $light-grey-color;
+							&:hover {
+								color:$theme;
+							}
+						}
+					}
+				}
+				+ .sct-links {
+					margin-top: 20px;
+				}
+			}
+			.sct-scocial-icon-footer {
+				margin-top: 30px;
+				a {
+					margin-top: 0;
+					margin-bottom: 5px;
+				}
+			}
+		}
+	}
+}
+
+
+.o_footer_copyright{
+	.sct-fot-belt {
+		padding:25px 0px 30px;
+	    @include align-content;
+		@media (max-width:991px){
+			 @include align-content-column-flex;
+		}
+		.sct-copyright-text{
+			font-size:$font-size-base;
+			padding: 0px;
+            @media (max-width:991px){
+				@include order-1;
+				width: 100%;
+			   text-align:center !important;
+				@include all-flex;
+			    margin-top: 15px;
+			}
+          
+			@media (max-width:576px){
+				text-align:center !important;
+			}
+			.o_footer_copyright_name{
+				color:$light-color !important;
+				font-size:$font-body;
+			}
+			.js_language_selector{
+				@media (max-width:767px){
+					@include justify-center-flex;
+				}
+				>.list-inline{
+				 	> a{
+				 		color:$light-color;
+				 		font-size:$font-base-label;
+				 	}
+				 } 
+				 >.btn{
+					color:$light-color;
+				}
+			}
+			.o_footer_copyright_name{
+				margin-right: 0px !important;
+				color:$body-color;	
+				@media (max-width:991px){
+					margin:10px 0px 0px;
+					display:inline-block;
+					@include order-2;
+				}
+			}
+					
+		}
+		.sct-payment-icons{
+			span{
+				display: inline-block;
+			    vertical-align: top;
+			    width: 40px;
+			    margin-right: 5px;
+			    &:last-child{
+			    	margin-right:0px;
+			    }
+			}
+		}
+	}
+}

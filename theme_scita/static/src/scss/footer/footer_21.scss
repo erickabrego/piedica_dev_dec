@@ -1,0 +1,107 @@
+footer {
+	background-color: $dark-color;
+	.footer-content {
+		.sct-middle-row {
+			padding: 40px 0;
+			@media (max-width: 767px){
+				padding: 30px 0;
+			}
+			h4 {
+				color: $light-color;
+				margin-bottom: 20px;
+				text-transform: uppercase;
+			}
+			p {
+				color: $light-color;
+			}
+			ul {
+				li {
+					color: $light-color;
+					font-size: 15px;
+					a {
+						color: $light-color;
+						&:hover {
+							color:$theme;
+						}
+					}
+					span {
+						color: $light-color;
+					}
+					+ li {
+						margin-top: 15px;
+					}
+				}
+			}
+			.sct-links {
+				@media (max-width: 767px){
+					margin-top: 30px;
+				}
+			}
+			.address {
+				background-color: $theme;
+				padding-top: 15px;
+				padding-bottom: 15px;
+				@media (max-width: 575px){
+					margin-left: 15px;
+					margin-right: 15px;
+				}
+				.com-logo {
+					padding-left: 0;
+				}
+				.sct-footer-logo {
+					max-width: 150px;
+					margin-bottom: 30px;
+				}
+				ul {
+					max-width: 450px;
+					li {
+						position: relative;
+						padding-left: 30px;
+						.fa {
+							position: absolute;
+							left: 0;
+							top: 2px;
+							font-size: 20px;
+							color: $light-grey-color;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.o_footer_copyright {
+	background-color: $dark-color;
+	.sct-fot-belt{
+		padding: 20px 0px;
+		@media (max-width:991px){
+			padding:20px 0px;
+		}
+	}
+	.sct-copyright-text{
+	    .o_footer_copyright_name{
+			color: $light-color;
+			font-size:$font-body;
+		}  
+	 @media (max-width:991px){
+		@include all-flex;
+	 }
+     >span{
+			font-size:$font-body;
+			@include order-2;
+			margin-top:20px;
+		}
+	   .js_language_selector{
+			>.list-inline{
+				 > a{
+					 	color:$light-color;
+					 	font-size:$font-base-label;
+				 }
+			}
+			>.btn{
+				color:$light-color;
+			}
+	     }
+	}
+}

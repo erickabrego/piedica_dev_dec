@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_irina_chat_irina_chat,irina_chat.irina_chat,model_irina_chat_irina_chat,base.group_user,1,1,1,1

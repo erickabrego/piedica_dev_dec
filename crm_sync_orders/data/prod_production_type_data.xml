@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ppt_cad_cam" model="prod.production.type">
+            <field name="name">CAD-CAM</field>
+        </record>
+
+        <record id="ppt_assembled" model="prod.production.type">
+            <field name="name">Assembled</field>
+        </record>
+
+        <record id="ppt_thermoformed" model="prod.production.type">
+            <field name="name">Thermoformed</field>
+        </record>
+    </data>
+</odoo>

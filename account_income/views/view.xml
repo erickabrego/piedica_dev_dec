@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="income_cust_form_view" model="ir.ui.view">
+    <field name="name">income.income_cust.form</field>
+    <field name="model">account.income</field>
+    <field name="arch" type="xml">
+      <form string="Expenses">
+        <header>
+          <button name="set_confirmed" type="object" string="Confirm" states="draft" class="oe_highlight"
+                  confirm="This action will confirm this income. Do you confirm? "
+                  groups="account_income.group_p_income_user"/>
+          <button name="set_cancelled" type="object" string="Cancel" class="btn btn-danger"
+                  confirm="This action will cancel this income. Do you confirm? "
+                  states="confirmed" groups="account_income.group_p_income_manager"/>
+          <button name="set_draft_again" type="object" string="Back to draft" states="cancelled"
+                  confirm="This action will return the income to the draft state. Do you confirm? "
+                  groups="account_income.group_p_income_manager"/>
+          <field name="state" widget="statusbar" readonly="1"/>
+        </header>
+        <sheet>
+          <div class="oe_title">
+            <h1>
+              <field name="code" readonly="1" class="oe_inline"/>
+            </h1>
+            <label for="name" string="Description"/>
+            <h1>
+              <field name="name" required="1"/>
+            </h1>
+          </div>
+          <group>
+            <group>
+              <field name="income_date" required="1"/>
+              <field name="product_id" required="1" options="{'no_create':True,'no_edit':True,'no_create_edit':True}"/>
+              <field name="amount" required="1"/>
+              <field name="total"/>
+              <field name="account_analytic_id" options="{'no_create':True,'no_edit':True,'no_create_edit':True}"/>
+              <field name="account_analytic_tag_id" options="{'no_create':True,'no_edit':True,'no_create_edit':True}"/>
+            </group>
+            <group>
+              <field name="company_id" readonly="1"/>
+              <field name="create_uid" readonly="1" force_save="1"/>
+              <field name="credit_account_id" required="1"
+                     options="{'no_create':True,'no_edit':True,'no_create_edit':True}"/>
+              <field name="payment_method_id" required="1"
+                     options="{'no_create':True,'no_edit':True,'no_create_edit':True}"
+                     domain="[('type','in',['bank','cash'])]"/>
+              <field name="refund_income" invisible="1"/>
+
+            </group>
+          </group>
+          <notebook>
+            <page name="accounting" string="Accounting" autofocus="autofocus"
+                  attrs="{'invisible': [('state','not in',['confirmed','cancelled'])]}">
+              <group>
+                <group>
+                  <field name="confirm_move_id" force_save="1" attrs="{'invisible': [('state','in',['draft'])]}"/>
+                  <field name="account_analytic_line_id" force_save="1"
+                         attrs="{'invisible': [('state','in',['draft'])]}"/>
+                </group>
+                <group>
+                  <field name="cancel_move_id" readonly="1" force_save="1"
+                         attrs="{'invisible': [('state','not in',['cancelled'])]}"/>
+                </group>
+              </group>
+            </page>
+            <page name="notes" string="Notes">
+              <field name="notes" nolabel="1"/>
+            </page>
+          </notebook>
+        </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids"/>
+          <field name="activity_ids"/>
+          <field name="message_ids"/>
+        </div>
+      </form>
+    </field>
+  </record>
+
+  <record id="income_cust_tree_view" model="ir.ui.view">
+    <field name="name">income.income_cust.tree</field>
+    <field name="model">account.income</field>
+    <field name="arch" type="xml">
+      <tree string="Income"
+            decoration-info="state == 'draft'"
+            decoration-muted="state == 'cancelled'" sample="1">
+        <field name="code"/>
+        <field name="name"/>
+        <field name="income_date"/>
+        <field name="product_id"/>
+        <field name="payment_method_id"/>
+        <field name="amount" sum="Total"/>
+        <field name="total" sum="Total"/>
+        <field name="company_id"/>
+        <field name="state"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="income_cust_search_view" model="ir.ui.view">
+    <field name="name">income.income_cust.search</field>
+    <field name="model">account.income</field>
+    <field name="arch" type="xml">
+      <search string="Income Search">
+        <field name="code"/>
+        <field name="name"/>
+        <field name="product_id"/>
+        <filter string="Confirmed Expenses" name="confirmed" domain="[('state', 'in', ['confirmed'])]"/>
+        <filter string="Draft Expenses" name="draft" domain="[('state', 'in', ['draft'])]"/>
+        <filter string="Cancelled Expenses" name="cancelled" domain="[('state', 'in', ['cancelled'])]"/>
+        <separator/>
+        <filter string="Income by me" name="by_me" domain="[('create_uid','=',uid)]"/>
+        <group expand="1" string="Group By">
+          <filter string="Debit account" name="credit_account_id" context="{'group_by':'credit_account_id'}"/>
+          <filter string="Payment method" name="payment_method_id"
+                  context="{'group_by':'payment_method_id'}"/>
+          <filter string="Company" name="company" context="{'group_by':'company_id'}"/>
+          <filter string="Users" name="users" context="{'group_by':'create_uid'}"/>
+          <filter string="Product" name="product" context="{'group_by':'product_id'}"/>
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="income_cust_pivot_view" model="ir.ui.view">
+    <field name="name">income.income_cust.pivot</field>
+    <field name="model">account.income</field>
+    <field name="arch" type="xml">
+      <pivot string="Income" disable_linking="True" sample="1">
+        <field name="income_date" type="col"/>
+        <field name="product_id" type="row"/>
+        <field name="company_id" type="row"/>
+        <field name="amount" type="measure"/>
+      </pivot>
+    </field>
+  </record>
+
+  <record id="income_cust_calendar_view" model="ir.ui.view">
+    <field name="name">income.income_cust.calendar</field>
+    <field name="model">account.income</field>
+    <field eval="2" name="priority"/>
+    <field name="arch" type="xml">
+      <calendar date_start="income_date" string="Expenses" quick_add="False">
+        <field name="create_uid" avatar_field="image_128"/>
+        <field name="name"/>
+        <field name="amount"/>
+      </calendar>
+    </field>
+  </record>
+
+  <record id="income_view_graph" model="ir.ui.view">
+    <field name="name">income.graph</field>
+    <field name="model">account.income</field>
+    <field name="arch" type="xml">
+      <graph string="Income" sample="1">
+        <field name="income_date" type="col"/>
+        <field name="product_id" type="row"/>
+        <field name="amount" type="measure"/>
+      </graph>
+    </field>
+  </record>
+
+  <record id="income_cust_act_window" model="ir.actions.act_window">
+    <field name="name">Income</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">account.income</field>
+    <field name="view_mode">tree,form,pivot,calendar,graph</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        There is no examples click here to add new Income.
+      </p>
+    </field>
+  </record>
+
+  <menuitem name="Income" id="income_cust_menu" sequence="25"
+            web_icon="account_income,static/description/icon.png"
+            groups="account_income.group_p_income_user"/>
+
+  <menuitem name="Income Records" id="income_cust_record_menu" sequence="1" action="income_cust_act_window"
+            parent="income_cust_menu"/>
+</odoo>

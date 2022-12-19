@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="prod_prod_use_list_action" model="ir.actions.act_window">
+        <field name="name">ProdProdUseList</field>
+        <field name="res_model">prod.prod.use.list</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="sale_prod_prod_use_list_menu" parent="sale.product_menu_catalog"
+        action="prod_prod_use_list_action" sequence="1103"/>
+
+
+
+    <record id="prod_prod_use_list_view_tree" model="ir.ui.view">
+        <field name="name">ProdProdUseList List</field>
+        <field name="model">prod.prod.use.list</field>
+        <field name="arch" type="xml">
+            <tree string="ProdProdUseList">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="prod_prod_use_list_view_form" model="ir.ui.view">
+        <field name="name">ProdProdUseList Form</field>
+        <field name="model">prod.prod.use.list</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

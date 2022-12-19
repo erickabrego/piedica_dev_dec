@@ -1,0 +1,61 @@
+<odoo>
+    <template id="portal_my_home_menu_insole" name="Portal layout : insole menu entries" inherit_id="portal.portal_breadcrumbs" priority="30">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'insole'" t-attf-class="breadcrumb-item #{'active ' if not mrp_order else ''}">
+                <a t-if="insole" t-attf-href="/my/insoles?{{ keep_query() }}">Plantillas</a>
+                <t t-else="">Plantillas</t>
+            </li>
+            <li t-if="mrp_order" class="breadcrumb-item active">
+                <t t-esc="mrp_order.id"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_insole" name="Mostrar plantillas" inherit_id="portal.portal_my_home" priority="100">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Plantillas</t>
+                <t t-set="url" t-value="'/my/insoles'"/>
+                <t t-set="placeholder_count" t-value="'insole_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_my_insoles" name="Mis plantillas">
+      <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+        <t t-call="portal.portal_searchbar">
+            <t t-set="title">Plantillas</t>
+        </t>
+
+        <t t-if="not sale_orders">
+            <p>No tiene plantillas en su cuenta.</p>
+        </t>
+        <t t-if="sale_orders" t-call="portal.portal_table">
+            <thead>
+                <tr class="active">
+                    <th>Plantillas</th>
+                    <th>Orden de venta</th>
+                    <th>Estatus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="sale_orders" t-as="sale_order">
+                    <tr>
+                        <td>
+                            <t t-foreach="sale_order.get_products_details()" t-as="product">
+                                <t t-esc="product"/>
+                                <br/>
+                            </t>
+                        </td>
+                        <td><span t-field="sale_order.name"/></td>
+                        <td><span t-esc="sale_order.get_current_stage_for_portal()"/></td>
+                        <td><span t-field="sale_order.date_order"/></td>
+                    </tr>
+                </t>
+            </tbody>
+        </t>
+      </t>
+    </template>
+</odoo>

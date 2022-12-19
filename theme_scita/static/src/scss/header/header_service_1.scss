@@ -1,0 +1,211 @@
+header #top_menu_container {
+    flex-direction: unset;
+}
+.homepage {
+	header {
+		background: transparent !important;
+	    position: absolute;
+	    z-index: 2;
+	    left: 0;
+	    right: 0;
+	    width: auto;
+	    top: 0;
+	    @media (min-width: 768px){
+		    .navbar-light {
+				padding-top: 50px;
+				padding-bottom: 0;
+		    }
+		}
+	}
+}
+body {
+	header {
+		&.sct_header_disp {
+			background: $dark-color;
+	  	}
+	    .navbar-brand.logo {
+	    	img {
+	    		height: 55px;
+	    		@media (max-width: 1199px){
+	    			height: 45px;
+	    		}
+	    		@media (max-width: 767px){
+	    			height: 35px;
+	    		}
+	    	}
+	    }
+	    .navbar-light {
+	    	background: transparent !important;
+	    	padding-right: 0;
+	    	padding-left: 0;
+	    	padding-top: 20px;
+	    	padding-bottom: 20px;
+	    	@media (max-width: 767px){
+	    		padding: 20px 1rem;
+	    	}
+	    	.navbar-toggler {
+	    		border: none;
+	    		padding: 0;
+	    		&:hover, &:focus{
+	    			outline:none;
+	    			border: 0;
+	    		}
+	    	}
+	    	.navbar-toggler-icon {
+	    		background-image: url(../../img/light_burger.svg);
+	    	}
+	    	#top_menu {
+	    		list-style-type: none;
+	    		> li.nav-item > a {
+					@media (min-width: 768px){
+						line-height: 55px;
+					}
+					@media (max-width:991px){
+						font-size:$font-body;
+					}
+				}
+	    		li {
+	    			+ li {
+	    				a.nav-link {
+	    					margin-left: 55px;
+	    					@media (max-width: 1599px){
+					    		margin-left: 35px;
+					    	}
+					    	@media (max-width: 1199px){
+					    		margin-left: 25px;
+					    	}
+					    	@media (max-width: 767px){
+					    		margin-left: 0;
+					    		margin-top: 10px;
+					    	}
+	    				}
+	    			}
+	    			a {
+	    				padding: 0;
+	    				line-height: normal;
+	    				color: $light-color;
+	    				font-weight: normal;
+	    				font-size: $title - 1;
+	    				&.nav-link {
+							&.active, &:hover {
+								color:$theme;
+							}
+						}
+	    			}
+	    			&.o_extra_menu_items {
+	    				ul {
+	    					li {
+	    						a {
+	    							padding:7px 10px;
+	    							margin-left: 0;
+	    						}
+	    					}
+	    				}
+	    			}
+	    			&.dropdown {
+		    			.dropdown-menu {
+		    				li {
+		    					a {
+		    						margin-left: 0;
+		    						padding: 5px 15px;
+		    						&.active {
+		    							background: $dark-color;
+		    							color: $light-color !important;
+		    						}
+		    					}
+		    				}
+		    			}
+		    		}
+		    		&#mm_1_col{
+		    			.mega-dropdown-menu {
+		    				.page_info {
+		    					a {
+		    						margin-left: 0 !important;
+		    					}
+		    				}
+		    			}
+		    		}
+		    		&.menu_service_1 {
+		    			.dropdown-menu {
+		    				.link-thumb {
+		    					+ .link-thumb {
+		    						margin-top: 0;
+		    					}
+		    				}
+		    			}
+		    		}
+		    		.mega-dropdown-menu {
+						a {
+							color: $dark-color !important;
+							padding: 0;
+							@media (max-width: 767px){
+								padding: 0;
+								border-top: none;
+							}
+							&:hover{
+								color:$theme !important;
+							}
+						}
+					}
+					.s_mega_menu_multi_menus, .s_mega_menu_menu_image_menu {
+						.mega-dropdown-menu {
+							padding: 0;
+							background-color: transparent;
+							.nav-link {
+								color: $dark-color !important;
+								padding: 0.5rem;
+								margin: 0;
+								@media (max-width: 767px){
+									text-align: center;
+									border-top: none;
+								}
+								&:hover{
+									color:$theme !important;
+								}
+							}
+						}
+					}
+	    		}
+	    	}
+	    	.navbar-collapse {
+	    		@media (max-width: 767px){
+    				padding: 15px;
+    				background: fade-out($dark-color, 0.1);
+    				margin-top: 10px;
+    				max-height: 450px;
+    				overflow: auto;
+    				#top_menu {
+    					li {
+    						text-align: left;
+    					}
+    				}
+    			}
+	    	}
+	    }
+	}
+}
+
+/*my code*/ 
+
+body #oe_main_menu_navbar + #wrapwrap .o_header_affixed{
+	top: 0px;
+	background:$dark-color !important;
+	position:fixed !important;
+	@media (max-width:991px){
+		top:46px;
+	}
+	.navbar-light {
+		padding-top:50px;
+		padding-bottom:0px;
+	   @media (max-width:991px){	
+			padding: 10px 1rem;
+		}
+		#top_menu{
+			> li.nav-item{
+				>a{
+					font-size:$font-body + 2;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="calendar_appointment_type_view_form" model="ir.ui.view">
+        <field name="model">calendar.appointment.type</field>
+        <field name="inherit_id" ref="website_calendar.calendar_appointment_type_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+                <group>
+                    <field name="p_lead_create"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

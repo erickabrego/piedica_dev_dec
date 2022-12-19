@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="estatus_almacen" model="crm.status">
+            <field name="code">1</field>
+            <field name="name">Almacén</field>
+        </record>
+
+        <record id="estatus_error" model="crm.status">
+            <field name="code">2</field>
+            <field name="name">Error</field>
+        </record>
+
+        <record id="estatus_pedido" model="crm.status">
+            <field name="code">3</field>
+            <field name="name">Pedido</field>
+        </record>
+
+        <record id="estatus_produccion" model="crm.status">
+            <field name="code">4</field>
+            <field name="name">Producción</field>
+        </record>
+
+        <record id="estatus_diseno" model="crm.status">
+            <field name="code">5</field>
+            <field name="name">Diseño</field>
+        </record>
+
+        <record id="estatus_enviado" model="crm.status">
+            <field name="code">6</field>
+            <field name="name">Enviado</field>
+        </record>
+
+        <record id="estatus_fresado" model="crm.status">
+            <field name="code">7</field>
+            <field name="name">Fresado</field>
+        </record>
+
+        <record id="estatus_recibido" model="crm.status">
+            <field name="code">8</field>
+            <field name="name">Recibido</field>
+        </record>
+
+        <record id="estatus_terminado" model="crm.status">
+            <field name="code">9</field>
+            <field name="name">Terminado</field>
+        </record>
+
+        <record id="estatus_control" model="crm.status">
+            <field name="code">10</field>
+            <field name="name">Control</field>
+        </record>
+
+        <record id="estatus_error_diseno" model="crm.status">
+            <field name="code">11</field>
+            <field name="name">Error diseño</field>
+        </record>
+
+        <record id="estatus_error_sucursal" model="crm.status">
+            <field name="code">12</field>
+            <field name="name">Error sucursal</field>
+        </record>
+
+        <record id="estatus_correccion_sucursal" model="crm.status">
+            <field name="code">13</field>
+            <field name="name">Corrección sucursal</field>
+        </record>
+
+        <record id="estatus_correccion_disenador" model="crm.status">
+            <field name="code">14</field>
+            <field name="name">Corrección diseñador</field>
+        </record>
+
+        <record id="estatus_ajustes" model="crm.status">
+            <field name="code">15</field>
+            <field name="name">Ajustes</field>
+        </record>
+
+        <record id="estatus_sucursal" model="crm.status">
+            <field name="code">16</field>
+            <field name="name">Sucursal</field>
+        </record>
+
+        <record id="estatus_error_produccion" model="crm.status">
+            <field name="code">17</field>
+            <field name="name">Error producción</field>
+        </record>
+
+        <record id="estatus_error_externo" model="crm.status">
+            <field name="code">18</field>
+            <field name="name">Error externo</field>
+        </record>
+    </data>
+</odoo>

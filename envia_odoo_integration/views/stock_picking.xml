@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="estafeta_shipment_form_view" model="ir.ui.view">
+            <field name="name">stock.picking</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='carrier_id']" position='after'>
+<!--                    <field name="envia_tracking_url" readonly="1" widget="url"/>-->
+<!--                    <field name="envia_label" readonly="1" widget="url"/>-->
+<!--                    <field name="envia_parcel_status" readonly="1" />-->
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record id="branch_factory_view_tree" model="ir.ui.view">
+            <field name="name">branch_factory_view_tree</field>
+            <field name="model">branch.factory</field>
+            <field name="arch" type="xml">
+                <tree string="Fabricación a sucursales" editable="bottom">
+                    <field name="name"/>
+                    <field name="branch_id" required="1" options="{'no_create': True}"/>
+                    <field name="factory_id" required="1" options="{'no_create': True}"/>
+                    <field name="department_id" domain="['|',('company_id','=',False),('company_id','=',branch_id)]" required="1" options="{'no_create': True}"/>
+                    <field name="delivery_address" required="1" options="{'no_create': True}"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="branch_factory_view_action" model="ir.actions.act_window">
+            <field name="name">Fabrica a sucursales</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">branch.factory</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="branch_factory_menutag" name="Sucursal" parent="base.menu_administration" sequence="200"/>
+        <menuitem id="branch_factory_menuitem" name="Fabrica a sucursal" parent="branch_factory_menutag" action="branch_factory_view_action" sequence="100"/>
+    </data>
+</odoo>

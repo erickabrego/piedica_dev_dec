@@ -1,0 +1,456 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_fiscal_period
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-10 19:58+0000\n"
+"PO-Revision-Date: 2021-06-10 19:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_fiscal_period
+#: model:ir.actions.act_window,name:l10n_fiscal_period.accounting_period_action
+#: model:ir.model,name:l10n_fiscal_period.model_accounting_period
+#: model:ir.ui.menu,name:l10n_fiscal_period.accoutning_period_menu
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_period_view_form
+msgid "Accounting period"
+msgstr "Periodo contable"
+
+#. module: l10n_fiscal_period
+#: model:ir.actions.act_window,name:l10n_fiscal_period.accounting_year_action
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__accounting_year_id
+#: model:ir.ui.menu,name:l10n_fiscal_period.payment_recurring_menu
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_tree
+msgid "Accounting year"
+msgstr "Ejercicio contable"
+
+#. module: l10n_fiscal_period
+#: model:ir.model,name:l10n_fiscal_period.model_accounting_year
+msgid "Accounting year period"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_needaction
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__activity_ids
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__activity_exception_decoration
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__activity_state
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__activity_type_icon
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_form
+msgid "Are you sure to start the current period?"
+msgstr "Está seguro de poner en progreso el período actual?"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_attachment_count
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_period_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_form
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields.selection,name:l10n_fiscal_period.selection__accounting_period__state__closed
+#: model:ir.model.fields.selection,name:l10n_fiscal_period.selection__accounting_year__state__closed
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_period_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_form
+msgid "Closed"
+msgstr "Cerrado"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__name
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__name
+msgid "Code"
+msgstr "Código"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__company_id
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__company_id
+msgid "Company"
+msgstr "Compañia"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__user_id
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__user_id
+msgid "Create by user"
+msgstr "Creado por el usuario"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__create_uid
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__create_date
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__display_name
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields.selection,name:l10n_fiscal_period.selection__accounting_period__state__draft
+#: model:ir.model.fields.selection,name:l10n_fiscal_period.selection__accounting_year__state__draft
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_period_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_form
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__end_date
+msgid "End date"
+msgstr "Fecha fin"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_follower_ids
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_channel_ids
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_partner_ids
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__activity_type_icon
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_account_move__id
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__id
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__activity_exception_icon
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__activity_exception_icon
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__message_needaction
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__message_unread
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__message_needaction
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__message_has_error
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__message_has_sms_error
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__message_has_error
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields.selection,name:l10n_fiscal_period.selection__accounting_period__state__in_progress
+#: model:ir.model.fields.selection,name:l10n_fiscal_period.selection__accounting_year__state__in_progress
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_period_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_form
+msgid "In progress"
+msgstr "En curso"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_is_follower
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model,name:l10n_fiscal_period.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_account_move____last_update
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period____last_update
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__write_uid
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__write_date
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_main_attachment_id
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_has_error
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_ids
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__activity_date_deadline
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__activity_summary
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__activity_type_id
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__note
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_form
+msgid "Note"
+msgstr "Notas"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_needaction_counter
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_has_error_counter
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__message_needaction_counter
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__message_has_error_counter
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__message_unread_counter
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_form
+msgid "Period"
+msgstr "Periodo"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__accounting_period_ids
+msgid "Periods"
+msgstr "Periodos"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__activity_user_id
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_has_sms_error
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__start_date
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__start_date
+msgid "Start date"
+msgstr "Fecha inicio"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__state
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__state
+msgid "State"
+msgstr "Estado"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__activity_state
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: code:addons/l10n_fiscal_period/models/model.py:0
+#: code:addons/l10n_fiscal_period/models/model.py:0
+#, python-format
+msgid "The accounting year corresponding to the period has been closed."
+msgstr "Se ha cerrado el ejercicio contable correspondiente al período."
+
+#. module: l10n_fiscal_period
+#: code:addons/l10n_fiscal_period/models/model.py:0
+#, python-format
+msgid "There is an accounting period that coincides on the date."
+msgstr ""
+"Existe un período contable que coincide con el rango de fecha ingresado"
+
+#. module: l10n_fiscal_period
+#: code:addons/l10n_fiscal_period/models/model.py:0
+#, python-format
+msgid "There is an accounting year that coincides on the date."
+msgstr ""
+"Existe un ejercicio contable que coincide con el rango de fecha ingresado."
+
+#. module: l10n_fiscal_period
+#: code:addons/l10n_fiscal_period/models/model.py:0
+#, python-format
+msgid "There is no accounting period configured in progress for this period."
+msgstr ""
+"No existe ningún período contable configurado en curso para esta fecha."
+
+#. module: l10n_fiscal_period
+#: code:addons/l10n_fiscal_period/models/model.py:0
+#, python-format
+msgid "There is no accounting year configured in progress for this period."
+msgstr ""
+"No existe ningún ejercicio contable configurado en curso para esta fecha."
+
+#. module: l10n_fiscal_period
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_period_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_form
+msgid "This action will close the accounting year, are you sure to proceed?"
+msgstr "Esta acción cerrará el ejercicio contable, ¿está seguro de continuar?"
+
+#. module: l10n_fiscal_period
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_form
+msgid ""
+"This action will prevent new accounting entries from being created in the "
+"date range of the current period. Are you sure to close the current period?"
+msgstr "Está acción evitará que se creen nuevos apuntes contables en el rango de fecha del periodo actual. Está seguro de cerrar el periodo ?"
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__activity_exception_decoration
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_unread
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__message_unread_counter
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__website_message_ids
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_year__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_period__website_message_ids
+#: model:ir.model.fields,help:l10n_fiscal_period.field_accounting_year__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: code:addons/l10n_fiscal_period/models/model.py:0
+#, python-format
+msgid "You cannot close the fiscal year with periods in progress status."
+msgstr ""
+"No puede cerrar el ejercicio contable existiendo períodos contables en "
+"curso."
+
+#. module: l10n_fiscal_period
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_period_view_tree
+msgid "accounting_period_tree"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model_terms:ir.ui.view,arch_db:l10n_fiscal_period.accounting_year_view_form
+msgid "accounting_year_form"
+msgstr ""
+
+#. module: l10n_fiscal_period
+#: model:ir.model.fields,field_description:l10n_fiscal_period.field_accounting_period__end_date
+msgid "end date"
+msgstr "Fecha fin"

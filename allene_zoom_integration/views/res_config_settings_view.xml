@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.account</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="40"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Zoom Credentials" string="Zoom Credentials" data-key="zoom">
+                        <h2>Zoom Credentials</h2>
+                        <div class="row mt16 o_settings_container" name="zoom_integration">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Zoom Credentials</span>
+                                    <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific."/>
+                                    <div class="text-muted">
+                                        Add the API key and Secret key of Zoom Account.
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <label for="client_id" string="Client ID" class="col-lg-3 o_light_label"/>
+                                            <field name="client_id"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label for="client_secret" string="Client Secret" class="col-lg-3 o_light_label"/>
+                                            <field name="client_secret" type="password"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label for="generate_code" class="col-lg-3 o_light_label"/>
+                                            <button type="object" name="generate_code" string="Generate Code" class="oe_highlight"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label for="code" string="Code" class="col-lg-3 o_light_label"/>
+                                            <field name="code"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label for="generate_access_token" class="col-lg-3 o_light_label"/>
+                                            <button type="object" name="generate_access_token" string="Generate Access Token" class="oe_highlight"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label for="access_token" string="Access Token" class="col-lg-3 o_light_label"/>
+                                            <field name="access_token"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label for="refresh_token" string="Refresh Token" class="col-lg-3 o_light_label"/>
+                                            <field name="refresh_token"/>
+                                        </div>
+                                        <div class="row mt16">
+                                            <label for="refresh_access_token" class="col-lg-3 o_light_label"/>
+                                            <button type="object" name="refresh_access_token" string="Refresh Access Token" class="oe_highlight"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

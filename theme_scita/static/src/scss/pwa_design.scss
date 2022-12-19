@@ -1,0 +1,45 @@
+.mobile-deive-popup {
+    background-color: #ffffff;
+    box-shadow: 0 1px 10px #b9b9b9;
+    display: none;
+    padding: 10px;
+    position: fixed;
+    z-index: 11111111;
+    bottom: 60px;
+    width: 90%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    .pwa-icon-img{
+        float: left;
+        height: 50px;
+        width: 50px;
+        margin-right: 1rem;
+    }
+    .pwa-small-img{
+        display: inline-block; 
+        height: 20px;
+    }
+    p{
+        font-size: 14px;
+        margin-bottom: 0;
+        margin-top: 5px;
+        color: #000000;
+    }
+}
+.pwa_off_section{
+    .pwa_off_image{
+        max-width: 100%;
+    }
+    text-align: center; 
+    margin-top: 10px;
+    margin-bottom: 10px;   
+}
+@media all and (display-mode: standalone) {
+    #wrapwrap.event {
+        #top,
+        #bottom {
+            display: block !important;
+        }
+    }
+}
