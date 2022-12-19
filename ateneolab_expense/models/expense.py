@@ -7,7 +7,7 @@ class AccountExpense(models.Model):
     _name = 'account.expense'
     _inherit = ['mail.thread', 'mail.activity.mixin', ]
     _description = 'Expenses Customization'
-
+    
     @api.onchange('refund_expense')
     def _onchange_refund_expense(self):
         if self.refund_expense:
@@ -16,7 +16,7 @@ class AccountExpense(models.Model):
                 self.tax_account_id = tax_acc.tax_account_refund_id.id
             else:
                 self.tax_account_id = False
-
+            
             if self.product_id:
                 if self.product_id.taxes_id:
                     self.tax_id = self.product_id.taxes_id[0]
@@ -31,8 +31,7 @@ class AccountExpense(models.Model):
                     self.tax_id = self.product_id.supplier_taxes_id[0]
                 else:
                     self.tax_id = False
-
-
+    
     @api.onchange('product_id')
     def _onchange_product_id(self):
         if self.product_id:
@@ -41,7 +40,7 @@ class AccountExpense(models.Model):
                 self.tax_id = self.product_id.supplier_taxes_id[0]
             else:
                 self.tax_id = False
-
+    
     @api.depends('tax_id', 'amount')
     def _compute_tax_amount(self):
         for record in self:
@@ -55,23 +54,22 @@ class AccountExpense(models.Model):
                         'Not implemented procedure for this type of tax. Only Percent and Fix are taken into account.')
             else:
                 record.tax_amount = 0
-
+    
     @api.depends("amount", "tax_amount", "has_iva")
     def _compute_total(self):
         for record in self:
             record.total = record.amount + record.tax_amount if record.has_iva else record.amount
             record.write({'total_amount': record.total})
-
+    
     def _init_tax_account_id(self):
         account_set = self.env["config.expense"].search([], limit=1)
         if account_set:
             self.tax_account_id = account_set.tax_account_id
         else:
             self.tax_account_id = False
-
-
+    
     name = fields.Char('Description', readonly=True, states={'draft': [('readonly', False)]})
-    code = fields.Char()
+    code = fields.Char(copy=False)
     expense_date = fields.Datetime('Expense date', default=lambda self: fields.Datetime.now(), readonly=True,
                                    states={'draft': [('readonly', False)]})
     product_id = fields.Many2one('product.template', 'Product', readonly=True, states={'draft': [('readonly', False)]},
@@ -85,7 +83,7 @@ class AccountExpense(models.Model):
                                         states={'draft': [('readonly', False)]})
     has_iva = fields.Boolean('IVA?', readonly=True, states={'draft': [('readonly', False)]}, tracking=True)
     tax_account_id = fields.Many2one('account.account', 'Tax account',
-                                     default= "_init_tax_account_id",
+                                     default="_init_tax_account_id",
                                      readonly=True, states={'draft': [('readonly', False)]}, tracking=True)
     tax_id = fields.Many2one('account.tax', 'Tax', readonly=True, states={'draft': [('readonly', False)]},
                              tracking=True)
@@ -109,21 +107,21 @@ class AccountExpense(models.Model):
                                               states={'draft': [('readonly', False)]})
     account_analytic_line_id = fields.Many2one("account.analytic.line", string="Move analytic", readonly=True,
                                                states={'draft': [('readonly', False)]})
-
+    
     @api.model
     def create(self, vals):
         if vals.get('code', '/') == '/':
             vals['code'] = self.env['ir.sequence'].next_by_code('account.expense.seq')
         res = super(AccountExpense, self).create(vals)
         return res
-
+    
     def set_confirmed(self):
         for record in self:
             record.sudo().generate_account_move_confirm_iva() if record.has_iva else record.sudo().generate_account_move_confirm()
             if self.account_analytic_id:
                 record.sudo().generate_analytic_move_confirm()
             record.write({'state': 'confirmed'})
-
+    
     def set_cancelled(self):
         for record in self:
             move = record.confirm_move_id._reverse_moves(default_values_list=[], cancel=True)
@@ -131,15 +129,15 @@ class AccountExpense(models.Model):
             if record.account_analytic_line_id:
                 self.account_analytic_line_id.unlink()
             record.write({'state': 'cancelled'})
-
+    
     def set_draft_again(self):
         self.write({'state': 'draft'})
-
+    
     def unlink(self):
         if self.state not in ['draft']:
             raise UserError('You can only delete records in Draft state')
         return super(AccountExpense, self).unlink()
-
+    
     def generate_account_move_confirm_iva(self):
         move_data = {
             "journal_id": self.payment_method_id.id,
@@ -166,7 +164,7 @@ class AccountExpense(models.Model):
                 "debit": abs(self.tax_amount),
                 "credit": 0.00, },))
         total_debit = abs(total_debit + self.tax_amount)
-
+        
         lines_w_iva.append(
             (0, 0, {
                 "account_id": self.payment_method_id.payment_credit_account_id.id,
@@ -179,7 +177,7 @@ class AccountExpense(models.Model):
         move.write({"state": "posted"})
         self.write({"confirm_move_id": move.id})
         return True
-
+    
     def generate_account_move_confirm(self):
         move_data = {
             "journal_id": self.payment_method_id.id,
@@ -203,7 +201,7 @@ class AccountExpense(models.Model):
             )
         )
         total_debit = self.amount
-
+        
         lines.append(
             (0, 0, {
                 "account_id": self.payment_method_id.payment_credit_account_id.id,
@@ -213,13 +211,13 @@ class AccountExpense(models.Model):
             },
              )
         )
-
+        
         move_data.update({"line_ids": lines})
         move = self.env["account.move"].create(move_data)
         move.write({"state": "posted"})
         self.write({"confirm_move_id": move.id})
         return True
-
+    
     def generate_analytic_move_confirm(self):
         tag_id = [self.account_analytic_tag_id.id] if self.account_analytic_tag_id else False
         val = {

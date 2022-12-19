@@ -65,20 +65,38 @@ class AccountMove(models.Model):
     def _prepare_customer_invoice_line(self, company_matrix):
         res = []
         product_template = self.sudo().env["product.template"].search(
-            [('is_commission', '=', True)], limit=1)
+            [('is_commission', '=', True),('company_id','=', company_matrix.id)], limit=1)
         if not product_template:
             raise UserError(_("Debe configurar un producto para las comisiones."))
 
         product_product = self.sudo().env["product.product"].search(
             [('product_tmpl_id', '=', product_template.id)])
 
-        account = product_template.property_account_income_id or product_template.categ_id.property_account_income_categ_id
-        account_credit = self.sudo().env["account.account"].search(
-            [('company_id', '=', company_matrix.id), ('code', '=', account.code)])
+        #account_credit = product_template.property_account_income_id or product_template.categ_id.property_account_income_categ_id
+        # account_credit = self.sudo().env["account.account"].search(
+        #     [('company_id', '=', company_matrix.id), ('code', '=', account.code)])
 
-        account = self.company_id.partner_id.property_account_receivable_id
-        account_debit = self.sudo().env["account.account"].search(
-            [('company_id', '=', company_matrix.id), ('code', '=', account.code)])
+        query = '''SELECT value_reference
+                   FROM ir_property WHERE name=%s AND company_id=%s'''
+        self._cr.execute(query,('property_account_income_id',company_matrix.id))
+        row = self._cr.dictfetchall()
+        if row:
+            account = row[0].get('value_reference')[16:]
+            account_credit = self.sudo().env["account.account"].browse(int(account))
+        else:
+            raise UserError(_('Debe configurar la cuenta de ingreso del producto en la empresa matriz.'))
+
+
+# *****************************************************
+        query = '''SELECT value_reference
+                   FROM ir_property WHERE name=%s AND company_id=%s'''
+        self._cr.execute(query,('property_account_receivable_id',company_matrix.id))
+        row = self._cr.dictfetchall()
+        if row:
+            account = row[0].get('value_reference')[16:]
+            account_debit = self.sudo().env["account.account"].browse(int(account))
+        else:
+            raise UserError(_('Debe configurar la cuenta por cobrar del partner en la empresa matriz.'))
 
         amount = self.amount_total * self.company_id.commission_percent / 100
         if self.currency_id.id != company_matrix.currency_id.id:

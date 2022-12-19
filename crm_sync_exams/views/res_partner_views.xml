@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <field name="category_id" position="after">
                 <field name="category_name" invisible="1"/>
-                <field name="exams_manager" attrs="{'invisible': [('category_name', '!=', 'Sucursal')]}"/>
+                <field name="exams_email" attrs="{'invisible': [('category_name', '!=', 'Sucursal')]}"/>
             </field>
         </field>
     </record>

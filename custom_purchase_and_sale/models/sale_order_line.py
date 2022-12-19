@@ -19,7 +19,7 @@ class SaleOrderLine(models.Model):
             if rec.product_id:
                 rule_id = rec.env["branch.factory"].sudo().search([("branch_id.id", "=", rec.company_id.id)], limit=1)
                 if rule_id:
-                    main_layer_ids = rec.env["product.product"].with_company(rule_id.factory_id.id).search([("is_material","=",True),("matMainLayer","=",True),("qty_available",">",0)])
-                    top_layer_ids = rec.env["product.product"].with_company(rule_id.factory_id.id).search([("is_material", "=", True), ("matTopLayer", "=", True), ("qty_available", ">", 0)])
-                    mid_layer_ids = rec.env["product.product"].with_company(rule_id.factory_id.id).search([("is_material", "=", True), ("matMidLayer", "=", True), ("qty_available", ">", 0)])
+                    main_layer_ids = rec.env["product.product"].sudo().with_company(rule_id.factory_id.id).sudo().search([("is_material","=",True),("matMainLayer","=",True),("qty_available",">",0)])
+                    top_layer_ids = rec.env["product.product"].sudo().with_company(rule_id.factory_id.id).sudo().search([("is_material", "=", True), ("matTopLayer", "=", True), ("qty_available", ">", 0)])
+                    mid_layer_ids = rec.env["product.product"].sudo().with_company(rule_id.factory_id.id).sudo().search([("is_material", "=", True), ("matMidLayer", "=", True), ("qty_available", ">", 0)])
                     return {'domain': {'top_cover_id': [('id', 'in', top_layer_ids.ids)], 'main_layer_id': [('id','in',main_layer_ids.ids)], 'mid_layer_id':[('id','in',mid_layer_ids.ids)]}}

@@ -19,6 +19,8 @@ class PatientExam(models.Model):
     drive_file = fields.Char('Archivo en Drive', help='Nombre del archivo del estudio pdf que se encuentra en drive.')
     drive_folder = fields.Char('Carpeta en Drive', help='Nombre de la ruta de drive donde se encuentra el estudio PDF.')
     exam_status_history = fields.One2many('exam.status.history', 'exam_id', string='Historial de estatus')
+    #user_id = fields.Many2one('res.users', string='Usuario', help='Encargado de subir los estudios')
+    #user_id = fields.Many2one('res.users', string='Usuario', help='Identificador del usuario que envía la información a Odoo. (TBD)')
 
 
     def create_exam(self, args):
@@ -28,18 +30,16 @@ class PatientExam(models.Model):
             return args_status
 
         data = args_status['content']
-        data.update({'date': datetime.datetime.now()})
+        exam_status = self.env['exam.status'].search([('code', '=', 'no_solicitado')])
+
+        data.update({
+            'exam_status_id': exam_status.id,
+            'date': datetime.datetime.now()
+        })
+
         patient_exam = self.with_context(lang='es_MX').create(data)
-
-        if patient_exam.drive_file:
-            exam_status = self.env['exam.status'].search([('code', '=', 'generado')])
-            patient_exam.send_exams_ready_email()
-        else:
-            exam_status = self.env['exam.status'].search([('code', '=', 'no_solicitado')])
-            patient_exam.send_exams_available_email()
-
-        patient_exam.write({'exam_status_id': exam_status.id})
         patient_exam.create_exam_status()
+        patient_exam.send_exams_available_email()
 
         return {
             'status': 'success',
@@ -52,17 +52,12 @@ class PatientExam(models.Model):
     def to_requested(self):
         self.ensure_one()
         exam_status = self.env['exam.status'].search([('code', '=', 'solicitado')])
-        self.write({'exam_status_id': exam_status.id})
-        self.create_exam_status()
 
-        activity = self.env['mail.activity'].create({
-            'activity_type_id': 4, # Por hacer
-            'summary': 'Subir estudios del paciente de la fecha ' + self.date_crm.strftime('%d/%m/%Y'),
-            'date_deadline': datetime.date.today(),
-            'user_id': self.branch_id.exams_manager.id,
-            'res_model_id': 79, # Contacto
-            'res_id': self.patient_id.id
+        self.write({
+            'exam_status_id': exam_status.id
         })
+
+        self.send_exams_requested_email()
 
 
     def to_generated(self, args):
@@ -81,7 +76,6 @@ class PatientExam(models.Model):
             'drive_folder': data['drive_folder']
         })
 
-        self.create_exam_status()
         self.send_exams_ready_email()
 
         return {
@@ -91,7 +85,6 @@ class PatientExam(models.Model):
 
     def create_exam_status(self):
         self.ensure_one()
-
         self.write({
             'exam_status_history': [(0, 0, {
                 'exam_id': self.id,
@@ -104,21 +97,27 @@ class PatientExam(models.Model):
     def send_exams_available_email(self):
         self.ensure_one()
 
-        template = self.env['mail.template'].search([('name', '=', 'PD_solicita_estudios')])
+        #template_id = self.env.ref('crm_sync_exams.exams_available_email_template').id
+        #template = self.env['mail.template'].browse(template_id)
+        template = self.env['mail.template'].search([('name', '=', 'solicita_estudios')])
         template.send_mail(self.id, force_send=True)
 
 
     def send_exams_requested_email(self):
         self.ensure_one()
 
-        template = self.env['mail.template'].search([('name', '=', 'PD_estudios_solicitados')])
+        #template_id = self.env.ref('crm_sync_exams.exams_requested_email_template').id
+        #template = self.env['mail.template'].browse(template_id)
+        template = self.env['mail.template'].search([('name', '=', 'estudios_solicitados')])
         template.send_mail(self.id, force_send=True)
 
 
     def send_exams_ready_email(self):
         self.ensure_one()
 
-        template = self.env['mail.template'].search([('name', '=', 'PD_estudios_listos')])
+        #template_id = self.env.ref('crm_sync_exams.exams_ready_email_template').id
+        #template = self.env['mail.template'].browse(template_id)
+        template = self.env['mail.template'].search([('name', '=', 'estudios_listos')])
         template.send_mail(self.id, force_send=True)
 
 
@@ -128,9 +127,6 @@ class PatientExam(models.Model):
         branch_id = args.get('branch', None) # Sucursal
         date_crm = args.get('date_crm', None) # Fecha de creación en CRM
         file = args.get('file', None) # Nombre del archivo zip
-
-        drive_file = args.get('drive_file', None) # Nombre del archivo pdf
-        drive_folder = args.get('drive_folder', None) # Nombre de la carpeta del archivo pdf
 
         missing_args = []
 
@@ -227,39 +223,16 @@ class PatientExam(models.Model):
                 'message': 'Faltan los siguientes argumentos: %s' % ', '.join(missing_args)
             }
 
-        data = {
-            'patient_id': patient_id,
-            'exam_crm_id': exam_crm_id,
-            'branch_id': branch_id,
-            'date_crm': date_crm,
-            'file': file
-        }
-
-
-        # Parametros opcionales
-        if drive_file:
-            if not isinstance(drive_file, str):
-                return {
-                    'status': 'error',
-                    'message': 'El parámetro drive_file debe ser un string. Valor introducido: %s' % str(drive_file)
-                }
-            else:
-                data.update({'drive_file': drive_file})
-
-
-        if drive_folder:
-            if not isinstance(drive_folder, str):
-                return {
-                    'status': 'error',
-                    'message': 'El parámetro drive_folder debe ser un string. Valor introducido: %s' % str(drive_folder)
-                }
-            else:
-                data.update({'drive_folder': drive_folder})
-
 
         return {
             'status': 'success',
-            'content': data
+            'content': {
+                'patient_id': patient_id,
+                'exam_crm_id': exam_crm_id,
+                'branch_id': branch_id,
+                'date_crm': date_crm,
+                'file': file
+            }
         }
 
 

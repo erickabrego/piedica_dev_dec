@@ -46,7 +46,7 @@ class CRMConfirmSend(models.TransientModel):
         if self.x_is_branch_order:
             gender = self.sale_order.x_branch_order_id.partner_id.x_studio_gnero
             data["id_paciente_odoo"] = self.sale_order.x_branch_order_id.partner_id.id
-            data["id_paciente_crm"] = self.sale_order.x_branch_order_id.partner_id.id_crm
+            data["id_paciente_crm"] = int(self.sale_order.x_branch_order_id.partner_id.id_crm) or 0
             data["datos_paciente"] = {
                 'nombre': str(self.sale_order.x_branch_order_id.partner_id.name).upper(),
                 'a_paterno': '',
@@ -63,5 +63,14 @@ class CRMConfirmSend(models.TransientModel):
                 "nombre_prescripcion": "",
                 "link_prescripcion":""
             }
+            for line in data['datos_envio']['datos_pedido']['datos_productos_pedidos']:
+                order_line = self.sale_order.x_branch_order_id.order_line.filtered(lambda lines: lines.product_id.id == int(line["id_producto"]) and lines.product_uom_qty == line["cantidad"] and lines.x_shapelist_domian_ids)
+                if order_line:
+                    line["horma"] = order_line[0].x_shapelist_domian_ids.id or 0
+        else:
+            for line in data['datos_envio']['datos_pedido']['datos_productos_pedidos']:
+                order_line = self.sale_order.order_line.filtered(lambda lines: lines.product_id.id == int(line["id_producto"]) and lines.product_uom_qty == line["cantidad"] and lines.x_shapelist_domian_ids)
+                if order_line:
+                    line["horma"] = order_line[0].x_shapelist_domian_ids.id or 0
         res = super(CRMConfirmSend, self)._validate_order_data(data)
         return res

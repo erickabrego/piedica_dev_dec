@@ -2,7 +2,6 @@ import json
 import requests
 from odoo.exceptions import UserError
 from odoo import models, fields, api
-from pytz import timezone
 
 
 class CalendarEvent(models.Model):
@@ -29,8 +28,7 @@ class CalendarEvent(models.Model):
             user_id = user_res.json().get("id")
             meeting_url = "https://api.zoom.us/v2/users/" + user_id + "/meetings"
 
-            start_time = res.start.astimezone(timezone(res.env.user.tz)).isoformat() if res.env.user.tz else res.start.isoformat()
-
+            start_time = res.start.isoformat()
             duration_min = res.duration * 60
             topic = res.name
             password = user_res.json().get("pmi")
@@ -45,7 +43,7 @@ class CalendarEvent(models.Model):
                 else:
                     type = 8
                     if res.end_type == "end_date":
-                        end_date_time = res.until.astimezone(timezone(res.env.user.tz)).isoformat() if res.env.user.tz else res.until
+                        end_date_time = res.until
                         recurrence["end_date_time"] = end_date_time
                     elif res.end_type == "count":
                         end_times = res.count
@@ -118,6 +116,7 @@ class CalendarEvent(models.Model):
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + access_token
             }
+            print(meeting_data)
             meeting_res = requests.post(meeting_url, data=json.dumps(meeting_data), headers=headers)
             if meeting_res.json().get("code") and meeting_res.json().get("code") != 200:
                 raise UserError(meeting_res.json().get("message"))

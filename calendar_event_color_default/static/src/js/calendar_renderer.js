@@ -19,12 +19,6 @@ odoo.define('calendar_event_color_default.calendar_rederer', function (require) 
                     color = 4;
                 } else if (event.extendedProps.record["x_studio_servicios_1"] && event.extendedProps.record.x_studio_servicios_1 == "Cita para revisión de plantillas ortopédicas (Ya en uso)") {
                     color = 10;
-                } else if (event.extendedProps.record["x_studio_servicios_1"] && event.extendedProps.record.x_studio_servicios_1 == "Consulta en línea") {
-                    color = 9;
-                } else if (event.extendedProps.record["x_studio_servicios_1"] && event.extendedProps.record.x_studio_servicios_1 == "Primera visita fisioterapia") {
-                    color = 23;
-                } else if (event.extendedProps.record["x_studio_servicios_1"] && event.extendedProps.record.x_studio_servicios_1 == "Elaboración de plantillas ortopédicas personalizadas, con receta médica (Sin estudio)") {
-                    color = 21;
                 }
             }
 

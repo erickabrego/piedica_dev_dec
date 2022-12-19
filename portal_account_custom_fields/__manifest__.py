@@ -7,7 +7,7 @@
     'depends': ['base', 'portal'], #'web', 'web_editor'
     'data': [
         'security/ir.model.access.csv',
-        # 'views/assets.xml',
+        'views/assets.xml',
         'views/res_partner_views.xml',
         'views/portal_templates.xml',
         'data/molestias.xml'

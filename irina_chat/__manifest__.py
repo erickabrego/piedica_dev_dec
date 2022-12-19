@@ -12,7 +12,7 @@
     'website': "https://m22.mx",
     'category': 'Productivity/Calendar',
     'version': '15.0.1',
-    'depends': ['base','calendar','website_calendar'],
+    'depends': ['base','calendar','website_calendar','custom_purchase_and_sale'],
     'data': [
         # 'security/ir.model.access.csv',
         'data/ir_cron.xml',

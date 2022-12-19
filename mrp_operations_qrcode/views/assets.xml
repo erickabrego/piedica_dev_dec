@@ -3,7 +3,7 @@
     <data>
         <template id="assets_backend" name="mrp_operations_qrcode assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
-                <script type="text/javascript" src="/mrp_operations_qrcode/static/src/js/basic_model.js"></script>
+<!--                 <script type="text/javascript" src="/mrp_operations_qrcode/static/src/js/basic_model.js"></script> -->
                 <script type="text/javascript" src="/mrp_operations_qrcode/static/src/js/operations_line.js"></script>
                 <script type="text/javascript" src="/mrp_operations_qrcode/static/src/js/operations_lines.js"></script>
                 <script type="text/javascript" src="/mrp_operations_qrcode/static/src/js/operations_scan_action.js"></script>

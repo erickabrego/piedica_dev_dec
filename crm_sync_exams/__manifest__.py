@@ -8,6 +8,9 @@
     'data': [
         'security/ir.model.access.csv',
         'data/exam_status_data.xml',
+        #'data/exams_available_email_template.xml',
+        #'data/exams_requested_email_template.xml',
+        #'data/exams_ready_email_template.xml',
         'views/portal_templates.xml',
         'views/res_partner_views.xml'
     ]

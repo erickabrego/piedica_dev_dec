@@ -15,26 +15,9 @@ class SaleOrder(models.Model):
     folio_pedido = fields.Char('Folio del pedido', readonly=True, copy=False)
     crm_status_history = fields.One2many('crm.status.history', 'sale_order', string='Historial de estatus', readonly=True, copy=False)
     observations = fields.Text(string='Observaciones')
-    x_studio_selection_field_waqzv = fields.Selection([('Adicional','Adicional'),('PSA', 'PSA'),('Primera Orden','Primera Orden'),('PSA Mismo Proyecto','PSA Mismo Proyecto'),('PSI','PSI'),('Segunda Orden','Segunda Orden'),('Otros','Otros'),('Error','Error')], string='Tipo pedido')
+    x_studio_selection_field_waqzv = fields.Selection([('Adicional','Adicional'),('PSA', 'PSA'),('Primera Orden','Primera Orden'),('PSA Mismo Proyecto','PSA Mismo Proyecto'),('PSI','PSI'),('Segunda Orden','Segunda Orden'),('Otros','Otros'),('Error','Error'),('Plantillas con receta','Plantillas con receta'),('Consulta','Consulta'),('Solo Estudio','Solo Estudio')], string='Tipo pedido')
     p_ask_for_send_to_crm = fields.Boolean(default=True, copy=False)
     is_adjustment = fields.Boolean(string="Es ajuste", default=False)
-
-    #Divide las lineas de productos fabricables con una cantidad mayor a 1 al momento de crear la orden
-    @api.model
-    def create(self, vals):
-        res = super(SaleOrder, self).create(vals)
-        if vals.get("order_line"):
-            res._divide_in_multiple()
-        res._reload_mrp_lines_sequence()
-        return res
-
-    # Divide las lineas de productos fabricables con una cantidad mayor a 1 al momento de editar la orden
-    def write(self, values):
-        res = super(SaleOrder, self).write(values)
-        if values.get("order_line"):
-            self._divide_in_multiple()
-        self._reload_mrp_lines_sequence()
-        return res
 
     #Divide lineas en cantidades unitarias aquellos productos fabricables
     def _divide_in_multiple(self):
@@ -179,11 +162,11 @@ class SaleOrder(models.Model):
             if is_adjustment:
                 mrp_bom = self.env['mrp.bom'].sudo().search([
                     ('product_tmpl_id', '=', mrp_order.product_tmpl_id.id),
-                    ('code', '=', 'Ajuste')
+                    ('code', '=', 'Ajuste'),('company_id','in',[mrp_order.company_id.id,False])
                 ],limit=1)
             else:
                 mrp_bom = self.env['mrp.bom'].sudo().search([
-                    ('product_tmpl_id.id', '=', mrp_order.product_tmpl_id.id),
+                    ('product_tmpl_id.id', '=', mrp_order.product_tmpl_id.id),('company_id','in',[mrp_order.company_id.id,False])
                 ],limit=1)
 
             # Materiales del producto
@@ -213,7 +196,8 @@ class SaleOrder(models.Model):
             # Hay que rehacer las órdenes de trabajo dado que la lista de
             # materiales muy probablemente haya cambiado
             mrp_order.workorder_ids.unlink()
-            mrp_order.write({'bom_id': mrp_bom.id,})
+            if mrp_bom:
+                mrp_order.write({'bom_id': mrp_bom.id,})
             mrp_order._onchange_workorder_ids()
 
             mrp_order.write({'move_raw_ids': components_data,'p_design_link': design_link})

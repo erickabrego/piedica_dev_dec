@@ -13,5 +13,10 @@
     'category': 'Sale',
     'version': '14.0.1.0.0',
     'depends': ['l10n_mx_edi'],
-    'data': ['report/invoice_report_ext.xml',],
+    'data': [
+        'report/invoice_report_ext.xml',
+        'report/invoice_report_notsigned_ext.xml',
+        'data/edi_data.xml',
+        'views/invoice_view.xml',
+    ],
 }

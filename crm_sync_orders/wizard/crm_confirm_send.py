@@ -142,7 +142,9 @@ class CRMConfirmSend(models.TransientModel):
                 'id_producto': line.product_id.id,
                 'cantidad': line.product_uom_qty,
                 'id_recubrimiento': line.top_cover_id.id or 0,
+                'id_mid': line.mid_layer_id.id or 0,
                 'id_material': 0,
+                'horma':0,
                 'id_disenio': int(line.design_type),
                 'id_mo': mrp_order_id,
                 'nombre_mo': mrp_order.name
