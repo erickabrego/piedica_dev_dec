@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_report_view_form" model="ir.ui.view">
+        <field name="name">sale_report.view.form</field>
+        <field name="model">sale.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reporte de ventas">
+                <sheet>
+                    <group>
+                        <group>
+                                <label for="init_date" string="Periodo" />
+                                <field name="init_date" required="1"/>
+                                <field name="end_date" required="1"/>
+                        </group>
+                        <group>
+                            <field name="company_ids" required="1" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <hr/>
+                    <group>
+                        <field name="data_file" readonly="1" force_save="1"/>
+                    </group>
+                    <hr/>
+                </sheet>
+                <footer>
+                    <button name="print_sale_report" string="Reporte de ventas" type="object" default_focus="1"
+                            class="oe_highlight"/>
+                    o
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sale_report_wizard_menu" model="ir.actions.act_window">
+        <field name="name">Reporte de ventas</field>
+        <field name="res_model">sale.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sale_report_view_form"/>
+        <field name="target">new</field>
+        <!--field name="context" eval="{'default_company_ids': companies}"/-->
+    </record>
+
+    <menuitem name="Reporte de Ventas" id="sale_management_menu" parent="sale.menu_sale_report"
+              action="action_sale_report_wizard_menu"
+              groups="base.group_user"/>
+
+</odoo>

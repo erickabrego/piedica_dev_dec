@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+      <record model="ir.ui.view" id="open_wizard_from_product">
+        <field name="name">open wizard.product</field>
+        <field name="model">open.wizard_product</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+          <form>
+            <group>
+                <group>
+                    <p>SEO URL key of <field name="example_count"/> Product(s) have been successfully updated.</p>
+                </group>
+            </group>
+            <footer>
+                <button special="cancel" class="oe_highlight" string="Close"/>
+            </footer>
+        </form>
+        </field>
+    </record>
+
+
+     <record model="ir.ui.view" id="open_wizard_from_category">
+        <field name="name">open wizard.category</field>
+        <field name="model">open.wizard_category</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+            <group>
+                <group>
+                    <p>SEO URL key of <field name="example_count"/> Category(s) have been successfully updated.</p>
+                </group>
+            </group>
+            <footer>
+               <button special="cancel" class="oe_highlight" string="Close"/>
+            </footer>
+        </form>
+        </field>
+    </record>
+
+
+            <record id="website_seo_redirection_tree_view_inherit" model="ir.ui.view">
+            <field name="name">Website SEO Redirection Tree</field>
+            <field name="model">product.template</field>
+            <field eval="20" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Product URL Rewrite Management" editable="bottom"> 
+                    <field name="name"/>
+                    <field name="url_key"/>
+                     <field name="url_key2"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="website_seo_redirection_tree_view_inherit_category" model="ir.ui.view">
+            <field name="name">Website SEO Redirection Tree</field>
+            <field name="model">product.public.category</field>
+            <field eval="20" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Category URL Rewrite Management" editable="bottom">
+                    <field name="name"/>
+                    <field name="url_key"/>
+                    <field name="url_key2"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+         <record id="seo_redirect_sub_menu_action" model="ir.actions.act_window">
+          <field name="name">Product URL Rewrite Management</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="view_id" ref="website_url_redirect_rewrite.website_seo_redirection_tree_view_inherit"/>
+          <field name="res_model">product.template</field>
+          <field name="view_mode">tree</field>
+       </record>
+
+       <record id="seo_redirect_sub_menu_action2" model="ir.actions.act_window">
+          <field name="name">Category URL Rewrite Management</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">product.public.category</field>
+          <field name="view_id" ref="website_url_redirect_rewrite.website_seo_redirection_tree_view_inherit_category"/>
+          <field name="view_mode">tree</field>
+       </record>
+
+       
+        <menuitem id="seo_redirect_menu" name="Bulk URL Redirect" sequence="90" parent="website.menu_website_global_configuration"/>
+        <menuitem id ="seo_redirect_sub_menu1" name=" &#65293; Product wise &#10140;" parent="seo_redirect_menu" action="seo_redirect_sub_menu_action" sequence="1"/>
+        <menuitem id ="seo_redirect_sub_menu2" name=" &#65293; Category wise &#10140;" parent="seo_redirect_menu" action="seo_redirect_sub_menu_action2" sequence="2"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,276 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* import_employee_quotas
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-27 22:09+0000\n"
+"PO-Revision-Date: 2022-07-27 22:09+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__activity
+msgid "Activity"
+msgstr "Actividad"
+
+#. module: import_employee_quotas
+#: model_terms:ir.ui.view,arch_db:import_employee_quotas.importar_produbanco_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: import_employee_quotas
+#: model:ir.model,name:import_employee_quotas.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: import_employee_quotas
+#: model:ir.model,name:import_employee_quotas.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de configuración"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields.selection,name:import_employee_quotas.selection__payment_quota_employee__state__confirmed
+#: model_terms:ir.ui.view,arch_db:import_employee_quotas.view_payment_quota_employee_form
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_import_payment_quota_employee__create_uid
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__create_uid
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_import_payment_quota_employee__create_date
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__create_date
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__days
+msgid "Days"
+msgstr "Días"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_import_payment_quota_employee__display_name
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__display_name
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__display_name
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_company__display_name
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields.selection,name:import_employee_quotas.selection__payment_quota_employee__state__draf
+msgid "Draf"
+msgstr "Borrador"
+
+#. module: import_employee_quotas
+#: model:ir.ui.menu,name:import_employee_quotas.menu_action_employer_payments
+msgid "Employer payments"
+msgstr "Pagos del empleador"
+
+#. module: import_employee_quotas
+#: code:addons/import_employee_quotas/models/payment_quota_employee.py:0
+#, python-format
+msgid "Error! There are records that do not have the company."
+msgstr "Existen registros sin la Sucursal, para generar los pagos todos los registros deben tener una Sucursal."
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_import_payment_quota_employee__excel
+msgid "Excel file (recommended format: xlsx) to import"
+msgstr "Archivo de Excel (formato recomendado: xlsx) para importar"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_import_payment_quota_employee__id
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__id
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__id
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_company__id
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_config_settings__id
+msgid "ID"
+msgstr "ID"
+
+#. module: import_employee_quotas
+#: model_terms:ir.ui.view,arch_db:import_employee_quotas.importar_produbanco_view
+msgid "Import"
+msgstr "Importar"
+
+#. module: import_employee_quotas
+#: model_terms:ir.ui.view,arch_db:import_employee_quotas.res_config_settings_view_form
+msgid "Import Employee Quotas"
+msgstr "Importar cuotas de empleados"
+
+#. module: import_employee_quotas
+#: model_terms:ir.ui.view,arch_db:import_employee_quotas.view_payment_quota_employee_form
+msgid "Import file"
+msgstr "Importar archivo"
+
+#. module: import_employee_quotas
+#: model_terms:ir.ui.view,arch_db:import_employee_quotas.importar_produbanco_view
+msgid "Import payment quota employee"
+msgstr "Importar pago de cuota a empleado"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_company__journal_id
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_config_settings__journal_id
+#: model_terms:ir.ui.view,arch_db:import_employee_quotas.res_config_settings_view_form
+msgid "Journal"
+msgstr "Diario"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__key_code
+msgid "Key code"
+msgstr "Clave"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_import_payment_quota_employee____last_update
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee____last_update
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line____last_update
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_company____last_update
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_import_payment_quota_employee__write_uid
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__write_uid
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__write_uid
+msgid "Last Updated by"
+msgstr "Ultima actualización por"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_import_payment_quota_employee__write_date
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__write_date
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__lic
+msgid "Lic."
+msgstr "Lic."
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__payment_quota_line_ids
+msgid "Lines"
+msgstr "Lineas"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__name_reason_social
+msgid "Name or reason social"
+msgstr "Nombre o razón social"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__patronal
+msgid "Patronal"
+msgstr "Patronal"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_company__patronal_account_id
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_config_settings__patronal_account_id
+#: model_terms:ir.ui.view,arch_db:import_employee_quotas.res_config_settings_view_form
+msgid "Patronal account"
+msgstr "Cuenta patronal"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__payment_quota_id
+msgid "Payment Quota"
+msgstr "Cuota de pago"
+
+#. module: import_employee_quotas
+#: model:ir.actions.act_window,name:import_employee_quotas.action_payment_quota_employee
+#: model_terms:ir.ui.view,arch_db:import_employee_quotas.view_payment_quota_employee_form
+msgid "Payment Quota Employee"
+msgstr "Pago de cuota a empleado"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__process_period
+msgid "Period of Process"
+msgstr "Período de proceso"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__process_date
+msgid "Process date"
+msgstr "Fecha de proceso"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__record_patronal
+msgid "Record patronal"
+msgstr "Registro Patronal"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__sdi
+msgid "SDI"
+msgstr "SDI"
+
+#. module: import_employee_quotas
+#: code:addons/import_employee_quotas/wizard/importar_payment_quota_employee.py:0
+#, python-format
+msgid "Select an excel file!"
+msgstr "Seleccione un archivo de excel!"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee__state
+msgid "State"
+msgstr "Estado"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__subtotal
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__sucursal
+msgid "Sucursal"
+msgstr "Sucursal"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_payment_quota_employee_line__worker
+msgid "Worker"
+msgstr "Trabajador"
+
+#. module: import_employee_quotas
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_company__worker_account_id
+#: model:ir.model.fields,field_description:import_employee_quotas.field_res_config_settings__worker_account_id
+#: model_terms:ir.ui.view,arch_db:import_employee_quotas.res_config_settings_view_form
+msgid "Worker account"
+msgstr "Cuenta de trabajador"
+
+#. module: import_employee_quotas
+#: model:ir.model,name:import_employee_quotas.model_import_payment_quota_employee
+msgid "import.payment.quota.employee"
+msgstr ""
+
+#. module: import_employee_quotas
+#: model:ir.model,name:import_employee_quotas.model_payment_quota_employee
+msgid "payment.quota.employee"
+msgstr ""
+
+#. module: import_employee_quotas
+#: model:ir.model,name:import_employee_quotas.model_payment_quota_employee_line
+msgid "payment.quota.employee.line"
+msgstr ""

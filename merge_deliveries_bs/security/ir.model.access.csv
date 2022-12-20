@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_merge_wizard,access_merge_wizard,model_merge_deliveries_wizard,group_merge_delivery,1,1,1,0

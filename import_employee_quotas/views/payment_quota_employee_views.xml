@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_tree_payment_quota_employee" model="ir.ui.view">
+            <field name="name">payment.quota.employee.tree</field>
+            <field name="model">payment.quota.employee</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="process_period"/>
+                    <field name="record_patronal"/>
+                    <field name="process_date"/>
+                    <field name="name_reason_social"/>
+                    <field name="activity"/>
+                    <field name="payment_quota_line_ids"/>
+                    <field name="state"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_payment_quota_employee_form" model="ir.ui.view">
+            <field name="name">payment.quota.employee.form</field>
+            <field name="model">payment.quota.employee</field>
+            <field name="arch" type="xml">
+                <form string="Payment Quota Employee">
+                    <header>
+                        <button name="importar_fichero" type="object"
+                                string="Import file" class="oe_highlight"
+                                attrs="{'invisible': [('state', '!=', 'draf')]}"/>
+                        <button name="confirmar" type="object"
+                                string="Confirmed" class="oe_highlight"
+                                attrs="{'invisible': [('state', '!=', 'draf')]}"/>
+                    <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="process_period" attrs="{'readonly': [('state', '=', 'confirmed')]}"/>
+                                <field name="record_patronal" attrs="{'readonly': [('state', '=', 'confirmed')]}"/>
+                                <field name="process_date" attrs="{'readonly': [('state', '=', 'confirmed')]}"/>
+                            </group>
+                            <group>
+                                <field name="name_reason_social" attrs="{'readonly': [('state', '=', 'confirmed')]}"/>
+                                <field name="activity" attrs="{'readonly': [('state', '=', 'confirmed')]}"/>
+                                <field name="company_id"/>
+                            </group>
+                            <field name="payment_quota_line_ids" nolabel="1" attrs="{'readonly': [('state', '=', 'confirmed')]}">
+                                <tree editable="bottom">
+                                    <field name="key_code"/>
+                                    <field name="date"/>
+                                    <field name="days"/>
+                                    <field name="sdi"/>
+                                    <field name="lic"/>
+                                    <field name="patronal"/>
+                                    <field name="worker"/>
+                                    <field name="subtotal"/>
+                                    <field name="sucursal"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_payment_quota_employee" model="ir.actions.act_window">
+            <field name="name">Payment Quota Employee</field>
+            <field name="res_model">payment.quota.employee</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tree_payment_quota_employee"/>
+        </record>
+    </data>
+</odoo>

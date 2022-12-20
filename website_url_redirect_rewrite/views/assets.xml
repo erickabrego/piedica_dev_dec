@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="seo_redirection_style" inherit_id="web.assets_backend">
+    <!--load javascript-->
+    <xpath expr=".">
+        <script type="text/javascript" src="/website_seo_redirection/static/src/js/website_seo.js"/>
+    </xpath>
+</template>
+</odoo>

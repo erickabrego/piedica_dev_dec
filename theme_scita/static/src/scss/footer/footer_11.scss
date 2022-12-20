@@ -1,0 +1,109 @@
+footer {
+background-color: $dark-color;
+.footer-content {
+		padding-top:30px;
+		.sct-top-row {
+			.sct-foot-logo {
+				max-width: 150px;
+    			margin: 0 auto 30px;
+			}
+			.sct-scocial-icon-footer {
+				text-align: center;
+				a {
+					margin: 0 5px;
+				}
+			}
+			.links {
+				text-align: center;
+				margin-top: 30px;
+				margin-bottom: 25px;
+				ul {
+					li {
+						display: inline-block;
+						vertical-align: middle;
+						padding: 7px 5px;
+						a {
+							color: $light-grey-color;
+						}
+					}
+				}
+			}
+		}
+		.sct-bottom-row {
+			border-top: 1px solid $light-grey-color;
+			padding-top: 25px;
+			.sct-copyright {
+				@media (max-width: 767px){
+					-webkit-box-ordinal-group: 2;
+					-ms-flex-order: 1;
+					order: 1;
+					text-align: center;
+				}
+			}
+		}
+}
+.o_footer_copyright{
+		background:$dark-color;
+		padding: 25px 0px 30px;
+			.sct-fot-belt{
+				@media (max-width:991px){
+					@include flex-column;
+					@include justify-align-content;
+				}
+				.sct-copyright-text{
+					padding-left: 0px;
+                    @media (max-width:991px){
+	                    @include flex;
+					    @include flexwrap;
+					    @include flex-column;
+						text-align:center !important;
+						order:1;
+						margin-top:15px;
+					}
+			        @media (max-width:767px){
+							font-size:$font-base-label;
+					}
+				    @media (max-width:576px){
+							text-align:center !important;
+					}
+					.o_footer_copyright_name{
+						color:$light-grey-color;
+	    				 @include order-2;
+			 			 font-size:$fot-label;
+			 			 
+					}
+					.js_language_selector{
+						margin-bottom: 10px;
+					    @media (max-width:767px){
+						display: flex;
+		    			justify-content: center;	
+					}
+					>.list-inline{
+					 	> a{
+					 		color:$light-color;
+					 		font-size:$font-base-label;
+					 	}
+					 }
+				   }
+				   .js_language_selector > .btn-outline-secondary {
+						color:$light-color;
+					}
+	     		}
+   
+.sct-payment-icons{
+				span{
+					display: inline-block;
+				    vertical-align: top;
+				    width: 40px;
+				    margin-right: 5px;
+				    &:last-child{
+				    	margin-right:0px;
+				    }
+				   
+
+				}
+			}	
+		}
+   	  
+    }
+}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Zapier" string="Zapier" data-key="piedica_zapier">
+                    <h2>Llave de acceso Zapier</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Llave Zapier</span>
+                                <div class="text-muted">
+                                    Llave de acceso que debe ser introducida en el Zap para
+                                    dar autorización al Zap de enviar datos al endpoint.
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label for="zapier_key" class="col-lg-3 o_light_label"/>
+                                        <field name="zapier_key"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Asignación de Comercial a Medio</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Comercial de Facebook</span>
+                                <div class="text-muted">
+                                    Persona a quien se le asignará las oportunidades provenientes de Facebook.
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label for="facebook_salesperson" class="col-lg-3 o_light_label"/>
+                                        <field name="facebook_salesperson" domain="[('share', '=', False)]"
+                                            widget="many2one_avatar_user"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Comercial de Página web</span>
+                                <div class="text-muted">
+                                    Persona a quien se le asignará las oportunidades provenientes de la página web.
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label for="web_page_salesperson" class="col-lg-3 o_light_label"/>
+                                        <field name="web_page_salesperson" domain="[('share', '=', False)]"
+                                            widget="many2one_avatar_user"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="zapier_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'piedica_zapier'}</field>
+    </record>
+</odoo>

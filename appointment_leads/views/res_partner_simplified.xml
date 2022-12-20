@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Modifica el form view para agregar los campos custom -->
+        <record id="appointment_leads_res_partner_custom_form" model="ir.ui.view">
+            <field name="name">appointment.leads.res.partner.custom.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='misc']" position="after">
+                    <group name="marketing_fields" string="Marketing">
+                        <field name="x_campaign_id" options="{'no_create':True}"/>
+                        <field name="x_medium_id" options="{'no_create':True}"/>
+                        <field name="x_source_id" options="{'no_create':True}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="appointment_leads_res_partner_simplified_custom_form" model="ir.ui.view">
+            <field name="name">appointment.leads.res.partner.simplified.custom.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_simple_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='comment']" position="after">
+                    <field name="x_campaign_id" options="{'no_create':True}"/>
+                    <field name="x_medium_id" options="{'no_create':True}"/>
+                    <field name="x_source_id" options="{'no_create':True}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,138 @@
+footer {
+	.footer-content {
+		.sct-top-row {
+			padding: 20px 0;
+			border-bottom: 2px solid $light-color;
+			@media (max-width: 767px){
+				padding-bottom: 0;
+			}
+			.icons {
+				@include flex;
+				@include flexwrap;
+				@include align-content;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				@media (max-width: 767px){
+					margin-bottom: 20px;		
+				}
+				.fa-icons {
+					width: 40px;
+					height: 40px;
+					border:1px solid $theme;
+					border-radius: 50%;
+					@include flex;
+					@include flexwrap;
+					@include justify-align-content;
+					span {
+						color: $theme;
+						font-size: $font-body + 1;
+					}
+				}
+				.icon-text {
+					display: block;
+					margin-top: 10px;
+					text-align: center;
+					a {
+						font-size: $font-body;
+						color: $theme;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+		.sct-middle-row {
+			padding: 30px 0;
+			@media (max-width: 991px){
+				padding-bottom: 10px;
+			}
+			h4 {
+				text-transform: uppercase;
+				margin-bottom: 20px;
+			}
+			ul {
+				li {
+					font-size: $font-body;
+					a {
+						&:hover {
+							color:$theme;
+						}
+					}
+					+ li {
+						margin-top: 15px;
+					}
+				}
+			}
+			.sct-links {
+				@media (max-width: 991px){
+					margin-bottom: 20px;
+				}
+			}
+			.connect_us {
+				@media (max-width: 991px){
+					margin-bottom: 20px;
+				}
+				li {
+					.sct-footer-logo {
+						max-width: 150px;
+					}
+					+ li {
+						margin-top: 30px;
+					}
+					h4 {
+						margin-bottom: 10px;
+					}
+					.sct-scocial-icon-footer {
+						a {
+							margin-top: 0;
+							margin-bottom: 5px;
+						}
+					}
+					.sct-payment-icons {
+						span {
+							margin-bottom: 5px;
+						}
+					}
+				}
+			}
+		}
+		.sct-bottom-row {
+			padding: 20px 0;
+			border-top: 2px solid $light-color;
+			p {
+				text-align: center;
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+.sct-copyright-text{
+	padding:20px 0px;
+	@media (max-width:991px){
+			@include all-flex;
+	}
+	.o_footer_copyright_name{
+		 @include order-2;
+		 font-size:$fot-label;
+		 color:$dark-color;
+	}
+	.js_language_selector{
+        margin-bottom: 1rem;
+	    >.list-inline{
+			> a{
+				 color:$body-color;
+				 font-size:$font-base-label;
+			  }
+		}
+	}
+	.js_language_selector > .btn-outline-secondary:hover:after {
+		color:$light-color;
+	}
+	.js_language_selector > .btn-outline-secondary:hover span {
+		color:$light-color;
+	}
+	.js_language_selector > .btn-outline-secondary {
+		color:$body-color;
+	}
+}

@@ -1,0 +1,132 @@
+footer {
+	background:$dark-color;
+}
+.footer-content {
+	.sct-top-row {
+		background-color: $dark-grey-color;
+		padding: 10px 0;
+		.sct-scocial-icon-footer {
+			@media (max-width: 575px){
+				text-align: center;
+				margin-bottom: 10px;
+			}
+			a {
+				width: 25px;
+				height: 25px;
+				font-size: $font-body + 1;
+				margin-top: 0;
+			}
+		}
+		.sct-payment-icons {
+			text-align: right;
+			@media (max-width: 575px){
+				text-align: center;
+			}
+		}
+	}
+	.sct-middle-row {
+		background-color: $dark-color;
+		padding: 40px 0;
+		@media (max-width: 767px){
+			padding: 30px 0;
+		}
+		h4 {
+			color: $light-color;
+			margin-bottom: 20px;
+			text-transform: uppercase;
+		}
+		p {
+			color: $light-color;
+		}
+		ul {
+			li {
+				color: $light-color;
+				font-size: 15px;
+				a {
+					color: $light-color;
+					&:hover {
+						color:$theme;
+					}
+				}
+				span {
+					color: $light-color;
+				}
+				+ li {
+					margin-top: 15px;
+				}
+			}
+		}
+		.policy, .services {
+			@media (max-width: 767px){
+				margin-top: 30px;
+			}
+		}
+		.address {
+			.com-logo {
+				padding-left: 0;
+			}
+			.sct-footer-logo {
+				max-width: 150px;
+				margin-bottom: 30px;
+			}
+			ul {
+				max-width: 450px;
+				li {
+					position: relative;
+					padding-left: 30px;
+					.fa {
+						position: absolute;
+						left: 0;
+						top: 2px;
+						font-size: 20px;
+						color: $light-grey-color;
+					}
+				}
+			}
+		}
+	}
+	.sct-bottom-row {
+		background-color: $dark-color;
+		.sct-copyright {
+			border-top:1px solid $dark-grey-color;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			p {
+				text-align: center;
+				width: 100%;
+				color: $light-color;
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+.o_footer_copyright{
+	background:$dark-color;
+	.sct-fot-belt{
+		.sct-copyright-text{
+			@media (max-width:991px){
+			    @include all-flex;
+			}
+			padding:20px 0px;
+			.o_footer_copyright_name{
+				@include order-2;
+				margin-top:5px;
+				font-size:$fot-label;
+				color:$light-color;
+			}
+			.js_language_selector{
+				 >.list-inline{
+				 	> a{
+				 		color: #fff;
+				 		font-size:$font-base-label;
+				 	}
+				 }
+			}
+			.js_language_selector > .btn-outline-secondary {
+				color:$light-color;
+			}
+		}
+	}
+}
+
+

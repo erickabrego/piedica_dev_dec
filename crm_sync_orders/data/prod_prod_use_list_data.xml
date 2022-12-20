@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ppul_everyday" model="prod.prod.use.list">
+            <field name="name">Everyday</field>
+        </record>
+
+        <record id="ppul_medical" model="prod.prod.use.list">
+            <field name="name">Medical</field>
+        </record>
+
+        <record id="ppul_sport" model="prod.prod.use.list">
+            <field name="name">Sport</field>
+        </record>
+    </data>
+</odoo>

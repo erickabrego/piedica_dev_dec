@@ -1,0 +1,190 @@
+footer {
+	background-color: $dark-color;
+    .footer-content {
+		padding-top: 30px;
+	   .sct-top-row {
+			.sct-foot-logo {
+				max-width: 150px;
+			}
+			.sct-static-link {
+				padding-top: 20px;
+				padding-bottom: 20px;
+				ul {
+					li {
+						display: inline-block;
+						vertical-align: middle;
+						padding-top: 7px;
+						padding-right: 10px;
+						a {
+							color: $light-grey-color;
+							&:hover{
+								color:$theme;
+							}
+						}
+					}
+				}
+			}
+			.sct-fot-address {
+				@media (max-width: 767px){
+					margin:20px 0px;
+				}
+				ul {
+					li {
+						position: relative;
+						padding-left: 30px;
+						color: $light-grey-color;
+						font-size: $font-body;
+						.fa {
+							position: absolute;
+							left: 0;
+							top: 2px;
+							font-size: 16PX;
+							color: $light-grey-color;
+						}
+						+ li {
+							margin-top: 20px;
+						}
+					}
+				}
+			}
+		}
+	}	
+    .o_footer_copyright{
+    	background-color: $dark-color;
+    	.sct-pd-0{
+    		padding-top:30px;
+    		padding-bottom:30px;
+    	}
+    	.sct-right-top-row {
+    		@media (max-width:991px){
+    			   @include all-flex;
+    		}
+			@media (max-width: 767px){
+				text-align: center;
+			}
+			.sct_left_side{
+				@media (max-width: 991px){
+					margin-top: 10px;
+				    @include order-1;
+				}
+				.links {
+					ul {
+						list-style-type:none;
+						li {
+							display: inline-block;
+							vertical-align: middle;
+							padding-bottom: 7px;
+							padding-right: 10px;
+							@media (max-width: 767px){
+								padding: 5px;
+							}
+							a {
+								color: $light-grey-color;
+								font-size:$fot-label;
+								font-weight:600;
+								&:hover{
+									color:$theme;
+								}
+							}
+						}
+					}
+				}
+			}
+			.sct-scocial-icon-footer{
+				text-align: right;
+				padding-right:0px;
+				@media (max-width: 767px){
+					text-align: center;
+				}
+				a {
+					margin-top: 0;
+					margin-bottom: 5px;
+					width: 25px;
+					height: 25px;
+					font-size: $font-body;
+					background: #949494;
+				    @include inline-flex;
+				    @include justify-align-content;
+				   	border-radius: 50%;
+				    color: #f1f1f1;
+				    margin-right: 5px;
+				    transition: all 0.5s ease;
+				    -webkit-transition: all 0.5s ease;
+				    &:hover{
+				    	background:#000;
+				    }
+				}
+			}
+		}	
+
+    }
+    .sct-fot-belt {
+		margin-top: 10px;
+		@include align-content;
+		@media (max-width:991px){
+		@include justify-content-column-flex;
+  			margin-top:0px;
+		}
+		.description{
+			font-size:$font-body;
+			@media (max-width:991px){
+			@include all-flex;
+				text-align:center !important;
+				@include order-1;
+				margin-top:10px;
+			}
+            @media (max-width:767px){
+				font-size:$font-base-label;
+			}
+			@media (max-width:576px){
+				text-align:center !important;
+			}
+			.o_footer_copyright_name{
+				margin-right: 0px !important;
+				@include order-1;
+				margin-top: 10px;
+				color:$light-color;
+				@media (max-width:991px){
+					display:inline-block;
+					@include order-2;
+
+				}
+			}
+			.js_language_selector{
+				@media (max-width:767px){
+					@include justify-center-flex;
+				}
+				>.list-inline{
+				 	> a{
+				 		color:$light-color;
+				 		font-size:$font-base-label;
+				 	}
+				 }
+			 }
+			 .js_language_selector > .btn-outline-secondary {
+				color:$light-color;
+			}
+		}
+		.sct-payment-icons{
+			span{
+				display: inline-block;
+			    vertical-align: top;
+			    width: 40px;
+			    margin-right: 5px;
+			    &:last-child{
+			    	margin-right:0px;
+			    }
+			}
+			@media (max-width:991px){
+		         margin:10px 0px;
+			}
+		}
+	}	
+}
+.o_footer_copyright .row > div{
+	@media (max-width:991px){
+		justify-content: center;
+   		align-items: center;
+    	display: flex;
+	}
+}

@@ -1,0 +1,70 @@
+<odoo>
+    <template id="portal_my_home_menu_exam" name="Portal layout : exam menu entries" inherit_id="portal.portal_breadcrumbs" priority="30">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'exam'" t-attf-class="breadcrumb-item #{'active ' if not exam else ''}">
+                <a t-if="exam" t-attf-href="/my/exams?{{ keep_query() }}">Estudios</a>
+                <t t-else="">Estudios</t>
+            </li>
+            <li t-if="exam" class="breadcrumb-item active">
+                <t t-esc="exam.id"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_exam" name="Mostrar estudios" inherit_id="portal.portal_my_home" priority="100">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Estudios</t>
+                <t t-set="url" t-value="'/my/exams'"/>
+                <t t-set="placeholder_count" t-value="'exam_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_my_exams" name="Mis estudios">
+      <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+        <t t-call="portal.portal_searchbar">
+            <t t-set="title">Estudios</t>
+        </t>
+        <t t-if="requested_redirect">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                ¡Hemos solicitado tus estudios! Te enviaremos una notifiación a tu correo electrónico cuando estén listos para descargar.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">x</span>
+                </button>
+            </div>
+        </t>
+        <t t-if="not exams">
+            <p>No tiene estudios en su cuenta.</p>
+        </t>
+        <t t-if="exams" t-call="portal.portal_table">
+            <thead>
+                <tr class="active">
+                    <th>Fecha</th>
+                    <th/>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="exams" t-as="exam">
+                    <tr>
+                        <td><span t-field="exam.date_crm" t-options="{'widget': 'date'}"/></td>
+                        <td>
+                            <t t-if="exam.exam_status_id.code == 'no_solicitado'">
+                                <a class="btn btn-primary" title="Solicitar" t-attf-href="/my/exams/{{ exam.id }}/request">Solicitar</a>
+                            </t>
+                            <t t-if="exam.exam_status_id.code == 'generado'">
+                                <a class="btn btn-primary" title="Descargar" t-att-href="exam.drive_file" target="_blank">Descargar</a>
+                            </t>
+                            <t t-if="exam.exam_status_id.code == 'solicitado'">
+                                <span class="text-secondary font-italic">Solicitado. En espera de que se suba el archivo.</span>
+                            </t>
+                        </td>
+                    </tr>
+                </t>
+            </tbody>
+        </t>
+      </t>
+    </template>
+</odoo>

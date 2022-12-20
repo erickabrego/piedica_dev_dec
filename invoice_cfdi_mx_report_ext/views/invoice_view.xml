@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="invoice_form_inherit" model="ir.ui.view">
+      <field name="name">terms.invoice.form</field>
+      <field name="model">account.move</field>
+      <field name="inherit_id" ref="account.view_move_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//label[@for='journal_id']" position="before">
+          <label for="invoice_term_manual"/>
+          <div class="d-flex">
+          <field name="invoice_term_manual"/>
+          </div>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,157 @@
+footer{
+     background: #ededed;
+}
+.footer-content{
+	@media (max-width: 991px){
+		padding-bottom: 40px;
+	}
+	.col-lg-3 {
+		padding-top: 70px;
+		@media (max-width: 1366px){
+			padding-top: 60px;
+		}
+		@media (max-width: 1179px){
+			padding-top: 40px;
+		}
+		@media (max-width: 767px){
+			padding-top: 30px;
+		}
+		ul {
+			li {
+				a {
+					display: inline-block;
+				}
+				+ li {
+					a {
+						margin-top: 20px;
+					}
+				}
+			}
+		}
+	}
+	.sct-fot-address {
+		background: #c3ae9c;
+		padding: 38px 40px;
+		@media (max-width: 1366px){
+			padding: 30px 20px;
+		}
+		ul {
+			padding: 50px 0;
+			@media (max-width: 1366px){
+				padding: 30px 0;
+			}
+			li {
+				position: relative;
+				color: $body-color;
+				font-size: $fot-label;
+				padding-left: 30px;
+				.fa {
+					position: absolute;
+					left: 0;
+					top: 2px;
+					font-size: 20px;
+					color: #eee8e3; 
+				}
+				+ li {
+					margin-top: 15px;
+				}
+			}
+		}
+		.sct-scocial-icon-footer {
+			a {
+				background: #eee8e3;
+				color: #c3ae9c;
+				&:hover{
+					background: $dark-color;
+				}
+			}
+		}
+	}
+	.sct-fot-about {
+		p {
+			color: fade-out($body-color, 0.5);
+			font-weight: 600;
+			margin-bottom: 0;
+		}
+	}
+	.sct-fot-about, .sct-service-link {
+		padding-left: 4%;
+		@media (max-width: 767px){
+			padding-left: 15px;
+		}
+	}
+	.sct-service-link {
+		@media (min-width: 768px) and (max-width: 991px){
+			padding-left: 0;
+		}
+	}
+	h4 {
+		margin-bottom: 25px;
+	}
+}
+.o_footer_copyright{
+	background:#fff;
+	.sct-fot-belt {
+	      padding: 30px 0px;
+	      @media (max-width:991px){
+	      @include align-content-column-flex;
+	      	padding:20px 0px;
+	      }
+	   .sct-copyright-text{
+			padding-left: 0;
+			color: fade-out($body-color, 0.5);
+			font-size:$font-size-base;
+			span{
+				@media (max-width:991px){
+					@include order-2;
+				}
+			}
+			@media (max-width:991px){
+			@include order-2;
+			 width: 100%;
+			 text-align:center !important;
+			 @include all-flex;
+			}
+			.js_language_selector{
+				@media (max-width:991px){
+					margin:10px 0px;	
+				}
+				>.list-inline{
+				 	> a{
+				 		color:$body-color;
+				 		font-size:$font-base-label;
+				 	}
+				 }
+			}
+		}
+
+	.sct-payment-icons {
+        @media (max-width: 767px){
+			width: 100%;
+			text-align: center;
+		}
+		span {
+			display: inline-block;
+			vertical-align: top;
+			width: 40px;
+			margin-right: 5px;
+
+			&:last-child {
+				margin-right:0;
+				}
+			}
+		}
+
+		.js_language_selector > .btn-outline-secondary {
+			color:$body-color;
+		}
+		.js_language_selector > .btn-outline-secondary:hover:after {
+			color:$light-color;
+		}
+		.js_language_selector > .btn-outline-secondary:hover span {
+			color:$light-color;
+		}
+	
+	}
+
+}

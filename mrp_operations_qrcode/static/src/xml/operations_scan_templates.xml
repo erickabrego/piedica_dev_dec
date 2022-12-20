@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="operations_scan">
+        <div class="operations_scan_container">
+
+        </div>
+    </t>
+
+
+    <t t-name="operations_lines">
+        <div class="operations_lines">
+            <div class="d-flex flex-column justify-content-center align-items-center bg-800">
+                <div class="position-relative text-center mt-2">
+                    <i class="fa fa-qrcode qr-icon"/>
+                </div>
+                <div class="mb-3">
+                    <span>Escanear plantillas</span>
+                </div>
+            </div>
+            <div class="qr_lines d-block"></div>
+        </div>
+    </t>
+
+
+    <t t-name="operations_line">
+        <div class="operations_line list-group-item d-flex flex-row flex-nowrap">
+            <div class="flex-grow-1 flex-column flex-nowrap">
+                <div class="pb-2">
+                    <i class="fa fa-clipboard"/>
+                    <span class="order_name" t-esc="widget.mrp_order.name"/>
+                </div>
+                <div class="pb-2">
+                    <i class="fa fa-archive"/>
+                    <span class="product_name font-weight-bold" style="color: #6621B4;" t-esc="widget.mrp_order.product_id.name"/>
+                </div>
+                <div>
+                    <i class="pb-2 fa fa-cogs"/>
+                    <span class="product_components font-weight-bold" style="color: #B46F21;" t-esc="widget.components"/>
+                </div>
+                <div>
+                    <i class="pb-2 fa fa-expand"/>
+                    <span class="insole_size font-weight-bold" style="color: #76B421;" t-esc="widget.insole_size"/>
+                </div>
+                <!--Se añade la liga de la plantilla-->
+                <div>
+                    <i class="pb-2 fa fa-link"/>
+                    <a class="design_link" t-esc="widget.mrp_order.p_design_link" t-att-href="widget.mrp_order.p_design_link" target="_blank"/>
+                </div>
+            </div>
+            <div class="flex d-flex flex-column flex-nowrap justify-content-center align-items-end mw-25">
+                <div class="">
+                    <div class="pb-2">
+                        <i class="fa fa-cog"/>
+                        <div class="order_operation d-inline-block">
+                            <t t-if="widget.mrp_order.p_to_send">
+                                <span class="badge badge-pill o_field_badge o_field_widget bg-success-light">Lista para envío</span>
+                            </t>
+                            <t t-else="">
+                                <span class="operation_name" t-esc="widget.operation_name"/>
+                                <span t-esc="widget.operation_state" t-attf-class="operation_state badge badge-pill o_field_badge o_field_widget #{widget.operation_state_color}"/>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="pb-2">
+                        <i class="fa fa-clock-o"/>
+                        <span class="operation_duration" t-esc="widget.operation_duration" />
+                        <span class="time-divider">/</span>
+                        <span class="operation_duration_expected" t-esc="widget.operation_duration_expected"/>
+                    </div>
+                    <div class="pb-2">
+                        <i class="fa fa-hashtag"/>
+                        <span class="order_count" t-esc="widget.mrp_order.order_count"/>
+                    </div>
+                </div>
+                <div class="observations_container">
+                    <span class="operation_observations" t-esc="widget.observations"/>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

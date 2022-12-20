@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="p_products" string="Productos">
+                    <group>
+                        <group>
+                            <field name="is_custom"/>
+                            <field name="prod34"/>
+                            <field name="prod_production_type_id"/>
+                            <field name="prod_material_subtype_id"/>
+                        </group>
+                        <group>
+                            <field name="prod_prod_use_list_ids" widget="many2many_tags"/>
+                            <field name="prod_design_type" widget="many2many_tags"/>
+                            <field name="prod_shape_list_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </page>
+                <page name="p_materials" string="Materiales">
+                    <group>
+                        <group>
+                            <field name="is_material"/>
+                            <field name="matSupplierName"/>
+                            <field name="matSupplier"/>
+                            <field name="matAlias"/>
+                            <field name="matName"/>
+                        </group>
+                        <group>
+                            <field name="matMaterialType"/>
+                            <field name="matMaterialSubType"/>
+                            <field name="matShoreA"/>
+                            <field name="matHardness"/>
+                            <field name="matColor" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="matThickness"/>
+                            <field name="matTopLayer"/>
+                            <field name="matMainLayer"/>
+                            <field name="matMidLayer"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

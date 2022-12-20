@@ -1,0 +1,50 @@
+.operations_scan_container {
+    height: 100%;
+
+    .operations_lines {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .qr-icon {
+            font-size: 4rem;
+            color: #8f8f8f;
+        }
+
+        .qr_lines {
+            overflow: auto;
+        }
+    }
+
+    .operations_line {
+        color: #212529;
+        box-shadow: 0 3px 10px #dee2e6;
+        position: relative;
+        cursor: pointer;
+        z-index: 100;
+
+        .fa:first-child {
+            opacity: 0.5;
+            margin-right: 10px;
+        }
+
+        .operation_duration, .operation_duration_expected {
+            font-weight: 500;
+        }
+
+        .time-divider {
+            padding: 0 0.3rem;
+        }
+
+        .observations_container {
+            position: relative;
+            line-height: 1.5rem;
+            max-height: 3rem;
+            overflow: hidden;
+        }
+
+        .mw-25 {
+            max-width: 25%;
+        }
+    }
+}

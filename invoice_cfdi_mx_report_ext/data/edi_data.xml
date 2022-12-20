@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="email_template_edi_invoice_piedica" model="mail.template">
+      <field name="name">Factura Timbrada: Enviar por Email</field>
+      <field name="model_id" ref="account.model_account_move"/>
+      <field name="email_from">${(object.invoice_user_id.email_formatted or user.email_formatted) |safe}</field>
+      <field name="partner_to">${object.partner_id.id}</field>
+      <field name="subject">${object.company_id.name} Factura (Ref ${object.name or 'n/a'})</field>
+      <field name="body_html" type="html">
+        <div style="margin: 0px; padding: 0px;">
+          <p style="margin: 0px; padding: 0px; font-size: 13px;">
+            Estimado/a:
+            % if object.partner_id.parent_id:
+            ${object.partner_id.name} (${object.partner_id.parent_id.name}),
+            % else:
+            ${object.partner_id.name},
+            % endif
+            <br/>
+            <br/>
+            Sírvase encontrar su
+            % if object.name:
+            factura
+            <strong>${object.name}</strong>
+            % else:
+            factura
+            %endif
+            % if object.invoice_origin:
+            (con referencia: ${object.invoice_origin})
+            % endif
+            por un monto de
+            <strong>${format_amount(object.amount_total, object.currency_id)}</strong>
+            de ${object.company_id.name}.
+            % if object.payment_state in ('paid', 'in_payment'):
+            Esta factura ya ha sido pagada.
+            % else:
+            Por favor realice su pago a la mayor brevedad..
+            % if object.payment_reference:
+            <br/>
+            <br/>
+            Por favor utilice la siguiente referencia para su pago: <strong>${object.payment_reference}</strong>.
+            % endif
+            % endif
+            <br/>
+            <br/>
+            No dude en contactarnos si tiene alguna duda.
+            % if object.invoice_user_id.signature:
+            <br/>
+            ${object.invoice_user_id.signature | safe}
+            % endif
+          </p>
+        </div>
+      </field>
+
+      <!--field name="report_template" ref="invoice_cfdi_mx_report_ext.action_report_invoice_receipt_piedica"/-->
+      <field name="report_name">
+        Factura_${(object.name or '').replace('/','_')}${object.state == 'draft' and '_draft' or ''}
+      </field>
+      <field name="lang">${object.partner_id.lang}</field>
+      <field name="auto_delete" eval="True"/>
+    </record>
+  </data>
+</odoo>

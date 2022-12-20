@@ -1,0 +1,108 @@
+body header #top_menu_container{
+	flex-direction:unset;
+}
+header {
+	-webkit-box-shadow: 0px 10px 8px -6px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 10px 8px -6px rgba(0,0,0,0.2);
+	box-shadow: 0px 10px 8px -6px rgba(0,0,0,0.2);
+	.top-header {
+		border-bottom:1px solid #dadada;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		@media (max-width: 767px){
+			text-align: center;
+		}
+		a {
+			color: $dark-color;
+			font-size: $font-body;
+			&:hover{
+				color:$theme;
+			}
+			.fa {
+				padding-right: 5px;
+			}
+		}
+		.company_email {
+			text-align: right;
+			@media (max-width: 767px){
+				margin-top: 5px;
+				text-align: center;
+			}
+		}
+	}
+	&.o_header_affixed {
+		.top-header	{
+			display: none;
+		}
+	}
+	.navbar-expand-md {
+		background-color: $light-color !important;
+		padding: 0;
+		.container {
+			@media (max-width: 767px){
+				padding:10px 15px;
+				.navbar-brand {
+					img {
+						height: min-content;
+					}
+				}
+				.navbar-toggler {
+		    		border: none;
+		    		padding: 5px;
+		    		border-radius: 0;
+		    		position: absolute;
+		    		right: 15px;
+		    		top: 13px;
+		    		background-color: $dark-color;
+		    		&:hover, &:focus{
+		    			outline:none;
+		    			border: 0;
+		    		}
+		    	}
+		    	.navbar-toggler-icon {
+		    		background-image: url(../../img/light_burger.svg);
+		    		width: 25px;
+		    		height: 20px;
+		    	}
+			}
+		}
+		.navbar-collapse {
+			@media (max-width: 767px){
+				position: absolute;
+				top: 100%;
+				left: 0;
+				right: 0;
+				padding: 0 15px;
+				z-index: 9;
+				background-color: $dark-color;
+				max-height: 450px;
+			}
+			ul {
+				@media (max-width: 767px){
+					text-align: left !important;
+				}
+				li {
+					a {
+						padding-top: 20px;
+						padding-bottom: 20px;
+						&:hover, &.active{
+							color:$theme;
+						}
+						@media (max-width: 767px){
+							&.nav-link{
+								padding-top:10px;
+								padding-bottom:10px;
+								color: $light-color !important;
+							}
+						}
+					}
+					+ li {
+						@media (max-width: 767px){
+							border-top:1px solid $light-grey-color;
+						}
+					}
+				}
+			}
+		}
+	}
+}

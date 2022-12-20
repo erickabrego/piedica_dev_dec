@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="crm_status_action" model="ir.actions.act_window">
+        <field name="name">Estatus CRM</field>
+        <field name="res_model">crm.status</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="crm_status_menu" parent="sale.sale_menu_root"
+        action="crm_status_action" sequence="4"/>
+
+
+
+    <record id="crm_status_view_tree" model="ir.ui.view">
+        <field name="name">Estatus CRM List</field>
+        <field name="model">crm.status</field>
+        <field name="arch" type="xml">
+            <tree string="Estatus CRM">
+                <field name="name"/>
+                <field name="portal_label"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="crm_status_view_form" model="ir.ui.view">
+        <field name="name">Estatus CRM Form</field>
+        <field name="model">crm.status</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="portal_label"/>
+                        <field name="code"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="mc_pink" model="mat.color">
+            <field name="name">Pink</field>
+        </record>
+
+        <record id="mc_blue" model="mat.color">
+            <field name="name">Blue</field>
+        </record>
+
+        <record id="mc_beige" model="mat.color">
+            <field name="name">Beige</field>
+        </record>
+
+        <record id="mc_brown" model="mat.color">
+            <field name="name">Brown</field>
+        </record>
+
+        <record id="mc_gray_red" model="mat.color">
+            <field name="name">Gray &amp; Red</field>
+        </record>
+
+        <record id="mc_gray_black" model="mat.color">
+            <field name="name">Gray &amp; Black</field>
+        </record>
+
+        <record id="mc_gray_white" model="mat.color">
+            <field name="name">Gray &amp; White</field>
+        </record>
+
+        <record id="mc_white_gray" model="mat.color">
+            <field name="name">White &amp; gray</field>
+        </record>
+
+        <record id="mc_black_brown" model="mat.color">
+            <field name="name">Black &amp; brown</field>
+        </record>
+
+        <record id="mc_black" model="mat.color">
+            <field name="name">Black</field>
+        </record>
+
+        <record id="mc_white" model="mat.color">
+            <field name="name">White</field>
+        </record>
+
+        <record id="mc_green" model="mat.color">
+            <field name="name">Green</field>
+        </record>
+
+        <record id="mc_red" model="mat.color">
+            <field name="name">Red</field>
+        </record>
+
+        <record id="mc_gray" model="mat.color">
+            <field name="name">Gray</field>
+        </record>
+
+        <record id="mc_yellow" model="mat.color">
+            <field name="name">Yellow</field>
+        </record>
+
+        <record id="mc_conac" model="mat.color">
+            <field name="name">Coñac</field>
+        </record>
+
+        <record id="mc_oxford" model="mat.color">
+            <field name="name">Oxford</field>
+        </record>
+
+        <record id="mc_blue_white_swirl" model="mat.color">
+            <field name="name">Blue/White Swirl</field>
+        </record>
+
+        <record id="mc_white_black_swirl" model="mat.color">
+            <field name="name">White/Black Swirl</field>
+        </record>
+
+        <record id="mc_nightshade" model="mat.color">
+            <field name="name">Nightshade</field>
+        </record>
+    </data>
+</odoo>

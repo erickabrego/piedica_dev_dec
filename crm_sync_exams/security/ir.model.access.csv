@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+patient_exam,patient.exam,model_patient_exam,base.group_user,1,1,1,1
+access_patient_exam_portal,patient.exam.portal,crm_sync_exams.model_patient_exam,base.group_portal,1,0,0,0
+exam_status,exam.status,model_exam_status,base.group_user,1,1,1,1
+access_exam_status_portal,exam.status.portal,crm_sync_exams.model_exam_status,base.group_portal,1,0,0,0
+exam_status_history,exam.status.history,model_exam_status_history,base.group_user,1,1,1,1

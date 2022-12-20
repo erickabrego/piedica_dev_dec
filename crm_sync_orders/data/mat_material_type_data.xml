@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="mmt_eva" model="mat.material.type">
+            <field name="name">EVA</field>
+        </record>
+
+        <record id="mmt_latex" model="mat.material.type">
+            <field name="name">Latex</field>
+        </record>
+
+        <record id="mmt_foamular" model="mat.material.type">
+            <field name="name">FOAMULAR</field>
+        </record>
+
+        <record id="mmt_poron" model="mat.material.type">
+            <field name="name">Poron</field>
+        </record>
+
+        <record id="mmt_premium" model="mat.material.type">
+            <field name="name">Premium</field>
+        </record>
+
+        <record id="mmt_resine" model="mat.material.type">
+            <field name="name">Resine</field>
+        </record>
+
+        <record id="mmt_polypropylene" model="mat.material.type">
+            <field name="name">Polypropylene</field>
+        </record>
+
+        <record id="mmt_pelite" model="mat.material.type">
+            <field name="name">Pelite</field>
+        </record>
+
+        <record id="mmt_cover" model="mat.material.type">
+            <field name="name">Cover</field>
+        </record>
+    </data>
+</odoo>

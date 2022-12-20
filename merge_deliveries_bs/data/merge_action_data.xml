@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="action_server_merge_deliveries" model="ir.actions.server">
+            <field name="name">Merge Deliveries</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_stock_picking"/>
+            <field name="binding_model_id" ref="model_stock_picking"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.select_deliveries_to_merge()</field>
+        </record>
+    </data>
+</odoo>

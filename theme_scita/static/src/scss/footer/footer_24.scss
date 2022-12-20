@@ -1,0 +1,112 @@
+footer {
+	background-color: $dark-color;
+	.footer-content {
+		padding:50px 0 0px;
+		@media (max-width: 991px){
+			padding: 30px 0 0px;
+		}
+		.sct-top-row {
+			.nav {
+				background-color: $light-grey-color;
+				-ms-flex-pack: distribute;
+				justify-content: space-around;
+				padding: 20px 10px;
+				@media (max-width: 575px){
+					padding-bottom: 5px;
+				}
+				.text-icons {
+					text-align: center;
+					font-size: $font-body;
+					width: 25%;
+					color:$dark-color;
+					@media (max-width: 767px){
+						width: 33%;
+					}
+					@media (max-width: 575px){
+						width: 100%;
+						margin-bottom:15px;
+					}
+					.fa {
+						display: block;
+						margin: auto;
+						text-align: center;
+						margin-bottom: 10px;
+					}
+					&.sct-mail {
+						word-break: break-all;
+						word-wrap: break-word;
+					}
+				}
+			}
+		}
+		.sct-middle-row {
+			text-align: center;
+			padding-bottom: 20px;
+			ul {
+				li {
+					display: inline-block;
+					padding: 10px;
+					a {
+						color: $light-grey-color;
+						&:hover{
+							color:$theme;
+						}
+					}
+				}
+			}
+			.sct-scocial-icon-footer {
+				text-align: left;
+				margin-top: 10px;
+				@media (max-width: 767px){
+					text-align: center;
+				}
+				a {
+					margin-top: 0;
+					margin-bottom: 5px;
+				}
+			}
+			.sct-payment-icons {
+				text-align: right;
+				margin-top: 10px;
+				@media (max-width: 767px){
+					text-align: center;
+				}
+			}
+		}
+		
+	}
+}
+.o_footer_copyright{
+	.sct-fot-belt{
+		padding: 20px 0px 30px;
+		@media (max-width:991px){
+			padding:20px 0px;
+		}
+	}
+	.sct-copyright-text{
+	    .o_footer_copyright_name{
+			color: $light-grey-color;
+			font-size:$font-body;
+		}  
+	 @media (max-width:991px){
+		@include all-flex;
+	 }
+     >span{
+			font-size:$font-body;
+			@include order-2;
+			margin-top:10px;
+		}
+	   .js_language_selector{
+			>.list-inline{
+				 > a{
+					 	color:$light-color;
+					 	font-size:$font-base-label;
+				 }
+			}
+			>.btn{
+				color:$light-color;
+			}
+	     }
+	}
+}
+

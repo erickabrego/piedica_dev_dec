@@ -1,0 +1,122 @@
+footer {
+	background-color: #f0f0f0;
+	.footer-content {
+		.sct-top-row {
+			padding-bottom: 30px;
+			.sct-top {
+				padding:30px 0px;
+			}
+			.sct-foot-logo {
+				a {
+					max-width: 200px;
+					display: block;
+					@media (max-width: 575px){
+						margin: auto;
+					}
+				}
+			}
+			.sct-payment-icons {
+				-ms-flex-item-align: center;
+				-ms-grid-row-align: center;
+				align-self: center;
+				text-align: right;
+				@media (max-width: 575px){
+					text-align: center;
+					margin-top: 10px;
+				}
+			}
+			.sct-bottom {
+				.sct-links {
+					margin-top: 30px;
+					h4 {
+						text-transform: uppercase;
+						margin-bottom: 20px;
+					}
+					ul {
+						li {
+							+ li {
+								margin-top: 15px;
+							}
+						}
+					}
+				}
+			}
+		}	
+	}
+}
+.o_footer_copyright{
+	background-color: $dark-color;
+    .sct-fot-belt{
+		padding:30px 0;
+		@media (max-width:991px){
+			@include all-flex;
+		}
+		.sct-fot-address {
+			@media (max-width: 767px){
+				text-align: center;
+				@include order-1;
+				margin: 10px 0;
+			}
+			ul {
+				list-style-type:none;
+				li {
+					font-size: $font-body;
+					color: $light-grey-color;
+				}
+			}
+		}
+		.description{
+			@media (max-width:991px){
+				@include all-flex;
+				@include order-1;
+			}
+			text-align:center !important;
+			.o_footer_copyright_name{
+				font-size: $font-body;
+				color: $light-grey-color;
+				@media (max-width:991px){
+					@include order-1;
+					margin-top: 10px;		
+				}
+			}
+			.js_language_selector{
+				@media (max-width:991px){
+					margin-top:0px;
+				}
+				>.list-inline{
+					 > a{
+							 color:$light-grey-color;
+							 font-size:$font-base-label;
+					 }
+				}
+				>.btn{
+					color:$light-color;
+				}
+			 }
+		}
+		.sct-scocial-icon-footer {
+		text-align: right;
+		@media (max-width: 767px){
+			text-align: center;
+		}
+		a {
+			margin-top: 0;
+			margin-bottom: 5px;
+			width:34px;
+			height:34px;
+			font-size: $font-body + 5;
+			background: #949494;
+			@include inline-flex;
+			@include justify-align-content;
+			border-radius: 50%;
+			color: #f1f1f1;
+			margin-right: 5px;
+			transition: all 0.5s ease;
+			-webkit-transition: all 0.5s ease;
+			&:hover{
+				    background:#000;
+			}				
+		}
+	}
+  }	
+}

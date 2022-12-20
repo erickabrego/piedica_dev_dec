@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="pms_eva" model="prod.material.subtype">
+            <field name="name">EVA</field>
+        </record>
+
+        <record id="pms_eva_latex" model="prod.material.subtype">
+            <field name="name">EVA Latex</field>
+        </record>
+
+        <record id="pms_eva_multilayer" model="prod.material.subtype">
+            <field name="name">EVA multilayer</field>
+        </record>
+
+        <record id="pms_pelite" model="prod.material.subtype">
+            <field name="name">Pelite</field>
+        </record>
+
+        <record id="pms_resine" model="prod.material.subtype">
+            <field name="name">Resine</field>
+        </record>
+
+        <record id="pms_poly" model="prod.material.subtype">
+            <field name="name">Poly</field>
+        </record>
+    </data>
+</odoo>

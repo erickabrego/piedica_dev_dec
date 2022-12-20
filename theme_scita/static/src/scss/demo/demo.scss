@@ -1,0 +1,31 @@
+.ready-demo-sec {
+	padding: 50px 0 20px;
+	.sct-title {
+		text-align: center;
+		font-size: 30px;
+		font-weight: bold;
+		margin-bottom: 30px;
+	}
+	.sct-thumb {
+		text-align: center;
+		margin-bottom: 30px;
+		> a {
+			display: block;
+			img {
+				-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+    			box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+    			border-radius: 6px;
+			}
+		}
+		.sct-sub-title {
+			margin-top: 20px;
+			margin-bottom: 0;
+			text-align: center;
+			a {
+			    display: inline-block;
+			    color: #202020;
+			    font-size: 18px;
+			}
+		}
+	}
+}

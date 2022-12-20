@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="estatus_no_solicitado" model="exam.status">
+            <field name="code">no_solicitado</field>
+            <field name="name">No solicitado</field>
+        </record>
+
+        <record id="estatus_solicitado" model="exam.status">
+            <field name="code">solicitado</field>
+            <field name="name">Solicitado</field>
+        </record>
+
+        <record id="estatus_generado" model="exam.status">
+            <field name="code">generado</field>
+            <field name="name">Generado</field>
+        </record>
+    </data>
+</odoo>

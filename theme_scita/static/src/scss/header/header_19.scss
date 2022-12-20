@@ -1,0 +1,225 @@
+header {
+	.top-header {
+		padding: 15px 0;
+		.cstm-top-row {
+			padding-bottom: 10px;
+			margin-bottom: 20px;
+			border-bottom: 1px solid $dark-color;
+			@media (max-width: 767px){
+				display: none;
+			}
+			.company_phone {
+				text-align: left;
+			}
+			.company_email {
+				text-align: right;
+			}
+			a { 
+				font-size: $font-body;
+				color: $dark-color;
+				&:hover{
+					color:$theme;
+				}
+			}
+		}
+		.logo-sec {
+			@include flex;
+			@include flexwrap;
+			@media (max-width: 767px){
+				.logo {
+					img {
+						height: min-content;
+					}
+				}
+			}
+		}
+		.cstm-header-search {
+			@media (max-width: 767px){
+				-webkit-box-ordinal-group: 2;
+				-ms-flex-order: 1;
+				order: 1;
+			}
+			.header-search {
+				max-width: 350px;
+				margin-left: auto;
+				margin-right: auto;
+				@media (max-width: 991px) {
+					max-width: 250px;
+				}
+				@media (max-width: 767px){
+					width:100%;
+					max-width:100%;
+					margin-top:10px;
+				}
+				.input-group-append {
+					position: absolute;
+					right: 0;
+					z-index: 9;
+					top: 0;
+					bottom: 0;
+				}
+			}
+		}
+		.cstm-cart-icon {
+			.h-cart {
+				ul {
+					-webkit-box-pack: end;
+					-ms-flex-pack: end;
+					justify-content: flex-end;
+					li {
+						position: relative;
+						a {
+							color: $dark-color;
+							font-size: $font-body + 1;
+							&:hover {
+								color:$theme;
+							}
+						}
+						+ li {
+							margin-left: 15px;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.o_header_affixed {
+		.top-header	{
+			display: none;
+		}
+	}
+	.navbar-expand-md {
+		padding: 0;
+		background-color: $dark-color !important;
+		@media (max-width: 767px){
+			.container {
+				padding: 10px 15px;
+				.navbar-toggler {
+		    		background-color: transparent;
+		    		border:none;
+		    		padding: 0;
+		    	}
+		    	.navbar-toggler-icon {
+		    		background-image: url(../../img/light_burger.svg);
+		    		width: 30px;
+		    		height: 30px;
+		    	}
+		    	.navbar-collapse{
+		    		position: absolute;
+				    left: 0;
+				    right: 0;
+				    z-index: 9;
+				    top: 100%;
+				    background: $dark-color;
+				    max-height: 450px;
+		    	}
+			}
+		}
+		#top_menu {
+			flex-grow: 1;
+			@media (max-width: 767px){
+				text-align: left !important;
+			}
+			li {
+				a.nav-link {
+					padding: 15px 10px;
+					color: $light-color;
+					&:hover, &.active{
+						background-color:$theme;
+					}
+					@media (max-width: 767px){
+						padding:10px;
+					}
+				}
+			}
+		}
+		.menu_right {
+			@include flex;
+			@include flexwrap;
+			@include align-content;
+			-webkit-box-pack: end;
+			-ms-flex-pack: end;
+			justify-content: flex-end;
+			flex:0 0 40%;
+			max-width: 40%;
+			@media (max-width: 767px){
+				flex:0 0 80%;
+				max-width: 80%;
+			}
+			.personal-info {
+				ul {
+					li {
+						a {
+							font-size: $font-body;
+							color: $light-color;
+							@media (max-width: 767px){
+								font-size: $font-body - 2;
+							}
+							&:hover{
+								color:$theme;
+							}
+						}
+						+ li {
+							margin-left: 15px;
+							@media (max-width: 767px){
+								margin-left: 10px;
+							}
+						}
+					}
+				}
+			}
+			.btn-group {
+				.js_language_selector  {
+					margin-left: 15px !important;
+					@media (max-width: 1199px){
+						display: none;
+					}
+					.dropdown-toggle {
+						padding: 0;
+						margin-left: 0;
+						font-size: $font-body;
+						color: $light-color;
+						background: transparent;
+						&:hover, &:focus {
+							box-shadow:none;
+						}
+						&:hover {
+							color:$theme;
+						}
+						@media (max-width: 767px){
+							margin-left: 8px;
+						}
+					}
+					.list-inline {
+						.list-inline-item {
+							color:$light-color;
+							font-size: 13px;
+							display: inline-block;
+							margin-right: 0;
+							&:hover {
+								color:$theme;
+							}
+						}
+					}
+				}
+				.currency_bar {
+					margin-left: 15px;
+					@media (max-width: 767px){
+						margin-left: 10px;
+					}
+					.dropdown-toggle {
+						padding: 0;
+						font-size: $font-body;
+						color: $light-color;
+						@media (max-width: 767px){
+							font-size: $font-body - 2;
+						}
+						&:hover{
+							color:$theme;
+						}
+					}
+				}
+			}
+		}
+	}
+}

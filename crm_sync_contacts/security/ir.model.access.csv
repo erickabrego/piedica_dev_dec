@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_partner_crm_sync,res_partner_crm_sync,model_res_partner_crm_sync,base.group_user,1,1,1,1
+access_res_partner_crm_sync_line,res_partner_crm_sync_line,model_res_partner_crm_sync_line,base.group_user,1,1,1,1
+access_sale_order_crm_sync,sale_order_crm_sync,model_sale_order_crm_sync,base.group_user,1,1,1,1
+access_sale_order_crm_sync_line,sale_order_crm_sync_line,model_sale_order_crm_sync_line,base.group_user,1,1,1,1
+access_sale_order_crm_sync_product_line,sale_order_crm_sync_product_line,model_sale_order_crm_sync_product_line,base.group_user,1,1,1,1

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Inherit Form View to Modify it -->
+<record id="view_account_journal_form_ext" model="ir.ui.view">
+    <field name="name">inh.view_account_journal_form</field>
+    <field name="model">account.journal</field>
+    <field name="inherit_id" ref="account.view_account_journal_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='country_code']" position="after">
+            <field name="is_default_journal"/>
+        </xpath>
+    </field>
+</record>
+</odoo>

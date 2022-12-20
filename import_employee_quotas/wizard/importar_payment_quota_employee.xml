@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="importar_produbanco_view" model="ir.ui.view">
+            <field name="name">Importar</field>
+            <field name="model">import.payment.quota.employee</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Import payment quota employee">
+                    <group>
+                        <group>
+                            <field name="excel"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" class="btn btn-outline-primary"
+                                icon='fa-times-circle'/>
+                        <button name="importar" string="Import" type="object" class="btn btn-outline-primary"
+                                icon='fa-upload'/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

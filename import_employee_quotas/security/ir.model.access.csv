@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payment_quota_employee,payment.quota.employee,model_payment_quota_employee,base.group_user,1,1,1,1
+access_payment_quota_employee_line,payment.quota.employee.line,model_payment_quota_employee_line,base.group_user,1,1,1,1
+access_import_payment_quota_employee,import.payment.quota.employee,model_import_payment_quota_employee,base.group_user,1,1,1,1
+

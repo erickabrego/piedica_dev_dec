@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="res_partner_contact_sync_button_crm" model="ir.ui.view">
+            <field name="name">res.partner.contact.sync.button</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="sync_contact_crm" string="Sincronizar CRM" type="object" attrs="{'invisible':['|',('id_crm','!=',False),('id','=',False)]}" class="btn btn-primary oe_edit_only"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+        <!--Email template -->
+        <record id="exams_requested_email_template" model="mail.template">
+            <field name="name">Estudios solicitados</field>
+            <field name="model_id" ref="crm_sync_exams.model_patient_exam"/>
+            <field name="email_from">Piédica</field>
+            <field name="email_to">${object.user_id.email}</field>
+            <field name="subject">Un paciente ha solicitado sus estudios</field>
+            <field name="body_html" type="html">
+                <h1>Hola ${object.user_id.name}!</h1>
+                <p>
+                    El paciente ${object.partner_id.name} ha solicitado sus estudios.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

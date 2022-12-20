@@ -1,0 +1,90 @@
+footer {
+	background-color: $dark-color;
+	.footer-content {
+		padding: 50px 0 0px;
+		@media (max-width: 767px){
+			padding: 30px 0 0px;
+		}
+		.sct-top-row {
+			margin-bottom: 30px;
+			.sct-foot-logo {
+				a {
+					max-width: 150px;
+					margin-left: auto;
+					margin-right: auto;
+					display: block;
+				}
+			}
+		}
+		.sct-middle-row {
+			padding:30px 0px;
+			.sct-links {
+				margin-bottom: 20px;
+				ul {
+					text-align: center;
+					li {
+						display: inline-block;
+						vertical-align: middle;
+						padding: 5px;
+						a {
+							color: $light-grey-color;
+							&:hover{
+								color:$theme;
+							}
+						}
+					}
+				}
+			}
+			.sct-scocial-icon-footer {
+				@media (max-width: 767px){
+					text-align: center;
+				}
+				a {
+					margin-top: 0;
+					margin-bottom: 5px;
+				}
+			}
+			.sct-payment-icons {
+				text-align: right;
+				@media (max-width: 767px){
+					text-align: center;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}
+.o_footer_copyright{
+	.sct-fot-belt{
+		padding:30px 0px;
+		@media (max-width:991px){
+			padding:30px 0px 20px;
+		}
+	}
+	.sct-copyright-text{
+	    .o_footer_copyright_name{
+			color: $light-grey-color;
+			font-size:$font-body;
+		}  
+	 @media (max-width:991px){
+		@include all-flex;
+	 }
+     >span{
+			font-size:$font-body;
+			@include order-2;
+			margin-top:10px;
+		}
+	   .js_language_selector{
+			>.list-inline{
+				 > a{
+					 	color:$light-color;
+					 	font-size:$font-base-label;
+				 }
+			}
+			>.btn{
+				color:$light-color;
+			}
+	     }
+	}
+}
+

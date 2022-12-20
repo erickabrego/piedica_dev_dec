@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="config_expense_view_tree" model="ir.ui.view">
+    <field name="name">config_expense_view_tree</field>
+    <field name="model">config.expense</field>
+    <field name="arch" type="xml">
+      <tree string="config_expense_tree">
+        <field name="tax_account_id"/>
+        <field name="tax_account_refund_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="config_expense_view_form" model="ir.ui.view">
+    <field name="name">config_expense_view_form</field>
+    <field name="model">config.expense</field>
+    <field name="arch" type="xml">
+      <form string="config_expense_form">
+        <sheet>
+          <group>
+            <field name="tax_account_id"/>
+            <field name="tax_account_refund_id"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="config_expense_act_window" model="ir.actions.act_window">
+    <field name="name">Settings</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">config.expense</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem name="Configuration" id="expense_config_menu" sequence="20"
+            parent="expense_cust_menu" groups="ateneolab_expense.group_p_expenses_manager"
+            action="config_expense_act_window"/>
+</odoo>
