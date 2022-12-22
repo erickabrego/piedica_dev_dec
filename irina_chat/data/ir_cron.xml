@@ -34,5 +34,43 @@ model.notify_irina_hours_before(events)
             <field name="numbercall">-1</field>
             <field eval="False" name="doall"/>
         </record>
+
+        <record forcecreate="True" id="ir_cron_irina_chat_10_renewal" model="ir.cron">
+            <field name="name">Notificación de renovación después de 10 meses</field>
+            <field name="model_id" ref="model_stock_picking"/>
+            <field name="state">code</field>
+            <field name="code">
+current_date = datetime.datetime.now() - datetime.timedelta(months=10) - datetime.timedelta(hours=24)
+date_offset = current_date + datetime.timedelta(hours=24)
+orders_to_renewal = env["stock.picking"].sudo().search([('state','=','done'),('sale_id.partner_id.x_studio_es_paciente','=',True),('x_10_months_renewal_sent','=',False),("date_done","&gt;=",current_date.strftime("%d-%m-%Y")),("date_done","&lt;=",date_offset.strftime("%d-%m-%Y"))])
+for order in orders_to_renewal:
+    order.generate_irina_template('piedica_renovacion_anticipada',0)
+    order.x_10_months_renewal_sent = True
+            </field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+
+        <record forcecreate="True" id="ir_cron_irina_chat_12_renewal" model="ir.cron">
+            <field name="name">Notificación de renovación después de 12 meses</field>
+            <field name="model_id" ref="model_stock_picking"/>
+            <field name="state">code</field>
+            <field name="code">
+current_date = datetime.datetime.now() - datetime.timedelta(months=12) - datetime.timedelta(hours=24)
+date_offset = current_date + datetime.timedelta(hours=24)
+orders_to_renewal = env["stock.picking"].sudo().search([('state','=','done'),('sale_id.partner_id.x_studio_es_paciente','=',True),('x_10_months_renewal_sent','=',False),("date_done","&gt;=",current_date.strftime("%d-%m-%Y")),("date_done","&lt;=",date_offset.strftime("%d-%m-%Y"))])
+for order in orders_to_renewal:
+    order.generate_irina_template('piedica_plantillas_no_renovadas',0)
+    order.x_12_months_renewal_sent = True
+            </field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
     </data>
 </odoo>
