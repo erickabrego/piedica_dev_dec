@@ -32,9 +32,16 @@ class CalendarEvent(models.Model):
                     #Se envia mensaje de confirmación
                     rec.send_irina_message(template="piedica_cita_confirmada",parameters=1)
             if vals.get("x_studio_paciente_asisti_a_cita"):
-                if rec.x_studio_paciente_asisti_a_cita:
+                if rec.x_studio_paciente_asisti_a_cita and rec.x_studio_servicios_1 not in ["Cita para revisión de plantillas ortopédicas (Ya en uso)",
+                                                                                            "Elaboración de plantillas ortopédicas personalizadas, con receta médica (Sin estudio)",
+                                                                                            "Primera visita fisioterapia"]:
                     #Se envia mensaje de asistencia
                     rec.send_irina_message(template="piedica_asistencia_cita",parameters=1, buttons=0)
+                elif rec.x_studio_paciente_asisti_a_cita and rec.x_studio_servicios_1 in ["Cita para revisión de plantillas ortopédicas (Ya en uso)",
+                                                                                            "Elaboración de plantillas ortopédicas personalizadas, con receta médica (Sin estudio)",
+                                                                                            "Primera visita fisioterapia"]:
+                    #Se envia mensaje de asistencia
+                    rec.send_irina_message(template="piedica_asistencia_cita_sc",parameters=1, buttons=0)
             if vals.get("x_studio_boolean_field_4vUm6"):
                 if rec.x_studio_boolean_field_4vUm6:
                     #Se envia mensaje de inasistencia

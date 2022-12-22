@@ -6,6 +6,9 @@ _logger = logging.getLogger(__name__)
 class StockPicking(models.Model):
     _inherit = "stock.picking"
 
+    x_10_months_renewal_sent = fields.Boolean(string="Renovación después de 10 meses")
+    x_12_months_renewal_sent = fields.Boolean(string="Renovación después de 12 meses")
+
     def write(self, vals):
         res = super(StockPicking, self).write(vals)
         try:
