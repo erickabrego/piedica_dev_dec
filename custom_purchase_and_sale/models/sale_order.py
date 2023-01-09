@@ -51,7 +51,7 @@ class SaleOrder(models.Model):
                     rec._divide_in_multiple()
                 rec._reload_mrp_lines_sequence()
 
-            if rec.x_branch_order_id:                
+            if rec.x_branch_order_id:
                 if values.get("estatus_crm"):
                     rec.x_branch_order_id.sudo().write({'estatus_crm': values.get("estatus_crm")})
                 if values.get("crm_status_history"):
@@ -65,12 +65,12 @@ class SaleOrder(models.Model):
         return res
 
     #Se identifica si la orden sigue el flujo de sucursal, sino el flujo es el nativo de Odoo
-    def action_confirm(self):        
+    def action_confirm(self):
         rule_id = self.env["branch.factory"].sudo().search([("branch_id.id", "=", self.company_id.id)], limit=1)
         if not rule_id:
             self.p_ask_for_send_to_crm = False
         return super(SaleOrder, self).action_confirm()
-                
+
     #Se cancelan ambas ordenes cuando es por sucursal
     def action_cancel(self):
         res = super(SaleOrder, self).action_cancel()
@@ -128,7 +128,22 @@ class SaleOrder(models.Model):
             "x_branch_order_id": self.id
         }
         sale_order = self.env["sale.order"].sudo().create(sale_data)
+
+        orthopro_contact = self.env['res.partner'].search([('name', '=', 'Ortho-Pro')], limit=1)
+
         for order_line in mrp_lines:
+            # Precio de venta de la fabrica a la sucursal
+            product = order_line.product_id
+            orthopro_seller = product.seller_ids.filtered(lambda seller: seller.name.id == orthopro_contact.id and seller.company_id.id == self.company_id.id)
+
+            if not orthopro_seller:
+                raise ValidationError(f'No se encontró un precio de venta de la fábrica {orthopro_contact.name} a la sucursal {self.company_id.name} para el producto {product}')
+
+            orthopro_price = orthopro_seller.price
+
+            if not orthopro_price:
+                raise ValidationError(f'No se encontró un precio de venta de la fábrica {orthopro_contact.name} a la sucursal {self.company_id.name} para el producto {product}')
+
             sale_line = {
                 "product_id": order_line.product_id.id,
                 "product_uom_qty": order_line.product_uom_qty,
@@ -139,7 +154,8 @@ class SaleOrder(models.Model):
                 "analytic_tag_ids": order_line.analytic_tag_ids.ids,
                 "main_layer_id": order_line.main_layer_id.id,
                 "mid_layer_id": order_line.mid_layer_id.id,
-                "x_shapelist_domian_ids": order_line.x_shapelist_domian_ids.id
+                "x_shapelist_domian_ids": order_line.x_shapelist_domian_ids.id,
+                "price_unit": orthopro_price,
             }
             sale_order.order_line = [(0,0,sale_line)]
 
@@ -188,30 +204,30 @@ class SaleOrder(models.Model):
                 if factory_order:
                     self.send_crm_status_factory(factory_order, response, crm_status)
                     factory_order.x_has_error = True
-                    self._send_error_with_mo_crm(factory_order)
+                    self._send_error_with_mo_crm(factory_order, from_branch=True)
                 self.x_has_error = True
         else:
             raise ValidationError("No es posible de marcar como error la orden, debido a que no se cuenta con productos con errores.")
 
-    def _send_error_with_mo_crm(self, order):
+    def _send_error_with_mo_crm(self, order, from_branch=False):
         url = f"https://crmpiedica.com/api/api.php"
         token = self.env['ir.config_parameter'].sudo().get_param("crm.sync.token")
         headers = {'Content-Type': 'application/json', 'Authorization': f'Bearer {token}'}
         data = [
             {
                 'id_pedido_crm': order.folio_pedido,
-                'observaciones': order.observations,
+                'observaciones': order.x_branch_order_id.observations if from_branch else order.observations,
                 'productos_error': []
             }
         ]
         mrp_orders = self.env['mrp.production'].sudo().search([('origin', '=', order.name)])
         mrp_orders_list = []
         error_lines = order.x_branch_order_id.order_line.filtered(lambda line: line.x_is_error_line)
-        
+
         for branch_error_line in error_lines:
             factory_line = self.env["sale.order.line"].sudo().search([('order_id.id','=',order.id),('product_id.id','=',branch_error_line.product_id.id),('x_is_error_line','=',False)],limit=1)
-            factory_line.x_is_error_line = True          
-        
+            factory_line.x_is_error_line = True
+
         error_mo = mrp_orders.filtered(lambda mo: mo.product_id.id in error_lines.mapped('product_id.id'))
         if error_mo:
             for mrp_order in error_mo:
@@ -248,20 +264,20 @@ class SaleOrder(models.Model):
             self.sudo().create_estatus_crm()
         sale_order_id = self.sudo().copy()
         branch_order = self.x_branch_order_id.sudo().copy()
-        sale_order_id.x_branch_order_id = branch_order.id        
-        
+        sale_order_id.x_branch_order_id = branch_order.id
+
         branch_error_lines = branch_order.order_line.filtered(lambda line: line.x_is_error_line)
-        
+
         for order_line in sale_order_id.order_line:
             order_line.x_is_error_line = False
-        
+
         for branch_error_line in branch_error_lines:
             factory_line = self.env["sale.order.line"].sudo().search([('order_id.id','=',sale_order_id.id),('product_id.id','=',branch_error_line.product_id.id),('x_is_error_line','=',False)],limit=1)
-            factory_line.x_is_error_line = True if factory_line else False        
-        
+            factory_line.x_is_error_line = True if factory_line else False
+
         error_lines = sale_order_id.order_line.filtered(lambda line: not line.x_is_error_line)
         branch_error_lines = branch_order.order_line.filtered(lambda line: not line.x_is_error_line)
-        
+
         for error_line in error_lines:
             sale_order_id.order_line = [(2,error_line.id)]
         for branch_error_line in branch_error_lines:
@@ -271,7 +287,7 @@ class SaleOrder(models.Model):
         branch_order.x_error_order = self.x_branch_order_id.id
         sale_order_id.folio_pedido = self.folio_pedido
         branch_order.folio_pedido = self.folio_pedido
-        
+
 
         sale_order_id.x_from_error_order = True
         branch_order.x_from_error_order = True

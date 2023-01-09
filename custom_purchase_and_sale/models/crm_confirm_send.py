@@ -46,7 +46,7 @@ class CRMConfirmSend(models.TransientModel):
         if self.x_is_branch_order:
             gender = self.sale_order.x_branch_order_id.partner_id.x_studio_gnero
             data["id_paciente_odoo"] = self.sale_order.x_branch_order_id.partner_id.id
-            data["id_paciente_crm"] = int(self.sale_order.x_branch_order_id.partner_id.id_crm) or 0
+            data["id_paciente_crm"] = self.sale_order.x_branch_order_id.partner_id.id_crm
             data["datos_paciente"] = {
                 'nombre': str(self.sale_order.x_branch_order_id.partner_id.name).upper(),
                 'a_paterno': '',
