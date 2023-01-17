@@ -96,6 +96,10 @@ class CalendarEvent(models.Model):
                                 "type": "text",
                                 "text": f"{date_with_offset.strftime('%d-%m-%Y %H:%M:%S')}"
                             })
+                            components[0]["parameters"].append({
+                                "type": "text",
+                                "text": f"{rec.env.company.phone or ''}"
+                            })
 
                         if buttons == 1:
                             buttons_components = {
